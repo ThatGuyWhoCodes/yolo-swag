@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0EC0D89218E8B58000ABC8EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89118E8B58000ABC8EE /* Foundation.framework */; };
+		0EC0D89418E8B58000ABC8EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89318E8B58000ABC8EE /* CoreGraphics.framework */; };
+		0EC0D89618E8B58000ABC8EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89518E8B58000ABC8EE /* UIKit.framework */; };
+		0EC0D89C18E8B58000ABC8EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D89A18E8B58000ABC8EE /* InfoPlist.strings */; };
+		0EC0D89E18E8B58000ABC8EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D89D18E8B58000ABC8EE /* main.m */; };
+		0EC0D8A218E8B58000ABC8EE /* TGOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A118E8B58000ABC8EE /* TGOAppDelegate.m */; };
+		0EC0D8A518E8B58000ABC8EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A318E8B58000ABC8EE /* Main.storyboard */; };
+		0EC0D8A818E8B58000ABC8EE /* TGOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A718E8B58000ABC8EE /* TGOViewController.m */; };
+		0EC0D8AA18E8B58000ABC8EE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A918E8B58000ABC8EE /* Images.xcassets */; };
+		0EC0D8B118E8B58000ABC8EE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D8B018E8B58000ABC8EE /* XCTest.framework */; };
+		0EC0D8B218E8B58000ABC8EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89118E8B58000ABC8EE /* Foundation.framework */; };
+		0EC0D8B318E8B58000ABC8EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89518E8B58000ABC8EE /* UIKit.framework */; };
+		0EC0D8BB18E8B58000ABC8EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D8B918E8B58000ABC8EE /* InfoPlist.strings */; };
+		0EC0D8BD18E8B58000ABC8EE /* Just_Some_StuffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0EC0D8B418E8B58000ABC8EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EC0D88618E8B58000ABC8EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EC0D88D18E8B58000ABC8EE;
+			remoteInfo = "Just Some Stuff";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0EC0D88E18E8B58000ABC8EE /* Just Some Stuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just Some Stuff.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EC0D89118E8B58000ABC8EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0EC0D89318E8B58000ABC8EE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0EC0D89518E8B58000ABC8EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0EC0D89918E8B58000ABC8EE /* Just Some Stuff-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Just Some Stuff-Info.plist"; sourceTree = "<group>"; };
+		0EC0D89B18E8B58000ABC8EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0EC0D89D18E8B58000ABC8EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0EC0D89F18E8B58000ABC8EE /* Just Some Stuff-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Just Some Stuff-Prefix.pch"; sourceTree = "<group>"; };
+		0EC0D8A018E8B58000ABC8EE /* TGOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGOAppDelegate.h; sourceTree = "<group>"; };
+		0EC0D8A118E8B58000ABC8EE /* TGOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGOAppDelegate.m; sourceTree = "<group>"; };
+		0EC0D8A418E8B58000ABC8EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0EC0D8A618E8B58000ABC8EE /* TGOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGOViewController.h; sourceTree = "<group>"; };
+		0EC0D8A718E8B58000ABC8EE /* TGOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGOViewController.m; sourceTree = "<group>"; };
+		0EC0D8A918E8B58000ABC8EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0EC0D8AF18E8B58000ABC8EE /* Just Some StuffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Just Some StuffTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EC0D8B018E8B58000ABC8EE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0EC0D8B818E8B58000ABC8EE /* Just Some StuffTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Just Some StuffTests-Info.plist"; sourceTree = "<group>"; };
+		0EC0D8BA18E8B58000ABC8EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Just_Some_StuffTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0EC0D88B18E8B58000ABC8EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EC0D89418E8B58000ABC8EE /* CoreGraphics.framework in Frameworks */,
+				0EC0D89618E8B58000ABC8EE /* UIKit.framework in Frameworks */,
+				0EC0D89218E8B58000ABC8EE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EC0D8AC18E8B58000ABC8EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EC0D8B118E8B58000ABC8EE /* XCTest.framework in Frameworks */,
+				0EC0D8B318E8B58000ABC8EE /* UIKit.framework in Frameworks */,
+				0EC0D8B218E8B58000ABC8EE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0EC0D88518E8B58000ABC8EE = {
+			isa = PBXGroup;
+			children = (
+				0EC0D89718E8B58000ABC8EE /* Just Some Stuff */,
+				0EC0D8B618E8B58000ABC8EE /* Just Some StuffTests */,
+				0EC0D89018E8B58000ABC8EE /* Frameworks */,
+				0EC0D88F18E8B58000ABC8EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0EC0D88F18E8B58000ABC8EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0EC0D88E18E8B58000ABC8EE /* Just Some Stuff.app */,
+				0EC0D8AF18E8B58000ABC8EE /* Just Some StuffTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0EC0D89018E8B58000ABC8EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EC0D89118E8B58000ABC8EE /* Foundation.framework */,
+				0EC0D89318E8B58000ABC8EE /* CoreGraphics.framework */,
+				0EC0D89518E8B58000ABC8EE /* UIKit.framework */,
+				0EC0D8B018E8B58000ABC8EE /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0EC0D89718E8B58000ABC8EE /* Just Some Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				0EC0D8A018E8B58000ABC8EE /* TGOAppDelegate.h */,
+				0EC0D8A118E8B58000ABC8EE /* TGOAppDelegate.m */,
+				0EC0D8A318E8B58000ABC8EE /* Main.storyboard */,
+				0EC0D8A618E8B58000ABC8EE /* TGOViewController.h */,
+				0EC0D8A718E8B58000ABC8EE /* TGOViewController.m */,
+				0EC0D8A918E8B58000ABC8EE /* Images.xcassets */,
+				0EC0D89818E8B58000ABC8EE /* Supporting Files */,
+			);
+			path = "Just Some Stuff";
+			sourceTree = "<group>";
+		};
+		0EC0D89818E8B58000ABC8EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EC0D89918E8B58000ABC8EE /* Just Some Stuff-Info.plist */,
+				0EC0D89A18E8B58000ABC8EE /* InfoPlist.strings */,
+				0EC0D89D18E8B58000ABC8EE /* main.m */,
+				0EC0D89F18E8B58000ABC8EE /* Just Some Stuff-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0EC0D8B618E8B58000ABC8EE /* Just Some StuffTests */ = {
+			isa = PBXGroup;
+			children = (
+				0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */,
+				0EC0D8B718E8B58000ABC8EE /* Supporting Files */,
+			);
+			path = "Just Some StuffTests";
+			sourceTree = "<group>";
+		};
+		0EC0D8B718E8B58000ABC8EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EC0D8B818E8B58000ABC8EE /* Just Some StuffTests-Info.plist */,
+				0EC0D8B918E8B58000ABC8EE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0EC0D88D18E8B58000ABC8EE /* Just Some Stuff */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EC0D8C018E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some Stuff" */;
+			buildPhases = (
+				0EC0D88A18E8B58000ABC8EE /* Sources */,
+				0EC0D88B18E8B58000ABC8EE /* Frameworks */,
+				0EC0D88C18E8B58000ABC8EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Just Some Stuff";
+			productName = "Just Some Stuff";
+			productReference = 0EC0D88E18E8B58000ABC8EE /* Just Some Stuff.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0EC0D8AE18E8B58000ABC8EE /* Just Some StuffTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EC0D8C318E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some StuffTests" */;
+			buildPhases = (
+				0EC0D8AB18E8B58000ABC8EE /* Sources */,
+				0EC0D8AC18E8B58000ABC8EE /* Frameworks */,
+				0EC0D8AD18E8B58000ABC8EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0EC0D8B518E8B58000ABC8EE /* PBXTargetDependency */,
+			);
+			name = "Just Some StuffTests";
+			productName = "Just Some StuffTests";
+			productReference = 0EC0D8AF18E8B58000ABC8EE /* Just Some StuffTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0EC0D88618E8B58000ABC8EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TGO;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = ThatGuyOrg;
+				TargetAttributes = {
+					0EC0D8AE18E8B58000ABC8EE = {
+						TestTargetID = 0EC0D88D18E8B58000ABC8EE;
+					};
+				};
+			};
+			buildConfigurationList = 0EC0D88918E8B58000ABC8EE /* Build configuration list for PBXProject "Just Some Stuff" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0EC0D88518E8B58000ABC8EE;
+			productRefGroup = 0EC0D88F18E8B58000ABC8EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0EC0D88D18E8B58000ABC8EE /* Just Some Stuff */,
+				0EC0D8AE18E8B58000ABC8EE /* Just Some StuffTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0EC0D88C18E8B58000ABC8EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EC0D8AA18E8B58000ABC8EE /* Images.xcassets in Resources */,
+				0EC0D89C18E8B58000ABC8EE /* InfoPlist.strings in Resources */,
+				0EC0D8A518E8B58000ABC8EE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EC0D8AD18E8B58000ABC8EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EC0D8BB18E8B58000ABC8EE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0EC0D88A18E8B58000ABC8EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EC0D89E18E8B58000ABC8EE /* main.m in Sources */,
+				0EC0D8A218E8B58000ABC8EE /* TGOAppDelegate.m in Sources */,
+				0EC0D8A818E8B58000ABC8EE /* TGOViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EC0D8AB18E8B58000ABC8EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EC0D8BD18E8B58000ABC8EE /* Just_Some_StuffTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0EC0D8B518E8B58000ABC8EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0EC0D88D18E8B58000ABC8EE /* Just Some Stuff */;
+			targetProxy = 0EC0D8B418E8B58000ABC8EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0EC0D89A18E8B58000ABC8EE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EC0D89B18E8B58000ABC8EE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0EC0D8A318E8B58000ABC8EE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EC0D8A418E8B58000ABC8EE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0EC0D8B918E8B58000ABC8EE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EC0D8BA18E8B58000ABC8EE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0EC0D8BE18E8B58000ABC8EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0EC0D8BF18E8B58000ABC8EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0EC0D8C118E8B58000ABC8EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
+				INFOPLIST_FILE = "Just Some Stuff/Just Some Stuff-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0EC0D8C218E8B58000ABC8EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
+				INFOPLIST_FILE = "Just Some Stuff/Just Some Stuff-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0EC0D8C418E8B58000ABC8EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Just Some Stuff.app/Just Some Stuff";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Just Some StuffTests/Just Some StuffTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0EC0D8C518E8B58000ABC8EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Just Some Stuff.app/Just Some Stuff";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
+				INFOPLIST_FILE = "Just Some StuffTests/Just Some StuffTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0EC0D88918E8B58000ABC8EE /* Build configuration list for PBXProject "Just Some Stuff" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EC0D8BE18E8B58000ABC8EE /* Debug */,
+				0EC0D8BF18E8B58000ABC8EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EC0D8C018E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some Stuff" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EC0D8C118E8B58000ABC8EE /* Debug */,
+				0EC0D8C218E8B58000ABC8EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0EC0D8C318E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some StuffTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EC0D8C418E8B58000ABC8EE /* Debug */,
+				0EC0D8C518E8B58000ABC8EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0EC0D88618E8B58000ABC8EE /* Project object */;
+}
