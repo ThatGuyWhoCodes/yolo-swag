@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TGOViewController : UIViewController
+@interface TGOViewController : UICollectionViewController
 
 @end

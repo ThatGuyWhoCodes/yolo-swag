@@ -459,6 +459,7 @@
 				0EC0D8C218E8B58000ABC8EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0EC0D8C318E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some StuffTests" */ = {
 			isa = XCConfigurationList;
@@ -467,6 +468,7 @@
 				0EC0D8C518E8B58000ABC8EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
