@@ -1,5 +1,5 @@
 //
-//  TGOAppDelegate.h
+//  TGOViewController.h
 //  Just Some Stuff
 //
 //  Created by MacBrian Pro on 30/03/2014.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TGOAppDelegate : UIResponder <UIApplicationDelegate>
+@interface DSGHomeViewController : UICollectionViewController
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSMutableArray *photoData;
 
 @end

@@ -14,15 +14,20 @@
 		0EC0D89618E8B58000ABC8EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89518E8B58000ABC8EE /* UIKit.framework */; };
 		0EC0D89C18E8B58000ABC8EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D89A18E8B58000ABC8EE /* InfoPlist.strings */; };
 		0EC0D89E18E8B58000ABC8EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D89D18E8B58000ABC8EE /* main.m */; };
-		0EC0D8A218E8B58000ABC8EE /* TGOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A118E8B58000ABC8EE /* TGOAppDelegate.m */; };
+		0EC0D8A218E8B58000ABC8EE /* DSGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A118E8B58000ABC8EE /* DSGAppDelegate.m */; };
 		0EC0D8A518E8B58000ABC8EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A318E8B58000ABC8EE /* Main.storyboard */; };
-		0EC0D8A818E8B58000ABC8EE /* TGOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A718E8B58000ABC8EE /* TGOViewController.m */; };
+		0EC0D8A818E8B58000ABC8EE /* DSGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A718E8B58000ABC8EE /* DSGHomeViewController.m */; };
 		0EC0D8AA18E8B58000ABC8EE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D8A918E8B58000ABC8EE /* Images.xcassets */; };
 		0EC0D8B118E8B58000ABC8EE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D8B018E8B58000ABC8EE /* XCTest.framework */; };
 		0EC0D8B218E8B58000ABC8EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89118E8B58000ABC8EE /* Foundation.framework */; };
 		0EC0D8B318E8B58000ABC8EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89518E8B58000ABC8EE /* UIKit.framework */; };
 		0EC0D8BB18E8B58000ABC8EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D8B918E8B58000ABC8EE /* InfoPlist.strings */; };
 		0EC0D8BD18E8B58000ABC8EE /* Just_Some_StuffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */; };
+		0EE1FD71190086DB00983D87 /* DSGHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1FD70190086DB00983D87 /* DSGHomeModel.m */; };
+		0EE1FD7919008D6100983D87 /* DSGHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1FD7819008D6100983D87 /* DSGHomeCollectionViewCell.m */; };
+		0EE1FD811900941F00983D87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD801900941F00983D87 /* ImageIO.framework */; };
+		0EE1FD83190095EB00983D87 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD82190095EB00983D87 /* SDWebImage.framework */; };
+		0EE1FD8819009B2000983D87 /* IMG_0038.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0EE1FD8719009B2000983D87 /* IMG_0038.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,25 +64,32 @@
 /* Begin PBXFileReference section */
 		0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0EABEAF318EE0CD200E95D39 /* FlickrKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FlickrKit.xcodeproj; path = "../../../Downloads/FlickrKit-master/FlickrKit.xcodeproj"; sourceTree = "<group>"; };
-		0EC0D88E18E8B58000ABC8EE /* Just Some Stuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just Some Stuff.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EC0D88E18E8B58000ABC8EE /* DsgnrsStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DsgnrsStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EC0D89118E8B58000ABC8EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0EC0D89318E8B58000ABC8EE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0EC0D89518E8B58000ABC8EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		0EC0D89918E8B58000ABC8EE /* Just Some Stuff-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Just Some Stuff-Info.plist"; sourceTree = "<group>"; };
+		0EC0D89918E8B58000ABC8EE /* DsgnrsStudio-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DsgnrsStudio-Info.plist"; sourceTree = "<group>"; };
 		0EC0D89B18E8B58000ABC8EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0EC0D89D18E8B58000ABC8EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0EC0D89F18E8B58000ABC8EE /* Just Some Stuff-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Just Some Stuff-Prefix.pch"; sourceTree = "<group>"; };
-		0EC0D8A018E8B58000ABC8EE /* TGOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGOAppDelegate.h; sourceTree = "<group>"; };
-		0EC0D8A118E8B58000ABC8EE /* TGOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGOAppDelegate.m; sourceTree = "<group>"; };
+		0EC0D89F18E8B58000ABC8EE /* DsgnrsStudio-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DsgnrsStudio-Prefix.pch"; sourceTree = "<group>"; };
+		0EC0D8A018E8B58000ABC8EE /* DSGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGAppDelegate.h; sourceTree = "<group>"; };
+		0EC0D8A118E8B58000ABC8EE /* DSGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGAppDelegate.m; sourceTree = "<group>"; };
 		0EC0D8A418E8B58000ABC8EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0EC0D8A618E8B58000ABC8EE /* TGOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGOViewController.h; sourceTree = "<group>"; };
-		0EC0D8A718E8B58000ABC8EE /* TGOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGOViewController.m; sourceTree = "<group>"; };
+		0EC0D8A618E8B58000ABC8EE /* DSGHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGHomeViewController.h; sourceTree = "<group>"; };
+		0EC0D8A718E8B58000ABC8EE /* DSGHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGHomeViewController.m; sourceTree = "<group>"; };
 		0EC0D8A918E8B58000ABC8EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0EC0D8AF18E8B58000ABC8EE /* Just Some StuffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Just Some StuffTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EC0D8AF18E8B58000ABC8EE /* DsgnrsStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DsgnrsStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EC0D8B018E8B58000ABC8EE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		0EC0D8B818E8B58000ABC8EE /* Just Some StuffTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Just Some StuffTests-Info.plist"; sourceTree = "<group>"; };
+		0EC0D8B818E8B58000ABC8EE /* DsgnrsStudioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DsgnrsStudioTests-Info.plist"; sourceTree = "<group>"; };
 		0EC0D8BA18E8B58000ABC8EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Just_Some_StuffTests.m; sourceTree = "<group>"; };
+		0EE1FD6F190086DB00983D87 /* DSGHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGHomeModel.h; sourceTree = "<group>"; };
+		0EE1FD70190086DB00983D87 /* DSGHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGHomeModel.m; sourceTree = "<group>"; };
+		0EE1FD7719008D6100983D87 /* DSGHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGHomeCollectionViewCell.h; sourceTree = "<group>"; };
+		0EE1FD7819008D6100983D87 /* DSGHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		0EE1FD801900941F00983D87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0EE1FD82190095EB00983D87 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		0EE1FD8719009B2000983D87 /* IMG_0038.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0038.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE1FD83190095EB00983D87 /* SDWebImage.framework in Frameworks */,
+				0EE1FD811900941F00983D87 /* ImageIO.framework in Frameworks */,
 				0EABEAFC18EE0E4600E95D39 /* libFlickrKit.a in Frameworks */,
 				0EABEAEF18EE099300E95D39 /* SystemConfiguration.framework in Frameworks */,
 				0EC0D89418E8B58000ABC8EE /* CoreGraphics.framework in Frameworks */,
@@ -129,8 +143,8 @@
 		0EC0D88F18E8B58000ABC8EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0EC0D88E18E8B58000ABC8EE /* Just Some Stuff.app */,
-				0EC0D8AF18E8B58000ABC8EE /* Just Some StuffTests.xctest */,
+				0EC0D88E18E8B58000ABC8EE /* DsgnrsStudio.app */,
+				0EC0D8AF18E8B58000ABC8EE /* DsgnrsStudioTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,6 +152,8 @@
 		0EC0D89018E8B58000ABC8EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0EE1FD82190095EB00983D87 /* SDWebImage.framework */,
+				0EE1FD801900941F00983D87 /* ImageIO.framework */,
 				0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */,
 				0EC0D89118E8B58000ABC8EE /* Foundation.framework */,
 				0EC0D89318E8B58000ABC8EE /* CoreGraphics.framework */,
@@ -150,11 +166,11 @@
 		0EC0D89718E8B58000ABC8EE /* Just Some Stuff */ = {
 			isa = PBXGroup;
 			children = (
-				0EC0D8A018E8B58000ABC8EE /* TGOAppDelegate.h */,
-				0EC0D8A118E8B58000ABC8EE /* TGOAppDelegate.m */,
+				0EC0D8A018E8B58000ABC8EE /* DSGAppDelegate.h */,
+				0EC0D8A118E8B58000ABC8EE /* DSGAppDelegate.m */,
 				0EC0D8A318E8B58000ABC8EE /* Main.storyboard */,
-				0EC0D8A618E8B58000ABC8EE /* TGOViewController.h */,
-				0EC0D8A718E8B58000ABC8EE /* TGOViewController.m */,
+				0EE1FD6C19007A1C00983D87 /* DSGBrowse */,
+				0EE1FD6B19007A0700983D87 /* DSGFavourites */,
 				0EC0D8A918E8B58000ABC8EE /* Images.xcassets */,
 				0EC0D89818E8B58000ABC8EE /* Supporting Files */,
 			);
@@ -164,10 +180,11 @@
 		0EC0D89818E8B58000ABC8EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0EC0D89918E8B58000ABC8EE /* Just Some Stuff-Info.plist */,
+				0EE1FD84190096B800983D87 /* Images */,
+				0EC0D89918E8B58000ABC8EE /* DsgnrsStudio-Info.plist */,
 				0EC0D89A18E8B58000ABC8EE /* InfoPlist.strings */,
 				0EC0D89D18E8B58000ABC8EE /* main.m */,
-				0EC0D89F18E8B58000ABC8EE /* Just Some Stuff-Prefix.pch */,
+				0EC0D89F18E8B58000ABC8EE /* DsgnrsStudio-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -184,18 +201,70 @@
 		0EC0D8B718E8B58000ABC8EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0EC0D8B818E8B58000ABC8EE /* Just Some StuffTests-Info.plist */,
+				0EC0D8B818E8B58000ABC8EE /* DsgnrsStudioTests-Info.plist */,
 				0EC0D8B918E8B58000ABC8EE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0EE1FD6B19007A0700983D87 /* DSGFavourites */ = {
+			isa = PBXGroup;
+			children = (
+				0EE1FD7619008D3A00983D87 /* View */,
+				0EE1FD6E190086A700983D87 /* Controller */,
+				0EE1FD6D1900869D00983D87 /* Model */,
+			);
+			name = DSGFavourites;
+			sourceTree = "<group>";
+		};
+		0EE1FD6C19007A1C00983D87 /* DSGBrowse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DSGBrowse;
+			sourceTree = "<group>";
+		};
+		0EE1FD6D1900869D00983D87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0EE1FD6F190086DB00983D87 /* DSGHomeModel.h */,
+				0EE1FD70190086DB00983D87 /* DSGHomeModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0EE1FD6E190086A700983D87 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0EC0D8A618E8B58000ABC8EE /* DSGHomeViewController.h */,
+				0EC0D8A718E8B58000ABC8EE /* DSGHomeViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0EE1FD7619008D3A00983D87 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0EE1FD7719008D6100983D87 /* DSGHomeCollectionViewCell.h */,
+				0EE1FD7819008D6100983D87 /* DSGHomeCollectionViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0EE1FD84190096B800983D87 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0EE1FD8719009B2000983D87 /* IMG_0038.JPG */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0EC0D88D18E8B58000ABC8EE /* Just Some Stuff */ = {
+		0EC0D88D18E8B58000ABC8EE /* DsgnrsStudio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0EC0D8C018E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some Stuff" */;
+			buildConfigurationList = 0EC0D8C018E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "DsgnrsStudio" */;
 			buildPhases = (
 				0EC0D88A18E8B58000ABC8EE /* Sources */,
 				0EC0D88B18E8B58000ABC8EE /* Frameworks */,
@@ -206,14 +275,14 @@
 			dependencies = (
 				0EABEAFE18EE0E5100E95D39 /* PBXTargetDependency */,
 			);
-			name = "Just Some Stuff";
+			name = DsgnrsStudio;
 			productName = "Just Some Stuff";
-			productReference = 0EC0D88E18E8B58000ABC8EE /* Just Some Stuff.app */;
+			productReference = 0EC0D88E18E8B58000ABC8EE /* DsgnrsStudio.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0EC0D8AE18E8B58000ABC8EE /* Just Some StuffTests */ = {
+		0EC0D8AE18E8B58000ABC8EE /* DsgnrsStudioTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0EC0D8C318E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some StuffTests" */;
+			buildConfigurationList = 0EC0D8C318E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "DsgnrsStudioTests" */;
 			buildPhases = (
 				0EC0D8AB18E8B58000ABC8EE /* Sources */,
 				0EC0D8AC18E8B58000ABC8EE /* Frameworks */,
@@ -224,9 +293,9 @@
 			dependencies = (
 				0EC0D8B518E8B58000ABC8EE /* PBXTargetDependency */,
 			);
-			name = "Just Some StuffTests";
+			name = DsgnrsStudioTests;
 			productName = "Just Some StuffTests";
-			productReference = 0EC0D8AF18E8B58000ABC8EE /* Just Some StuffTests.xctest */;
+			productReference = 0EC0D8AF18E8B58000ABC8EE /* DsgnrsStudioTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -235,16 +304,19 @@
 		0EC0D88618E8B58000ABC8EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = TGO;
+				CLASSPREFIX = DSG;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = ThatGuyOrg;
 				TargetAttributes = {
+					0EC0D88D18E8B58000ABC8EE = {
+						DevelopmentTeam = 592QM63P2J;
+					};
 					0EC0D8AE18E8B58000ABC8EE = {
 						TestTargetID = 0EC0D88D18E8B58000ABC8EE;
 					};
 				};
 			};
-			buildConfigurationList = 0EC0D88918E8B58000ABC8EE /* Build configuration list for PBXProject "Just Some Stuff" */;
+			buildConfigurationList = 0EC0D88918E8B58000ABC8EE /* Build configuration list for PBXProject "DsgnrsStudio" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -263,8 +335,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				0EC0D88D18E8B58000ABC8EE /* Just Some Stuff */,
-				0EC0D8AE18E8B58000ABC8EE /* Just Some StuffTests */,
+				0EC0D88D18E8B58000ABC8EE /* DsgnrsStudio */,
+				0EC0D8AE18E8B58000ABC8EE /* DsgnrsStudioTests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,6 +365,7 @@
 			files = (
 				0EC0D8AA18E8B58000ABC8EE /* Images.xcassets in Resources */,
 				0EC0D89C18E8B58000ABC8EE /* InfoPlist.strings in Resources */,
+				0EE1FD8819009B2000983D87 /* IMG_0038.JPG in Resources */,
 				0EC0D8A518E8B58000ABC8EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,8 +386,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EC0D89E18E8B58000ABC8EE /* main.m in Sources */,
-				0EC0D8A218E8B58000ABC8EE /* TGOAppDelegate.m in Sources */,
-				0EC0D8A818E8B58000ABC8EE /* TGOViewController.m in Sources */,
+				0EE1FD71190086DB00983D87 /* DSGHomeModel.m in Sources */,
+				0EE1FD7919008D6100983D87 /* DSGHomeCollectionViewCell.m in Sources */,
+				0EC0D8A218E8B58000ABC8EE /* DSGAppDelegate.m in Sources */,
+				0EC0D8A818E8B58000ABC8EE /* DSGHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +411,7 @@
 		};
 		0EC0D8B518E8B58000ABC8EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0EC0D88D18E8B58000ABC8EE /* Just Some Stuff */;
+			target = 0EC0D88D18E8B58000ABC8EE /* DsgnrsStudio */;
 			targetProxy = 0EC0D8B418E8B58000ABC8EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -401,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -433,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -444,11 +519,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Unbounded/Downloads,
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
-				INFOPLIST_FILE = "Just Some Stuff/Just Some Stuff-Info.plist";
+				GCC_PREFIX_HEADER = "Just Some Stuff/DsgnrsStudio-Prefix.pch";
+				INFOPLIST_FILE = "Just Some Stuff/DsgnrsStudio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
+				PRODUCT_NAME = DsgnrsStudio;
+				SDKROOT = iphoneos7.1;
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/Unbounded/Downloads/FlickrKit-master/Classes/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -459,11 +546,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Unbounded/Downloads,
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
-				INFOPLIST_FILE = "Just Some Stuff/Just Some Stuff-Info.plist";
+				GCC_PREFIX_HEADER = "Just Some Stuff/DsgnrsStudio-Prefix.pch";
+				INFOPLIST_FILE = "Just Some Stuff/DsgnrsStudio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
+				PRODUCT_NAME = DsgnrsStudio;
+				SDKROOT = iphoneos7.1;
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/Unbounded/Downloads/FlickrKit-master/Classes/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -484,8 +583,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Just Some StuffTests/Just Some StuffTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Just Some StuffTests/DsgnrsStudioTests-Info.plist";
+				PRODUCT_NAME = DsgnrsStudioTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -502,8 +601,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
-				INFOPLIST_FILE = "Just Some StuffTests/Just Some StuffTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Just Some StuffTests/DsgnrsStudioTests-Info.plist";
+				PRODUCT_NAME = DsgnrsStudioTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -512,7 +611,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0EC0D88918E8B58000ABC8EE /* Build configuration list for PBXProject "Just Some Stuff" */ = {
+		0EC0D88918E8B58000ABC8EE /* Build configuration list for PBXProject "DsgnrsStudio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0EC0D8BE18E8B58000ABC8EE /* Debug */,
@@ -521,7 +620,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0EC0D8C018E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some Stuff" */ = {
+		0EC0D8C018E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "DsgnrsStudio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0EC0D8C118E8B58000ABC8EE /* Debug */,
@@ -530,7 +629,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0EC0D8C318E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "Just Some StuffTests" */ = {
+		0EC0D8C318E8B58000ABC8EE /* Build configuration list for PBXNativeTarget "DsgnrsStudioTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0EC0D8C418E8B58000ABC8EE /* Debug */,

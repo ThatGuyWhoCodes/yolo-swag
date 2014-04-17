@@ -6,13 +6,16 @@
 //  Copyright (c) 2014 ThatGuyOrg. All rights reserved.
 //
 
-#import "TGOAppDelegate.h"
+#import "DSGAppDelegate.h"
 
-@implementation TGOAppDelegate
+@implementation DSGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"1d6aa108698333d0f168ecdbc0842b0b" sharedSecret:@"9a5498c3e69fdacb"];
+    
     return YES;
 }
 							

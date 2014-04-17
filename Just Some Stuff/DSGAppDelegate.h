@@ -1,5 +1,5 @@
 //
-//  TGOViewController.h
+//  TGOAppDelegate.h
 //  Just Some Stuff
 //
 //  Created by MacBrian Pro on 30/03/2014.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TGOViewController : UICollectionViewController
+@interface DSGAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 @end

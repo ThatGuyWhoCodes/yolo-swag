@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0EC0D88D18E8B58000ABC8EE"
                BuildableName = "Just Some Stuff.app"
-               BlueprintName = "Just Some Stuff"
-               ReferencedContainer = "container:Just Some Stuff.xcodeproj">
+               BlueprintName = "DsgnrsStudio"
+               ReferencedContainer = "container:DsgnrsStudio.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0EC0D8AE18E8B58000ABC8EE"
                BuildableName = "Just Some StuffTests.xctest"
-               BlueprintName = "Just Some StuffTests"
-               ReferencedContainer = "container:Just Some Stuff.xcodeproj">
+               BlueprintName = "DsgnrsStudioTests"
+               ReferencedContainer = "container:DsgnrsStudio.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0EC0D88D18E8B58000ABC8EE"
             BuildableName = "Just Some Stuff.app"
-            BlueprintName = "Just Some Stuff"
-            ReferencedContainer = "container:Just Some Stuff.xcodeproj">
+            BlueprintName = "DsgnrsStudio"
+            ReferencedContainer = "container:DsgnrsStudio.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0EC0D88D18E8B58000ABC8EE"
             BuildableName = "Just Some Stuff.app"
-            BlueprintName = "Just Some Stuff"
-            ReferencedContainer = "container:Just Some Stuff.xcodeproj">
+            BlueprintName = "DsgnrsStudio"
+            ReferencedContainer = "container:DsgnrsStudio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0EC0D88D18E8B58000ABC8EE"
             BuildableName = "Just Some Stuff.app"
-            BlueprintName = "Just Some Stuff"
-            ReferencedContainer = "container:Just Some Stuff.xcodeproj">
+            BlueprintName = "DsgnrsStudio"
+            ReferencedContainer = "container:DsgnrsStudio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
