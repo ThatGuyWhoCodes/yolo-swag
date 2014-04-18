@@ -70,7 +70,10 @@
         cell = [[DSGHomeCollectionViewCell alloc] init];
     }
     
+    [cell.image setContentMode:UIViewContentModeScaleAspectFill];
     [cell.image setImageWithURL:[self.photoData objectAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+    
+    [cell.label setText:[[self.photoData objectAtIndex:indexPath.row] description]];
     
     return cell;
 }

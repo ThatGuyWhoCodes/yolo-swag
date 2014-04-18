@@ -28,6 +28,7 @@
 		0EE1FD811900941F00983D87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD801900941F00983D87 /* ImageIO.framework */; };
 		0EE1FD83190095EB00983D87 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD82190095EB00983D87 /* SDWebImage.framework */; };
 		0EE1FD8819009B2000983D87 /* IMG_0038.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0EE1FD8719009B2000983D87 /* IMG_0038.JPG */; };
+		0EE1FD8A1900A3D500983D87 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD891900A3D500983D87 /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		0EE1FD801900941F00983D87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		0EE1FD82190095EB00983D87 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		0EE1FD8719009B2000983D87 /* IMG_0038.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0038.JPG; sourceTree = "<group>"; };
+		0EE1FD891900A3D500983D87 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE1FD8A1900A3D500983D87 /* SDWebImage.framework in Frameworks */,
 				0EE1FD83190095EB00983D87 /* SDWebImage.framework in Frameworks */,
 				0EE1FD811900941F00983D87 /* ImageIO.framework in Frameworks */,
 				0EABEAFC18EE0E4600E95D39 /* libFlickrKit.a in Frameworks */,
@@ -153,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				0EE1FD82190095EB00983D87 /* SDWebImage.framework */,
+				0EE1FD891900A3D500983D87 /* SDWebImage.framework */,
 				0EE1FD801900941F00983D87 /* ImageIO.framework */,
 				0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */,
 				0EC0D89118E8B58000ABC8EE /* Foundation.framework */,
