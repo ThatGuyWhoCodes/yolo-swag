@@ -29,27 +29,34 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    FlickrKit *fk = [FlickrKit sharedFlickrKit];
     FKFlickrInterestingnessGetList *interesting = [[FKFlickrInterestingnessGetList alloc] init];
-    [fk call:interesting completion:^(NSDictionary *response, NSError *error) {
+    
+    FKFlickrPhotosGetRecent *recent = [[FKFlickrPhotosGetRecent alloc] init];
+    
+    //[interesting setDate:@"2013-04-04"];
+    
+    [[FlickrKit sharedFlickrKit] call:recent completion:^(NSDictionary *response, NSError *error) {
         // Note this is not the main thread!
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (response)
+        
+        if (response)
+        {
+            NSMutableArray *photoURLs = [NSMutableArray array];
+            for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"])
             {
-                NSMutableArray *photoURLs = [NSMutableArray array];
-                for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"])
-                {
-                    NSURL *url = [fk photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:photoData];
-                    [photoURLs addObject:url];
-                }
+                NSURL *url = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeSmall320 fromPhotoDictionary:photoData];
+                [photoURLs addObject:url];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
                 self.photoData = photoURLs;
                 [self.collectionView reloadData];
-            }
-        });
+            });
+        }
         
     }];
 }
 
+
+#pragma mark - CollectionView
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -71,7 +78,7 @@
     }
     
     [cell.image setContentMode:UIViewContentModeScaleAspectFill];
-    [cell.image setImageWithURL:[self.photoData objectAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+    [cell.image setImageWithURL:[self.photoData objectAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"] options:SDWebImageProgressiveDownload];
     
     [cell.label setText:[[self.photoData objectAtIndex:indexPath.row] description]];
     
