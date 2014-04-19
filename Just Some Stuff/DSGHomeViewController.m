@@ -29,11 +29,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    FKFlickrInterestingnessGetList *interesting = [[FKFlickrInterestingnessGetList alloc] init];
-    
     FKFlickrPhotosGetRecent *recent = [[FKFlickrPhotosGetRecent alloc] init];
-    
-    //[interesting setDate:@"2013-04-04"];
     
     [[FlickrKit sharedFlickrKit] call:recent completion:^(NSDictionary *response, NSError *error) {
         // Note this is not the main thread!
@@ -43,7 +39,7 @@
             NSMutableArray *photoURLs = [NSMutableArray array];
             for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"])
             {
-                NSURL *url = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeSmall320 fromPhotoDictionary:photoData];
+                NSURL *url = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeLarge1024 fromPhotoDictionary:photoData];
                 [photoURLs addObject:url];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -78,7 +74,7 @@
     }
     
     [cell.image setContentMode:UIViewContentModeScaleAspectFill];
-    [cell.image setImageWithURL:[self.photoData objectAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"] options:SDWebImageProgressiveDownload];
+    [cell.image setImageWithURL:[self.photoData objectAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
     
     [cell.label setText:[[self.photoData objectAtIndex:indexPath.row] description]];
     

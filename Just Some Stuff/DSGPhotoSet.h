@@ -16,6 +16,10 @@
 
 @property (strong, nonatomic, getter = setDescription) NSString *set_description;
 
+@property (strong, nonatomic) NSURL *coverUrl;
+
+@property (strong, nonatomic) NSArray *photoUrls;
+
 -(instancetype)initWithDitctionary:(NSDictionary *)dictionary;
 
 @end

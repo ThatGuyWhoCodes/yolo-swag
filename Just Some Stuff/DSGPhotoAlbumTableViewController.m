@@ -7,9 +7,13 @@
 //
 
 #import "DSGPhotoAlbumTableViewController.h"
+#import "SDWebImage/UIImageView+WebCache.h"
+#import "DSGPhotoAlbumTableViewCell.h"
 #import "DSGPhotoSet.h"
 
 @interface DSGPhotoAlbumTableViewController ()
+
+
 
 @end
 
@@ -20,11 +24,6 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,19 +46,20 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (DSGPhotoAlbumTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *photoSetCellID = @"_PHOTO_SET_ID_";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:photoSetCellID forIndexPath:indexPath];
+    DSGPhotoAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:photoSetCellID forIndexPath:indexPath];
     
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:photoSetCellID];
+        cell = [[DSGPhotoAlbumTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:photoSetCellID];
     }
     
     DSGPhotoSet *photoSet = [self.photoSet objectAtIndex:indexPath.row];
-    [cell.textLabel setText:photoSet.set_title];
+    [cell.titleLabel setText:photoSet.set_title];
+    [cell.backgroundImage setImageWithURL:photoSet.coverUrl placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
     
     return cell;
 }

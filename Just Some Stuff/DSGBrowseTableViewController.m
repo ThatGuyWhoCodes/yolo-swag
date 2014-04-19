@@ -8,6 +8,7 @@
 
 #import "DSGBrowseTableViewController.h"
 #import "DSGPhotoAlbumTableViewController.h"
+#import "DSGCollectionTableViewCell.h"
 #import "DSGPhotoCollection.h"
 
 @interface DSGBrowseTableViewController ()
@@ -23,10 +24,7 @@
     [super viewDidLoad];
     
     self.collectionsData = [NSMutableArray array];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
+    
     FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
     [collectionTree setUser_id:@"102927591@N02"];
     
@@ -49,13 +47,18 @@
     }];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table View Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -70,19 +73,20 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (DSGCollectionTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *tableCellID = @"_BROWSE_CELL_ID_";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableCellID forIndexPath:indexPath];
+    DSGCollectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableCellID forIndexPath:indexPath];
     
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableCellID];
+        cell = [[DSGCollectionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableCellID];
     }
     
     DSGPhotoCollection* collection = [self.collectionsData objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[collection title]];// Configure the cell...
+    [cell.titleLabel setText:[collection title]];
+    [cell setBackgroundColor:(indexPath.row % 2) ? [UIColor lightGrayColor] : [UIColor darkGrayColor]];
     
     return cell;
 }
@@ -90,19 +94,13 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
-    
     DSGPhotoCollection *currentCollection = [self.collectionsData objectAtIndex:indexPath.row];
     
     [(DSGPhotoAlbumTableViewController *)segue.destinationViewController setPhotoSet:[currentCollection collectionImageSet]];
-    
-    [[(DSGPhotoAlbumTableViewController *)segue.destinationViewController navigationItem] setTitle:[currentCollection title]];
+    [[(DSGPhotoAlbumTableViewController *)segue.destinationViewController navigationItem] setTitle:[[currentCollection title] uppercaseString]];
 }
 
 

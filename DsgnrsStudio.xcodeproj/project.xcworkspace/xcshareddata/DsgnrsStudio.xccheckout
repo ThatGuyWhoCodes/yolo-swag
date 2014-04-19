@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BC7372ED-C0D6-4368-A731-BBFF302A8177</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DsgnrsStudio</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CF06F623-53FA-4F43-A719-A493403996A8</key>
+		<string>ssh://github.com/ThatGuyWhoCodes/yolo-swag.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DsgnrsStudio.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CF06F623-53FA-4F43-A719-A493403996A8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/ThatGuyWhoCodes/yolo-swag.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF06F623-53FA-4F43-A719-A493403996A8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF06F623-53FA-4F43-A719-A493403996A8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Just Some Stuff</string>
+		</dict>
+	</array>
+</dict>
+</plist>

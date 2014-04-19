@@ -12,6 +12,8 @@
 		0E835A391901D68E00918A08 /* DSGPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A381901D68E00918A08 /* DSGPhotoCollection.m */; };
 		0E835A3D1901DD6000918A08 /* DSGPhotoSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3C1901DD6000918A08 /* DSGPhotoSet.m */; };
 		0E835A401901E04700918A08 /* DSGPhotoAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3F1901E04700918A08 /* DSGPhotoAlbumTableViewController.m */; };
+		0E835A431902685100918A08 /* DSGCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A421902685100918A08 /* DSGCollectionTableViewCell.m */; };
+		0E835A4719026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A4619026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m */; };
 		0EABEAEF18EE099300E95D39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */; };
 		0EABEAFC18EE0E4600E95D39 /* libFlickrKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAF918EE0CD300E95D39 /* libFlickrKit.a */; };
 		0EC0D89218E8B58000ABC8EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89118E8B58000ABC8EE /* Foundation.framework */; };
@@ -78,6 +80,10 @@
 		0E835A3C1901DD6000918A08 /* DSGPhotoSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoSet.m; sourceTree = "<group>"; };
 		0E835A3E1901E04700918A08 /* DSGPhotoAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoAlbumTableViewController.h; sourceTree = "<group>"; };
 		0E835A3F1901E04700918A08 /* DSGPhotoAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoAlbumTableViewController.m; sourceTree = "<group>"; };
+		0E835A411902685100918A08 /* DSGCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGCollectionTableViewCell.h; sourceTree = "<group>"; };
+		0E835A421902685100918A08 /* DSGCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGCollectionTableViewCell.m; sourceTree = "<group>"; };
+		0E835A4519026EBF00918A08 /* DSGPhotoAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoAlbumTableViewCell.h; sourceTree = "<group>"; };
+		0E835A4619026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoAlbumTableViewCell.m; sourceTree = "<group>"; };
 		0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0EABEAF318EE0CD200E95D39 /* FlickrKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FlickrKit.xcodeproj; path = "../../../Downloads/FlickrKit-master/FlickrKit.xcodeproj"; sourceTree = "<group>"; };
 		0EC0D88E18E8B58000ABC8EE /* DsgnrsStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DsgnrsStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +166,17 @@
 			name = Objects;
 			sourceTree = "<group>";
 		};
+		0E835A44190269F500918A08 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E835A411902685100918A08 /* DSGCollectionTableViewCell.h */,
+				0E835A421902685100918A08 /* DSGCollectionTableViewCell.m */,
+				0E835A4519026EBF00918A08 /* DSGPhotoAlbumTableViewCell.h */,
+				0E835A4619026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		0EABEAF418EE0CD200E95D39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +227,7 @@
 				0EC0D8A018E8B58000ABC8EE /* DSGAppDelegate.h */,
 				0EC0D8A118E8B58000ABC8EE /* DSGAppDelegate.m */,
 				0EC0D8A318E8B58000ABC8EE /* Main.storyboard */,
+				0E835A3A1901DD4A00918A08 /* Objects */,
 				0EE1FD6C19007A1C00983D87 /* DSGBrowse */,
 				0EE1FD6B19007A0700983D87 /* DSGFavourites */,
 				0EC0D8A918E8B58000ABC8EE /* Images.xcassets */,
@@ -262,7 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				0E835A361901D64200918A08 /* Controller */,
-				0E835A3A1901DD4A00918A08 /* Objects */,
+				0E835A44190269F500918A08 /* View */,
 			);
 			name = DSGBrowse;
 			sourceTree = "<group>";
@@ -433,9 +451,11 @@
 				0EC0D89E18E8B58000ABC8EE /* main.m in Sources */,
 				0EE1FD71190086DB00983D87 /* DSGHomeModel.m in Sources */,
 				0E835A3119011D9A00918A08 /* DSGHomeInfoViewController.m in Sources */,
+				0E835A431902685100918A08 /* DSGCollectionTableViewCell.m in Sources */,
 				0E835A391901D68E00918A08 /* DSGPhotoCollection.m in Sources */,
 				0EE1FD7919008D6100983D87 /* DSGHomeCollectionViewCell.m in Sources */,
 				0EC0D8A218E8B58000ABC8EE /* DSGAppDelegate.m in Sources */,
+				0E835A4719026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m in Sources */,
 				0EC0D8A818E8B58000ABC8EE /* DSGHomeViewController.m in Sources */,
 				0E835A35190135B700918A08 /* DSGBrowseTableViewController.m in Sources */,
 				0E835A3D1901DD6000918A08 /* DSGPhotoSet.m in Sources */,
