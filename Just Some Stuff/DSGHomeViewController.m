@@ -29,9 +29,10 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    FKFlickrPhotosGetRecent *recent = [[FKFlickrPhotosGetRecent alloc] init];
+    //FKFlickrPhotosGetRecent *recent = [[FKFlickrPhotosGetRecent alloc] init];
+    FKFlickrInterestingnessGetList *interesting = [[FKFlickrInterestingnessGetList alloc] init];
     
-    [[FlickrKit sharedFlickrKit] call:recent completion:^(NSDictionary *response, NSError *error) {
+    [[FlickrKit sharedFlickrKit] call:interesting completion:^(NSDictionary *response, NSError *error) {
         // Note this is not the main thread!
         
         if (response)

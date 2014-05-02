@@ -9,13 +9,8 @@
 #import "DSGBrowseTableViewController.h"
 #import "DSGPhotoAlbumTableViewController.h"
 #import "DSGCollectionTableViewCell.h"
-#import "DSGPhotoCollection.h"
+#import "MBProgressHUD.h"
 
-@interface DSGBrowseTableViewController ()
-
-@property (strong, nonatomic) NSMutableArray *collectionsData;
-
-@end
 
 @implementation DSGBrowseTableViewController
 
@@ -23,39 +18,57 @@
 {
     [super viewDidLoad];
     
-    self.collectionsData = [NSMutableArray array];
+    //Add the refresh control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
     
-    FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
-    [collectionTree setUser_id:@"102927591@N02"];
+    self.browseModel = [[DSGBrowseModel alloc] init];
     
-    [[FlickrKit sharedFlickrKit] call:collectionTree completion:^(NSDictionary *response, NSError *error) {
-        // Note this is not the main thread!
+    __weak DSGBrowseTableViewController *weakSelf = self;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
         
-        if (response)
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (complete)
         {
-            NSMutableArray *collectionTreeArray = [NSMutableArray array];
-            for (NSDictionary *collectionData in [response valueForKeyPath:@"collections.collection"])
-            {
-                //NSURL *url = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeSmall320 fromPhotoDictionary:photoData];
-                [collectionTreeArray addObject:[[DSGPhotoCollection alloc] initWithDictionary:collectionData]];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.collectionsData = collectionTreeArray;
-                [self.tableView reloadData];
-            });
+            [weakSelf.tableView reloadData];
+        }
+        else
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
         }
     }];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
+   
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)refresh:(id)sender
+{
+    __weak DSGBrowseTableViewController *weakSelf = self;
+    [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
+        
+        [sender endRefreshing];
+        if (complete)
+        {
+            [weakSelf.tableView reloadData];
+        }
+        else
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        }
+    }];
 }
 
 #pragma mark - Table View Data Source
@@ -69,7 +82,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.collectionsData count];
+    return [self.browseModel.collectionsData count];
 }
 
 
@@ -84,8 +97,9 @@
         cell = [[DSGCollectionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableCellID];
     }
     
-    DSGPhotoCollection* collection = [self.collectionsData objectAtIndex:indexPath.row];
-    [cell.titleLabel setText:[collection title]];
+    DSGPhotoCollection* collection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
+    [cell.titleLabel setFont:[UIFont fontWithName:@"Typola" size:40.0f]];
+    [cell.titleLabel setText:[[collection title] uppercaseString]];
     [cell setBackgroundColor:(indexPath.row % 2) ? [UIColor lightGrayColor] : [UIColor darkGrayColor]];
     
     return cell;
@@ -97,7 +111,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
-    DSGPhotoCollection *currentCollection = [self.collectionsData objectAtIndex:indexPath.row];
+    DSGPhotoCollection *currentCollection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
     
     [(DSGPhotoAlbumTableViewController *)segue.destinationViewController setPhotoSet:[currentCollection collectionImageSet]];
     [[(DSGPhotoAlbumTableViewController *)segue.destinationViewController navigationItem] setTitle:[[currentCollection title] uppercaseString]];

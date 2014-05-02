@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qFR-Le-dSt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qFR-Le-dSt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -103,22 +103,22 @@
         <scene sceneID="XVp-wE-n9r">
             <objects>
                 <tableViewController title="Season" id="3Bt-DP-aQo" customClass="DSGBrowseTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="DCz-3G-8cB">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" id="DCz-3G-8cB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="_BROWSE_CELL_ID_" rowHeight="100" id="Ym3-T1-Xil" customClass="DSGCollectionTableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="_BROWSE_CELL_ID_" rowHeight="120" id="Ym3-T1-Xil" customClass="DSGCollectionTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ym3-T1-Xil" id="tOs-lV-QNo">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdv-YB-RVs">
-                                            <rect key="frame" x="0.0" y="25" width="320" height="50"/>
+                                            <rect key="frame" x="0.0" y="35" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.49666400547445255" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="25"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -190,10 +190,11 @@
         <!--Tab Bar Controller-->
         <scene sceneID="XEU-vc-tXG">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qFR-Le-dSt" sceneMemberID="viewController">
+                <tabBarController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="qFR-Le-dSt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="xkC-4l-WEa">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -211,7 +212,7 @@
         <!--Navigation Controller - Home-->
         <scene sceneID="dzJ-9a-v2g">
             <objects>
-                <navigationController title="Home" automaticallyAdjustsScrollViewInsets="NO" id="amh-l8-Cgk" sceneMemberID="viewController">
+                <navigationController title="Home" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="amh-l8-Cgk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="featured" id="RWl-ot-6Im"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -240,6 +241,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="yF5-uG-8Ms">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.38431376220000002" green="0.90980398650000005" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
+                    </toolbar>
                     <connections>
                         <segue destination="3Bt-DP-aQo" kind="relationship" relationship="rootViewController" id="cwb-lu-i2H"/>
                     </connections>
@@ -335,7 +341,7 @@
     <resources>
         <image name="IMG_0038.JPG" width="720" height="960"/>
     </resources>
-    <color key="tintColor" red="0.023576384620000002" green="0.49866253399999999" blue="0.00030410890710000002" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.38431376220000002" green="0.90980398650000005" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

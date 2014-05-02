@@ -15,6 +15,8 @@
     // Override point for customization after application launch.
     
     [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"1d6aa108698333d0f168ecdbc0842b0b" sharedSecret:@"9a5498c3e69fdacb"];
+    _window.tintColor = [UIColor colorWithRed:6.0/255.0 green:94.0/255.0 blue:79.0/255.0 alpha:1.0f];
+    
     
     return YES;
 }

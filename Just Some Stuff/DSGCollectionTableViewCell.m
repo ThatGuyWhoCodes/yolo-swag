@@ -13,8 +13,11 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+    if (self)
+    {
         // Initialization code
+        [[self titleLabel] setFont:[UIFont fontWithName:@"Typola" size:4.0f]];
+        [[self titleLabel] setBackgroundColor:[UIColor redColor]];
     }
     return self;
 }

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSGBrowseModel.h"
 
 @interface DSGBrowseTableViewController : UITableViewController
+
+@property (strong, nonatomic) DSGBrowseModel *browseModel;
 
 @end
