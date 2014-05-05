@@ -23,7 +23,7 @@
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
     
-    self.browseModel = [[DSGBrowseModel alloc] init];
+    self.browseModel = [DSGBrowseModel sharedInstance];
     
     __weak DSGBrowseTableViewController *weakSelf = self;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];

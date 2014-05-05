@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) NSMutableArray *collectionsData;
 
++(DSGBrowseModel *)sharedInstance; 
+
 -(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection;
 
 @end

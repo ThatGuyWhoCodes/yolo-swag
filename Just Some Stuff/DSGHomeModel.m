@@ -16,6 +16,7 @@
     static DSGHomeModel *sharedInstance = nil;
     dispatch_once(&pred, ^{
         sharedInstance = [[DSGHomeModel alloc] init];
+        sharedInstance.photoData = [NSMutableArray array];
     });
     return sharedInstance;
 }
@@ -25,7 +26,19 @@
     [self.photoData removeAllObjects];
 }
 
--(void)freshPull
+-(BOOL)setSelectedPhotoUsingIndex:(NSUInteger)index
+{
+    
+    if (!self.photoData)
+    {
+        return NO;
+    }
+    
+    self.selectedPhoto = [self.photoData objectAtIndex:index];
+    return YES;
+}
+
+-(void)freshPullWithCompletionBlock:(void (^)(BOOL))complection
 {
     FlickrKit *fk = [FlickrKit sharedFlickrKit];
     FKFlickrInterestingnessGetList *interesting = [[FKFlickrInterestingnessGetList alloc] init];
@@ -36,11 +49,20 @@
             NSMutableArray *photoURLs = [NSMutableArray array];
             for (NSDictionary *pData in [response valueForKeyPath:@"photos.photo"])
             {
-                NSURL *url = [fk photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:pData];
-                [photoURLs addObject:url];
+                NSURL *url = [fk photoURLForSize:FKPhotoSizeLarge1024 fromPhotoDictionary:pData];
+                NSString *title = [pData objectForKey:@"title"];
+                [photoURLs addObject:[[DSGBasicPhoto alloc] initWithTitle:title imageURL:url]];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                // Any GUI related operations here
+                if ([photoURLs count] > 1)
+                {
+                    self.photoData = photoURLs;
+                    complection(YES);
+                }
+                else
+                {
+                    complection(NO);
+                }
             });
         }
     }];

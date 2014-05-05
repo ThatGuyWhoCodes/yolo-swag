@@ -7,8 +7,8 @@
 //
 
 #import "DSGHomeViewController.h"
+#import "MBProgressHUD.h"
 #import "DSGHomeCollectionViewCell.h"
-
 #import "SDWebImage/UIImageView+WebCache.h"
 
 @implementation DSGHomeViewController
@@ -17,7 +17,26 @@
 {
     [super viewDidLoad];
     
-    self.photoData = [NSMutableArray array];
+    self.homeModel = [DSGHomeModel sharedInstance];
+    //Add the refresh control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:refreshControl];
+
+    __weak DSGHomeViewController *weakSelf = self;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [self.homeModel freshPullWithCompletionBlock:^(BOOL complete) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (complete)
+        {
+            [weakSelf.collectionView reloadData];
+        }
+        else
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        }
+    }];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -27,31 +46,24 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated
+
+-(void)refresh:(id)sender
 {
-    //FKFlickrPhotosGetRecent *recent = [[FKFlickrPhotosGetRecent alloc] init];
-    FKFlickrInterestingnessGetList *interesting = [[FKFlickrInterestingnessGetList alloc] init];
+    __weak DSGHomeViewController *weakSelf = self;
     
-    [[FlickrKit sharedFlickrKit] call:interesting completion:^(NSDictionary *response, NSError *error) {
-        // Note this is not the main thread!
+    [self.homeModel freshPullWithCompletionBlock:^(BOOL complete) {
         
-        if (response)
+        [sender endRefreshing];
+        if (complete)
         {
-            NSMutableArray *photoURLs = [NSMutableArray array];
-            for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"])
-            {
-                NSURL *url = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeLarge1024 fromPhotoDictionary:photoData];
-                [photoURLs addObject:url];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.photoData = photoURLs;
-                [self.collectionView reloadData];
-            });
+            [weakSelf.collectionView reloadData];
         }
-        
+        else
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        }
     }];
 }
-
 
 #pragma mark - CollectionView
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -59,10 +71,9 @@
     return 1;
 }
 
-
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.photoData count];
+    return [self.homeModel.photoData count];
 }
 
 -(DSGHomeCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -74,16 +85,29 @@
         cell = [[DSGHomeCollectionViewCell alloc] init];
     }
     
+    DSGBasicPhoto *currentPhoto = [self.homeModel.photoData objectAtIndex:indexPath.row];
     [cell.image setContentMode:UIViewContentModeScaleAspectFill];
-    [cell.image setImageWithURL:[self.photoData objectAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+    [cell.image setImageWithURL:[currentPhoto imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
     
-    [cell.label setText:[[self.photoData objectAtIndex:indexPath.row] description]];
+    [cell.label setText:[currentPhoto title]];
     
     return cell;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [[segue.destinationViewController navigationItem] setTitle:@"Blue"];
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+    
+    if ([self.homeModel setSelectedPhotoUsingIndex:indexPath.row])
+    {
+        [[segue.destinationViewController navigationItem] setTitle:self.homeModel.selectedPhoto.title];
+    }
+    else
+    {
+        [[segue.destinationViewController navigationItem] setTitle:@"Image"];
+    }
+    
+    
+    
 }
 @end

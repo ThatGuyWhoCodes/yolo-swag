@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DSGBasicPhoto.h"
 
 @interface DSGHomeModel : NSObject
 
-@property (nonatomic, strong) NSMutableDictionary *photoData;
+@property (nonatomic, strong) NSMutableArray *photoData;
+
+@property (strong, nonatomic) DSGBasicPhoto *selectedPhoto;
 
 /**
  * Remove all data in the model
@@ -21,7 +24,10 @@
 /**
  * A fresh pull of the photo data
  */
--(void)freshPull;
+-(void)freshPullWithCompletionBlock:(void (^)(BOOL))complection;
 
+-(BOOL)setSelectedPhotoUsingIndex:(NSUInteger)index;
+
++(DSGHomeModel *)sharedInstance;
 
 @end

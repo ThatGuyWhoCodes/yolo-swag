@@ -10,14 +10,15 @@
 
 @implementation DSGBrowseModel
 
--(id)init
++(DSGBrowseModel *)sharedInstance
 {
-    self = [super init];
-    if (self)
-    {
-        _collectionsData = [NSMutableArray array];
-    }
-    return self;
+    static dispatch_once_t pred;
+    static DSGBrowseModel *sharedInstance = nil;
+    dispatch_once(&pred, ^{
+        sharedInstance = [[DSGBrowseModel alloc] init];
+        sharedInstance.collectionsData = [NSMutableArray array];
+    });
+    return sharedInstance;
 }
 
 -(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection;

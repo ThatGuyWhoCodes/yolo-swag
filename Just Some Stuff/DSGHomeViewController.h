@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSGHomeModel.h"
 
 @interface DSGHomeViewController : UICollectionViewController
 
-@property (strong, nonatomic) NSMutableArray *photoData;
+@property (strong, nonatomic) DSGHomeModel *homeModel;
 
 @end

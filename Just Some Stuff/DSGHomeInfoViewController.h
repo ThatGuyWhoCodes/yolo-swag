@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DSGHomeInfoViewController : UIViewController
+@interface DSGHomeInfoViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet UILabel *infoLabel;
 
+- (IBAction)handlePinch:(UIPinchGestureRecognizer *)pinchRecongizer;
+- (IBAction)handlePan:(UIPanGestureRecognizer *)panRecognizer;
 @end
