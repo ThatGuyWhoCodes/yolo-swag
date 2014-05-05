@@ -11,8 +11,9 @@
 @interface DSGBasicPhoto : NSObject
 
 @property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *identification;
 @property (strong, nonatomic) NSURL *imageURL;
 
--(instancetype)initWithTitle:(NSString *)title imageURL:(NSURL *)imageURL;
+-(instancetype)initWithDictionary:(NSDictionary *)photoDictionary;
 
 @end

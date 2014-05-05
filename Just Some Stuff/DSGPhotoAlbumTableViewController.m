@@ -7,6 +7,7 @@
 //
 
 #import "DSGPhotoAlbumTableViewController.h"
+#import "DSGCollectionsSearchViewController.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "DSGPhotoAlbumTableViewCell.h"
 #import "DSGPhotoSet.h"
@@ -58,7 +59,14 @@
     }
     
     DSGPhotoSet *photoSet = [self.photoSet objectAtIndex:indexPath.row];
-    [cell.titleLabel setText:photoSet.set_title];
+    [cell.titleLabel setFont:[UIFont fontWithName:@"Typola" size:35.0]];
+    
+    cell.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
+    cell.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    cell.titleLabel.layer.shadowOpacity = 1.0f;
+    cell.titleLabel.layer.shadowRadius = 1.0f;
+    
+    [cell.titleLabel setText:[photoSet.set_title uppercaseString]];
     [cell.backgroundImage setImageWithURL:photoSet.coverUrl placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
     
     return cell;
@@ -71,8 +79,14 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
+    DSGPhotoSet *selectedPhotoset = [self.photoSet objectAtIndex:indexPath.row];
+    
+    [(DSGCollectionsSearchViewController *)segue.destinationViewController setPhotoSet:selectedPhotoset];
+    [[(DSGCollectionsSearchViewController *)segue.destinationViewController navigationItem] setTitle:[[selectedPhotoset title] uppercaseString]];
 }
 
 

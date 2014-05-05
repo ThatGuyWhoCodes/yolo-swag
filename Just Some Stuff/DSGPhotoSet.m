@@ -38,22 +38,40 @@
          dispatch_async(dispatch_get_main_queue(), ^{
              
              NSMutableArray *photoURLS = [NSMutableArray array];
+             NSMutableArray *photos = [NSMutableArray array];
              
-             for (NSDictionary* photo in photoData)
+             for (NSDictionary* pData in photoData)
              {
-                 NSURL *photoURL = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeLarge1024 fromPhotoDictionary:photo];
+                 DSGBasicPhoto *currentPhoto = [[DSGBasicPhoto alloc] initWithDictionary:pData];
                  
-                 if ([@([[photo valueForKey:@"isprimary"]intValue]) isEqualToNumber:@1])
+                 if ([@([[pData valueForKey:@"isprimary"]intValue]) isEqualToNumber:@1])
                  {
-                     self.coverUrl = photoURL;
+                     self.coverUrl = currentPhoto.imageURL;
                  }
                  
-                 [photoURLS addObject:photoURL];
+                 [photoURLS addObject:currentPhoto.imageURL];
+                 [photos addObject:currentPhoto];
              }
              self.photoUrls = photoURLS;
+             _photos = photos;
             });
             }
         }];
+}
+
+-(NSUInteger)numberOfPhotos
+{
+    return [self.photoUrls count];
+}
+
+-(NSSet *) photoIDSet
+{
+    NSMutableSet *tempSet = [NSMutableSet set];
+    for (DSGBasicPhoto *currentPhoto in self.photos)
+    {
+        [tempSet addObject:currentPhoto.identification];
+    }
+    return tempSet;
 }
 
 @end

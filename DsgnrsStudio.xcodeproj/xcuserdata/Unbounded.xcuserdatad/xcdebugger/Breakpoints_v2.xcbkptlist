@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Just Some Stuff/DSGHomeModel.m"
-            timestampString = "420971890.403297"
+            filePath = "Just Some Stuff/DSGAlbumModel.m"
+            timestampString = "421009211.844257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "-setSelectedPhotoUsingIndex:"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-searchAblumUsingText:completionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DSGBasicPhoto.h"
 
 @interface DSGPhotoSet : NSObject
 
@@ -20,6 +21,12 @@
 
 @property (strong, nonatomic) NSArray *photoUrls;
 
+@property (strong, nonatomic, readonly) NSArray *photos;
+
 -(instancetype)initWithDitctionary:(NSDictionary *)dictionary;
+
+-(NSUInteger)numberOfPhotos;
+
+-(NSSet *) photoIDSet;
 
 @end

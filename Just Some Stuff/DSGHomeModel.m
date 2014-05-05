@@ -49,9 +49,7 @@
             NSMutableArray *photoURLs = [NSMutableArray array];
             for (NSDictionary *pData in [response valueForKeyPath:@"photos.photo"])
             {
-                NSURL *url = [fk photoURLForSize:FKPhotoSizeLarge1024 fromPhotoDictionary:pData];
-                NSString *title = [pData objectForKey:@"title"];
-                [photoURLs addObject:[[DSGBasicPhoto alloc] initWithTitle:title imageURL:url]];
+               [photoURLs addObject:[[DSGBasicPhoto alloc] initWithDictionary:pData]];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([photoURLs count] > 1)

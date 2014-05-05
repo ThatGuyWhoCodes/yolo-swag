@@ -11,6 +11,9 @@
 		0E687F0219140D4F00C28F4C /* DSGBrowseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0119140D4F00C28F4C /* DSGBrowseModel.m */; };
 		0E687F071914171600C28F4C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F061914171600C28F4C /* MBProgressHUD.m */; };
 		0E687F0A19143A6E00C28F4C /* DSGBasicPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0919143A6E00C28F4C /* DSGBasicPhoto.m */; };
+		0E687F0D1917B08500C28F4C /* DSGCollectionsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0C1917B08500C28F4C /* DSGCollectionsSearchViewController.m */; };
+		0E687F101917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0F1917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m */; };
+		0E687F131918094900C28F4C /* DSGAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F121918094900C28F4C /* DSGAlbumModel.m */; };
 		0E835A3119011D9A00918A08 /* DSGHomeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3019011D9A00918A08 /* DSGHomeInfoViewController.m */; };
 		0E835A35190135B700918A08 /* DSGBrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A34190135B700918A08 /* DSGBrowseTableViewController.m */; };
 		0E835A391901D68E00918A08 /* DSGPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A381901D68E00918A08 /* DSGPhotoCollection.m */; };
@@ -80,6 +83,12 @@
 		0E687F061914171600C28F4C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		0E687F0819143A6E00C28F4C /* DSGBasicPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGBasicPhoto.h; sourceTree = "<group>"; };
 		0E687F0919143A6E00C28F4C /* DSGBasicPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGBasicPhoto.m; sourceTree = "<group>"; };
+		0E687F0B1917B08500C28F4C /* DSGCollectionsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGCollectionsSearchViewController.h; sourceTree = "<group>"; };
+		0E687F0C1917B08500C28F4C /* DSGCollectionsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGCollectionsSearchViewController.m; sourceTree = "<group>"; };
+		0E687F0E1917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoAlbumCollectionViewCell.h; sourceTree = "<group>"; };
+		0E687F0F1917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoAlbumCollectionViewCell.m; sourceTree = "<group>"; };
+		0E687F111918094900C28F4C /* DSGAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGAlbumModel.h; sourceTree = "<group>"; };
+		0E687F121918094900C28F4C /* DSGAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGAlbumModel.m; sourceTree = "<group>"; };
 		0E835A2F19011D9A00918A08 /* DSGHomeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGHomeInfoViewController.h; sourceTree = "<group>"; };
 		0E835A3019011D9A00918A08 /* DSGHomeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGHomeInfoViewController.m; sourceTree = "<group>"; };
 		0E835A33190135B700918A08 /* DSGBrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGBrowseTableViewController.h; sourceTree = "<group>"; };
@@ -160,6 +169,8 @@
 			children = (
 				0E687F0019140D4F00C28F4C /* DSGBrowseModel.h */,
 				0E687F0119140D4F00C28F4C /* DSGBrowseModel.m */,
+				0E687F111918094900C28F4C /* DSGAlbumModel.h */,
+				0E687F121918094900C28F4C /* DSGAlbumModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -188,6 +199,8 @@
 				0E835A34190135B700918A08 /* DSGBrowseTableViewController.m */,
 				0E835A3E1901E04700918A08 /* DSGPhotoAlbumTableViewController.h */,
 				0E835A3F1901E04700918A08 /* DSGPhotoAlbumTableViewController.m */,
+				0E687F0B1917B08500C28F4C /* DSGCollectionsSearchViewController.h */,
+				0E687F0C1917B08500C28F4C /* DSGCollectionsSearchViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -212,6 +225,8 @@
 				0E835A421902685100918A08 /* DSGCollectionTableViewCell.m */,
 				0E835A4519026EBF00918A08 /* DSGPhotoAlbumTableViewCell.h */,
 				0E835A4619026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m */,
+				0E687F0E1917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.h */,
+				0E687F0F1917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -492,6 +507,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EC0D89E18E8B58000ABC8EE /* main.m in Sources */,
+				0E687F0D1917B08500C28F4C /* DSGCollectionsSearchViewController.m in Sources */,
+				0E687F131918094900C28F4C /* DSGAlbumModel.m in Sources */,
 				0E687F0A19143A6E00C28F4C /* DSGBasicPhoto.m in Sources */,
 				0EE1FD71190086DB00983D87 /* DSGHomeModel.m in Sources */,
 				0E835A3119011D9A00918A08 /* DSGHomeInfoViewController.m in Sources */,
@@ -501,6 +518,7 @@
 				0EC0D8A218E8B58000ABC8EE /* DSGAppDelegate.m in Sources */,
 				0E835A4719026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m in Sources */,
 				0EC0D8A818E8B58000ABC8EE /* DSGHomeViewController.m in Sources */,
+				0E687F101917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m in Sources */,
 				0E835A35190135B700918A08 /* DSGBrowseTableViewController.m in Sources */,
 				0E835A3D1901DD6000918A08 /* DSGPhotoSet.m in Sources */,
 				0E835A401901E04700918A08 /* DSGPhotoAlbumTableViewController.m in Sources */,

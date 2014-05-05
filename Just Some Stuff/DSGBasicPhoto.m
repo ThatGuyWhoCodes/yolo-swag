@@ -10,13 +10,14 @@
 
 @implementation DSGBasicPhoto
 
--(instancetype)initWithTitle:(NSString *)title imageURL:(NSURL *)imageURL
+-(instancetype)initWithDictionary:(NSDictionary *)photoDictionary
 {
     self = [super init];
     if (self)
     {
-        [self setTitle:title];
-        [self setImageURL:imageURL];
+        [self setTitle:([photoDictionary objectForKey:@"title"]) ? [photoDictionary objectForKey:@"title"] : @"Missing"];
+        [self setIdentification:([photoDictionary objectForKey:@"id"]) ? [photoDictionary objectForKey:@"id"] : @""];
+        [self setImageURL:[[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeLarge1024 fromPhotoDictionary:photoDictionary]];
     }
     return self;
 }
