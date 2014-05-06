@@ -14,7 +14,8 @@
 		0E687F0D1917B08500C28F4C /* DSGCollectionsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0C1917B08500C28F4C /* DSGCollectionsSearchViewController.m */; };
 		0E687F101917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0F1917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m */; };
 		0E687F131918094900C28F4C /* DSGAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F121918094900C28F4C /* DSGAlbumModel.m */; };
-		0E835A3119011D9A00918A08 /* DSGHomeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3019011D9A00918A08 /* DSGHomeInfoViewController.m */; };
+		0E687F1619182F5A00C28F4C /* DSGFullDetailPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */; };
+		0E835A3119011D9A00918A08 /* DSGPhotoInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3019011D9A00918A08 /* DSGPhotoInfoViewController.m */; };
 		0E835A35190135B700918A08 /* DSGBrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A34190135B700918A08 /* DSGBrowseTableViewController.m */; };
 		0E835A391901D68E00918A08 /* DSGPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A381901D68E00918A08 /* DSGPhotoCollection.m */; };
 		0E835A3D1901DD6000918A08 /* DSGPhotoSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3C1901DD6000918A08 /* DSGPhotoSet.m */; };
@@ -89,8 +90,10 @@
 		0E687F0F1917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoAlbumCollectionViewCell.m; sourceTree = "<group>"; };
 		0E687F111918094900C28F4C /* DSGAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGAlbumModel.h; sourceTree = "<group>"; };
 		0E687F121918094900C28F4C /* DSGAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGAlbumModel.m; sourceTree = "<group>"; };
-		0E835A2F19011D9A00918A08 /* DSGHomeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGHomeInfoViewController.h; sourceTree = "<group>"; };
-		0E835A3019011D9A00918A08 /* DSGHomeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGHomeInfoViewController.m; sourceTree = "<group>"; };
+		0E687F1419182F5A00C28F4C /* DSGFullDetailPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGFullDetailPhoto.h; sourceTree = "<group>"; };
+		0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGFullDetailPhoto.m; sourceTree = "<group>"; };
+		0E835A2F19011D9A00918A08 /* DSGPhotoInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoInfoViewController.h; sourceTree = "<group>"; };
+		0E835A3019011D9A00918A08 /* DSGPhotoInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoInfoViewController.m; sourceTree = "<group>"; };
 		0E835A33190135B700918A08 /* DSGBrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGBrowseTableViewController.h; sourceTree = "<group>"; };
 		0E835A34190135B700918A08 /* DSGBrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGBrowseTableViewController.m; sourceTree = "<group>"; };
 		0E835A371901D68E00918A08 /* DSGPhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoCollection.h; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				0E835A3C1901DD6000918A08 /* DSGPhotoSet.m */,
 				0E687F0819143A6E00C28F4C /* DSGBasicPhoto.h */,
 				0E687F0919143A6E00C28F4C /* DSGBasicPhoto.m */,
+				0E687F1419182F5A00C28F4C /* DSGFullDetailPhoto.h */,
+				0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -356,8 +361,8 @@
 			children = (
 				0EC0D8A618E8B58000ABC8EE /* DSGHomeViewController.h */,
 				0EC0D8A718E8B58000ABC8EE /* DSGHomeViewController.m */,
-				0E835A2F19011D9A00918A08 /* DSGHomeInfoViewController.h */,
-				0E835A3019011D9A00918A08 /* DSGHomeInfoViewController.m */,
+				0E835A2F19011D9A00918A08 /* DSGPhotoInfoViewController.h */,
+				0E835A3019011D9A00918A08 /* DSGPhotoInfoViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -510,8 +515,9 @@
 				0E687F0D1917B08500C28F4C /* DSGCollectionsSearchViewController.m in Sources */,
 				0E687F131918094900C28F4C /* DSGAlbumModel.m in Sources */,
 				0E687F0A19143A6E00C28F4C /* DSGBasicPhoto.m in Sources */,
+				0E687F1619182F5A00C28F4C /* DSGFullDetailPhoto.m in Sources */,
 				0EE1FD71190086DB00983D87 /* DSGHomeModel.m in Sources */,
-				0E835A3119011D9A00918A08 /* DSGHomeInfoViewController.m in Sources */,
+				0E835A3119011D9A00918A08 /* DSGPhotoInfoViewController.m in Sources */,
 				0E835A431902685100918A08 /* DSGCollectionTableViewCell.m in Sources */,
 				0E835A391901D68E00918A08 /* DSGPhotoCollection.m in Sources */,
 				0EE1FD7919008D6100983D87 /* DSGHomeCollectionViewCell.m in Sources */,
@@ -653,7 +659,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Munjoma (93VWVPDZGQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Munjoma (93VWVPDZGQ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Unbounded/Downloads,
@@ -668,6 +675,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = DsgnrsStudio;
+				PROVISIONING_PROFILE = "2F3C3C50-4688-4091-B6AF-8283EC082428";
 				SDKROOT = iphoneos7.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/Unbounded/Downloads/FlickrKit-master/Classes/**";
@@ -680,7 +688,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Brian Munjoma (592QM63P2J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brian Munjoma (592QM63P2J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Unbounded/Downloads,
@@ -695,6 +704,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = DsgnrsStudio;
+				PROVISIONING_PROFILE = "DF216D06-8C2B-4861-81EB-E74B818F9006";
 				SDKROOT = iphoneos7.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/Unbounded/Downloads/FlickrKit-master/Classes/**";

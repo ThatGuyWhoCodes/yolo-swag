@@ -30,15 +30,22 @@
     
     [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
         
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         if (complete)
         {
             [weakSelf.tableView reloadData];
         }
         else
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                 [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            });
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        });
+        
     }];
     
 }
@@ -59,15 +66,21 @@
     __weak DSGBrowseTableViewController *weakSelf = self;
     [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
         
-        [sender endRefreshing];
+        
         if (complete)
         {
             [weakSelf.tableView reloadData];
         }
         else
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            });
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [sender endRefreshing];
+        });
     }];
 }
 

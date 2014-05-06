@@ -32,7 +32,6 @@
             NSMutableArray *collectionTreeArray = [NSMutableArray array];
             for (NSDictionary *collectionData in [response valueForKeyPath:@"collections.collection"])
             {
-                //NSURL *url = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeSmall320 fromPhotoDictionary:photoData];
                 [collectionTreeArray addObject:[[DSGPhotoCollection alloc] initWithDictionary:collectionData]];
             }
             dispatch_async(dispatch_get_main_queue(), ^{

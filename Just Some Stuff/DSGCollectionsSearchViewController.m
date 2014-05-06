@@ -9,6 +9,7 @@
 #import "DSGCollectionsSearchViewController.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "DSGPhotoAlbumCollectionViewCell.h"
+#import "DSGPhotoInfoViewController.h"
 
 @implementation DSGCollectionsSearchViewController
 
@@ -59,7 +60,7 @@
         collectioViewCell = [[DSGPhotoAlbumCollectionViewCell alloc] init];
     }
     
-    [collectioViewCell.imageView setImageWithURL:[self.albumModel imageURLAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+    [collectioViewCell.imageView setImageWithURL:[self.albumModel imageURLAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
     
     return collectioViewCell;
 }
@@ -99,15 +100,19 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    DSGBasicPhoto *selectedPhoto = [self.albumModel.filteredPhotos objectAtIndex:indexPath.row];
+    [[segue.destinationViewController navigationItem] setTitle:[selectedPhoto title]];
+    [((DSGPhotoInfoViewController*)segue.destinationViewController) setPhoto:selectedPhoto];
 }
-*/
+
 
 @end

@@ -9,6 +9,7 @@
 #import "DSGHomeViewController.h"
 #import "MBProgressHUD.h"
 #import "DSGHomeCollectionViewCell.h"
+#import "DSGPhotoInfoViewController.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 
 @implementation DSGHomeViewController
@@ -27,15 +28,20 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self.homeModel freshPullWithCompletionBlock:^(BOOL complete) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         if (complete)
         {
             [weakSelf.collectionView reloadData];
         }
         else
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            });
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        });
     }];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -53,15 +59,20 @@
     
     [self.homeModel freshPullWithCompletionBlock:^(BOOL complete) {
         
-        [sender endRefreshing];
         if (complete)
         {
             [weakSelf.collectionView reloadData];
         }
         else
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+               [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+           });
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [sender endRefreshing];
+        });
     }];
 }
 
@@ -87,7 +98,7 @@
     
     DSGBasicPhoto *currentPhoto = [self.homeModel.photoData objectAtIndex:indexPath.row];
     [cell.image setContentMode:UIViewContentModeScaleAspectFill];
-    [cell.image setImageWithURL:[currentPhoto imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+    [cell.image setImageWithURL:[currentPhoto imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
     
     [cell.label setText:[currentPhoto title]];
     
@@ -101,13 +112,11 @@
     if ([self.homeModel setSelectedPhotoUsingIndex:indexPath.row])
     {
         [[segue.destinationViewController navigationItem] setTitle:self.homeModel.selectedPhoto.title];
+        [((DSGPhotoInfoViewController*)segue.destinationViewController) setPhoto:self.homeModel.selectedPhoto];
     }
     else
     {
         [[segue.destinationViewController navigationItem] setTitle:@"Image"];
     }
-    
-    
-    
 }
 @end

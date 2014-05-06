@@ -16,7 +16,7 @@
     if (self)
     {
         _allPhotos = photoSet;
-        [self setFilteredPhotos:photoSet.photoUrls];
+        [self setFilteredPhotos:photoSet.photos];
     }
     return self;
 }
@@ -28,7 +28,7 @@
 
 -(NSURL *)imageURLAtIndex:(NSUInteger)index
 {
-    return [self.filteredPhotos objectAtIndex:index];
+    return [[self.filteredPhotos objectAtIndex:index] imageURL];
 }
 
 -(void)searchAblumUsingText:(NSString *)searchText completionBlock:(void (^)(BOOL))complection;
@@ -39,20 +39,27 @@
     [searchPhotos setUser_id:@"102927591@N02"]; //TODO: To univeral consts
     [searchPhotos setText:searchText];
     
+    __weak DSGAlbumModel *weakSelf = self;
+    
     [flickKit call:searchPhotos completion:^(NSDictionary *response, NSError *error) {
         
         if (response)
         {
             if ([[response objectForKey:@"stat"] isEqualToString:@"ok"] && [[[response objectForKey:@"photos"] objectForKey:@"total"] integerValue] > 0)
             {
+                
+                NSMutableArray *tempBasicPhotoArr = [NSMutableArray array];
                 for (NSDictionary *pData in [[response objectForKey:@"photos"] objectForKey:@"photo"])
                 {
+                    
                     if ([[self.allPhotos photoIDSet] containsObject:[pData objectForKey:@"id"]])
                     {
                         NSLog(@"%@", pData);
+                        [tempBasicPhotoArr addObject:[[DSGBasicPhoto alloc] initWithDictionary:pData]];
+                        
                     }
                 }
-                
+                weakSelf.filteredPhotos = tempBasicPhotoArr;
                 complection(YES);
             }
             else

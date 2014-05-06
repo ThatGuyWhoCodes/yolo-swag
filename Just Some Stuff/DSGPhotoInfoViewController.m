@@ -6,38 +6,73 @@
 //  Copyright (c) 2014 ThatGuyOrg. All rights reserved.
 //
 
-#import "DSGHomeInfoViewController.h"
+#import "DSGPhotoInfoViewController.h"
 #import "SDWebImage/UIImageView+WebCache.h"
+#import "MBProgressHUD.h"
 #import "DSGHomeModel.h"
 
-@interface DSGHomeInfoViewController ()
+@interface DSGPhotoInfoViewController ()
 {
     CGFloat lastScale;
 }
 
 @end
 
-@implementation DSGHomeInfoViewController
+@implementation DSGPhotoInfoViewController
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     lastScale = 1.0;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [self.image setImageWithURL:[self.photo imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
+    [self.infoLabel setText:[self.photo title]];
+    
+    FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
+    [getPhotoInfo setPhoto_id:self.photo.identification];
+    
+    __weak DSGPhotoInfoViewController* weakSelf = self;
+    
+    [[FlickrKit sharedFlickrKit] call:getPhotoInfo completion:^(NSDictionary *response, NSError *error) {
+        if ([[response objectForKey:@"stat"] isEqualToString:@"ok"])
+        {
+            weakSelf.fullPhoto = [[DSGFullDetailPhoto alloc] initWithDictionary:response];
+            [weakSelf getOriginalImage];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        });
+        
+        
+    }];
     // Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    [self.image setImageWithURL:[[[DSGHomeModel sharedInstance] selectedPhoto] imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
-    [self.infoLabel setText:[[[DSGHomeModel sharedInstance] selectedPhoto] title]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)getOriginalImage
+{
+    __weak DSGPhotoInfoViewController *weakSelf = self;
+    
+    [weakSelf.fullPhoto fetchOriginalImageWithCompletetionBlock:^(BOOL complete) {
+        if (complete)
+        {
+            [weakSelf.image setImageWithURL:self.fullPhoto.orginalImage /*placeholderImage:weakSelf.image.image*/];
+        }
+    }];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -90,9 +125,7 @@
         CGAffineTransform transform = CGAffineTransformMakeScale(pinchRecongizer.scale, pinchRecongizer.scale);
         self.image.transform = transform;
     }
-    */
-    
-    /*
+
     if (pinchRecongizer.state == UIGestureRecognizerStateEnded)
     {
         lastScale = pinchRecongizer.scale;
@@ -108,9 +141,7 @@
         self.image.transform = CGAffineTransformScale(self.image.transform, pinchRecongizer.scale, pinchRecongizer.scale);
         pinchRecongizer.scale = 1.0;
     }
-    */
-    
-    /*
+
     CGFloat scale = pinchRecongizer.scale;
     
         self.image.transform = CGAffineTransformScale(self.image.transform, scale, scale);
@@ -141,7 +172,7 @@
     
     if (pinchRecongizer.state == UIGestureRecognizerStateEnded)
     {
-        if (!CGRectContainsRect(pinchRecongizer.view.frame, self.view.bounds) || (CGRectGetHeight(pinchRecongizer.view.frame) >= (CGRectGetHeight(self.view.frame) * 4.0f)))
+        if (!CGRectContainsRect(pinchRecongizer.view.frame, self.view.bounds) || (CGRectGetHeight(pinchRecongizer.view.frame) >= (CGRectGetHeight(self.view.frame) * 5.0f)))
         {
             [UIView animateWithDuration:0.6f animations:^{
                 pinchRecongizer.view.frame = self.view.frame;
@@ -179,16 +210,12 @@
         }
         
     }
-     */
-    
-    /*
+
     CGPoint translation = [panRecognizer translationInView:self.view];
     self.image.center = CGPointMake(panRecognizer.view.center.x + translation.x,
                                          panRecognizer.view.center.y + translation.y);
     [panRecognizer setTranslation:CGPointZero inView:self.view];
-     */
-    
-    /*
+
     CGPoint translation = [panRecognizer translationInView:self.view];
     CGPoint imageViewPosition = self.image.center;
     imageViewPosition.x += translation.x;
@@ -212,26 +239,14 @@
         if (CGRectContainsRect(newView.frame, self.view.bounds))
         {
             panRecognizer.view.center = CGPointMake(initialCenter.x + translation.x, initialCenter.y + translation.y);
-            NSLog(@"YES");
+            //NSLog(@"YES");
         }
         else
         {
             initialCenter = panRecognizer.view.center;
             [panRecognizer setTranslation:CGPointZero inView:panRecognizer.view];
-            NSLog(@"NO");
+            //NSLog(@"NO");
         }
-        
-        
-        
-        //[panRecognizer setTranslation:CGPointZero inView:panRecognizer.view];
-        
-        //if ((CGRectGetMinX(imageRect) + translation.x <= CGRectGetMinX(self.view.frame) && CGRectGetMaxX(imageRect) + translation.x >= CGRectGetMaxX(self.view.frame)) &&
-        //    (CGRectGetMinY(imageRect) + translation.y <= CGRectGetMinY(self.view.frame) && CGRectGetMaxY(imageRect) + translation.y >= CGRectGetMaxY(self.view.frame)))
-        //{
-        
-            
-            //[panRecognizer setTranslation:translation inView:panRecognizer.view];
-        }
-    //}
+    }
 }
 @end

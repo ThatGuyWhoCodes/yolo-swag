@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSGBasicPhoto.h"
+#import "DSGFullDetailPhoto.h"
 
-@interface DSGHomeInfoViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface DSGPhotoInfoViewController : UIViewController <UIGestureRecognizerDelegate>
+
+@property (nonatomic, strong) DSGFullDetailPhoto *fullPhoto;
+@property (nonatomic, strong) DSGBasicPhoto *photo;
 
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet UILabel *infoLabel;
 
 - (IBAction)handlePinch:(UIPinchGestureRecognizer *)pinchRecongizer;
 - (IBAction)handlePan:(UIPanGestureRecognizer *)panRecognizer;
+
 @end
