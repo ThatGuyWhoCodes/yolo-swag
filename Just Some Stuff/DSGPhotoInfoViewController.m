@@ -41,13 +41,14 @@
         {
             weakSelf.fullPhoto = [[DSGFullDetailPhoto alloc] initWithDictionary:response];
             [weakSelf getOriginalImage];
+            [weakSelf insertNotes];
         }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-        });
-        
-        
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        }
     }];
     // Do any additional setup after loading the view.
 }
@@ -70,9 +71,21 @@
     [weakSelf.fullPhoto fetchOriginalImageWithCompletetionBlock:^(BOOL complete) {
         if (complete)
         {
-            [weakSelf.image setImageWithURL:self.fullPhoto.orginalImage /*placeholderImage:weakSelf.image.image*/];
+            [weakSelf.image setImageWithURL:weakSelf.fullPhoto.orginalImage /*placeholderImage:weakSelf.image.image*/];
         }
     }];
+}
+
+-(void)insertNotes
+{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([self.fullPhoto hasNotes])
+        {
+            [self.infoLabel setText:[[self.fullPhoto getNotes] firstObject]];
+        }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer

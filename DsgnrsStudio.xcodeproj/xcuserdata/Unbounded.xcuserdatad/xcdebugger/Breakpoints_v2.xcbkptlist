@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Just Some Stuff/DSGPhotoInfoViewController.m"
-            timestampString = "421062857.155653"
+            filePath = "Just Some Stuff/DSGFullDetailPhoto.m"
+            timestampString = "421068708.454941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-getOriginalImage"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-initWithDictionary:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

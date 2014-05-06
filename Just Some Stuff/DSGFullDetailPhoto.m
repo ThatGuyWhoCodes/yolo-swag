@@ -48,4 +48,19 @@
     }];
 }
 
+-(BOOL)hasNotes
+{
+    return [self.notes count] > 0;
+}
+
+-(NSArray *)getNotes
+{
+    NSMutableArray *notesStrings = [NSMutableArray array];
+    for (NSDictionary *nData in self.notes)
+    {
+        [notesStrings addObject:[nData objectForKey:@"_content"]];
+    }
+    return notesStrings;
+}
+
 @end

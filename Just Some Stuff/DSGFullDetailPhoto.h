@@ -23,4 +23,8 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 -(void) fetchOriginalImageWithCompletetionBlock:(void (^)(BOOL))completion;
+
+-(BOOL)hasNotes;
+
+-(NSArray *) getNotes;
 @end
