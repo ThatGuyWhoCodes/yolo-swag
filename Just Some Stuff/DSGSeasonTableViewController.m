@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 ThatGuyOrg. All rights reserved.
 //
 
-#import "DSGBrowseTableViewController.h"
-#import "DSGPhotoAlbumTableViewController.h"
+#import "DSGSeasonTableViewController.h"
+#import "DSGAlbumTableViewController.h"
 #import "DSGCollectionTableViewCell.h"
 #import "MBProgressHUD.h"
 
 
-@implementation DSGBrowseTableViewController
+@implementation DSGSeasonTableViewController
 
 - (void)viewDidLoad
 {
@@ -25,9 +25,9 @@
     
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
-    self.browseModel = [DSGBrowseModel sharedInstance];
+    self.browseModel = [DSGSeasonModel sharedInstance];
     
-    __weak DSGBrowseTableViewController *weakSelf = self;
+    __weak DSGSeasonTableViewController *weakSelf = self;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
@@ -65,7 +65,7 @@
 
 -(void)refresh:(id)sender
 {
-    __weak DSGBrowseTableViewController *weakSelf = self;
+    __weak DSGSeasonTableViewController *weakSelf = self;
     [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
         
         
@@ -127,8 +127,8 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
     DSGPhotoCollection *currentCollection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
     
-    [(DSGPhotoAlbumTableViewController *)segue.destinationViewController setPhotoSet:[currentCollection collectionImageSet]];
-    [[(DSGPhotoAlbumTableViewController *)segue.destinationViewController navigationItem] setTitle:[[currentCollection title] uppercaseString]];
+    [(DSGAlbumTableViewController *)segue.destinationViewController setPhotoSet:[currentCollection collectionImageSet]];
+    [[(DSGAlbumTableViewController *)segue.destinationViewController navigationItem] setTitle:[[currentCollection title] uppercaseString]];
 }
 
 

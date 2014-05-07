@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "DSGPhotoCollection.h"
 
-@interface DSGBrowseModel : NSObject
+@interface DSGSeasonModel : NSObject
 
 @property (strong, nonatomic) NSMutableArray *collectionsData;
 
-+(DSGBrowseModel *)sharedInstance; 
++(DSGSeasonModel *)sharedInstance; 
 
 -(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection;
 

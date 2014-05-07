@@ -76,16 +76,24 @@
         [self.albumModel searchAblumUsingText:[searchString lowercaseString] completionBlock:^(BOOL complete) {
             if (complete)
             {
-                NSLog(@"Complete");
+                //NSLog(@"Complete");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.collectionView reloadData];
+                });
             }
             else
             {
-                NSLog(@"Not Complete");
+                //NSLog(@"Not Complete");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[[UIAlertView alloc] initWithTitle:@"No Results Found" message:@"Chnage search term" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
                 });
             }
         }];
+    }
+    else
+    {
+        [self.albumModel reset];
+        [self.collectionView reloadData];
     }
 }
 
@@ -98,8 +106,6 @@
 {
     [self.view endEditing:YES];
 }
-
-
 
 #pragma mark - Navigation
 

@@ -17,4 +17,5 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 -(void)setPhotoSet:(DSGPhotoSet *)photoSet;
+
 @end

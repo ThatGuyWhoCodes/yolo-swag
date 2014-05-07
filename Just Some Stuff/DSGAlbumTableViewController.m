@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 ThatGuyOrg. All rights reserved.
 //
 
-#import "DSGPhotoAlbumTableViewController.h"
+#import "DSGAlbumTableViewController.h"
 #import "DSGCollectionsSearchViewController.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "DSGPhotoAlbumTableViewCell.h"
 #import "DSGPhotoSet.h"
 
-@interface DSGPhotoAlbumTableViewController ()
+@interface DSGAlbumTableViewController ()
 
 
 
 @end
 
-@implementation DSGPhotoAlbumTableViewController
+@implementation DSGAlbumTableViewController
 
 
 - (void)viewDidLoad

@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 ThatGuyOrg. All rights reserved.
 //
 
-#import "DSGBrowseModel.h"
+#import "DSGSeasonModel.h"
 
-@implementation DSGBrowseModel
+@implementation DSGSeasonModel
 
-+(DSGBrowseModel *)sharedInstance
++(DSGSeasonModel *)sharedInstance
 {
     static dispatch_once_t pred;
-    static DSGBrowseModel *sharedInstance = nil;
+    static DSGSeasonModel *sharedInstance = nil;
     dispatch_once(&pred, ^{
-        sharedInstance = [[DSGBrowseModel alloc] init];
+        sharedInstance = [[DSGSeasonModel alloc] init];
         sharedInstance.collectionsData = [NSMutableArray array];
     });
     return sharedInstance;
@@ -24,7 +24,7 @@
 -(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection;
 {
     FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
-    [collectionTree setUser_id:@"102927591@N02"];
+    [collectionTree setUser_id:@"102927591@N02"];  //TODO: To univeral consts
     
     [[FlickrKit sharedFlickrKit] call:collectionTree completion:^(NSDictionary *response, NSError *error) {
         if (response)

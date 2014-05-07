@@ -46,7 +46,7 @@
         else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
             });
         }
     }];
@@ -60,12 +60,14 @@
 
 -(void)getOriginalImage
 {
-    __weak DSGPhotoInfoViewController *weakSelf = self;
+    //__weak DSGPhotoInfoViewController *weakSelf = self;
     
-    [weakSelf.fullPhoto fetchOriginalImageWithCompletetionBlock:^(BOOL complete) {
+    [self.fullPhoto fetchOriginalImageWithCompletetionBlock:^(BOOL complete) {
         if (complete)
         {
-            [weakSelf.imageView setImageWithURL:weakSelf.fullPhoto.orginalImage placeholderImage:weakSelf.imageView.image];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.imageView setImageWithURL:self.fullPhoto.orginalImage placeholderImage:self.imageView.image];
+            });
         }
     }];
 }

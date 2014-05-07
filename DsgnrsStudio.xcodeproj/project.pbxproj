@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E687EFD1914045200C28F4C /* TYPOLA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E9E5226191402060025E3B3 /* TYPOLA.ttf */; };
-		0E687F0219140D4F00C28F4C /* DSGBrowseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0119140D4F00C28F4C /* DSGBrowseModel.m */; };
+		0E687F0219140D4F00C28F4C /* DSGSeasonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0119140D4F00C28F4C /* DSGSeasonModel.m */; };
 		0E687F071914171600C28F4C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F061914171600C28F4C /* MBProgressHUD.m */; };
 		0E687F0A19143A6E00C28F4C /* DSGBasicPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0919143A6E00C28F4C /* DSGBasicPhoto.m */; };
 		0E687F0D1917B08500C28F4C /* DSGCollectionsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0C1917B08500C28F4C /* DSGCollectionsSearchViewController.m */; };
@@ -16,10 +16,10 @@
 		0E687F131918094900C28F4C /* DSGAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F121918094900C28F4C /* DSGAlbumModel.m */; };
 		0E687F1619182F5A00C28F4C /* DSGFullDetailPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */; };
 		0E835A3119011D9A00918A08 /* DSGPhotoInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3019011D9A00918A08 /* DSGPhotoInfoViewController.m */; };
-		0E835A35190135B700918A08 /* DSGBrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A34190135B700918A08 /* DSGBrowseTableViewController.m */; };
+		0E835A35190135B700918A08 /* DSGSeasonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A34190135B700918A08 /* DSGSeasonTableViewController.m */; };
 		0E835A391901D68E00918A08 /* DSGPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A381901D68E00918A08 /* DSGPhotoCollection.m */; };
 		0E835A3D1901DD6000918A08 /* DSGPhotoSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3C1901DD6000918A08 /* DSGPhotoSet.m */; };
-		0E835A401901E04700918A08 /* DSGPhotoAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3F1901E04700918A08 /* DSGPhotoAlbumTableViewController.m */; };
+		0E835A401901E04700918A08 /* DSGAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3F1901E04700918A08 /* DSGAlbumTableViewController.m */; };
 		0E835A431902685100918A08 /* DSGCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A421902685100918A08 /* DSGCollectionTableViewCell.m */; };
 		0E835A4719026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A4619026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m */; };
 		0EABEAEF18EE099300E95D39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */; };
@@ -78,8 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E687F0019140D4F00C28F4C /* DSGBrowseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGBrowseModel.h; sourceTree = "<group>"; };
-		0E687F0119140D4F00C28F4C /* DSGBrowseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGBrowseModel.m; sourceTree = "<group>"; };
+		0E687F0019140D4F00C28F4C /* DSGSeasonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGSeasonModel.h; sourceTree = "<group>"; };
+		0E687F0119140D4F00C28F4C /* DSGSeasonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGSeasonModel.m; sourceTree = "<group>"; };
 		0E687F051914171600C28F4C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		0E687F061914171600C28F4C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		0E687F0819143A6E00C28F4C /* DSGBasicPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGBasicPhoto.h; sourceTree = "<group>"; };
@@ -94,14 +94,14 @@
 		0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGFullDetailPhoto.m; sourceTree = "<group>"; };
 		0E835A2F19011D9A00918A08 /* DSGPhotoInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoInfoViewController.h; sourceTree = "<group>"; };
 		0E835A3019011D9A00918A08 /* DSGPhotoInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoInfoViewController.m; sourceTree = "<group>"; };
-		0E835A33190135B700918A08 /* DSGBrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGBrowseTableViewController.h; sourceTree = "<group>"; };
-		0E835A34190135B700918A08 /* DSGBrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGBrowseTableViewController.m; sourceTree = "<group>"; };
+		0E835A33190135B700918A08 /* DSGSeasonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGSeasonTableViewController.h; sourceTree = "<group>"; };
+		0E835A34190135B700918A08 /* DSGSeasonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGSeasonTableViewController.m; sourceTree = "<group>"; };
 		0E835A371901D68E00918A08 /* DSGPhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoCollection.h; sourceTree = "<group>"; };
 		0E835A381901D68E00918A08 /* DSGPhotoCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoCollection.m; sourceTree = "<group>"; };
 		0E835A3B1901DD6000918A08 /* DSGPhotoSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoSet.h; sourceTree = "<group>"; };
 		0E835A3C1901DD6000918A08 /* DSGPhotoSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoSet.m; sourceTree = "<group>"; };
-		0E835A3E1901E04700918A08 /* DSGPhotoAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoAlbumTableViewController.h; sourceTree = "<group>"; };
-		0E835A3F1901E04700918A08 /* DSGPhotoAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoAlbumTableViewController.m; sourceTree = "<group>"; };
+		0E835A3E1901E04700918A08 /* DSGAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGAlbumTableViewController.h; sourceTree = "<group>"; };
+		0E835A3F1901E04700918A08 /* DSGAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGAlbumTableViewController.m; sourceTree = "<group>"; };
 		0E835A411902685100918A08 /* DSGCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGCollectionTableViewCell.h; sourceTree = "<group>"; };
 		0E835A421902685100918A08 /* DSGCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGCollectionTableViewCell.m; sourceTree = "<group>"; };
 		0E835A4519026EBF00918A08 /* DSGPhotoAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoAlbumTableViewCell.h; sourceTree = "<group>"; };
@@ -170,8 +170,8 @@
 		0E687EFF19140D2D00C28F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0E687F0019140D4F00C28F4C /* DSGBrowseModel.h */,
-				0E687F0119140D4F00C28F4C /* DSGBrowseModel.m */,
+				0E687F0019140D4F00C28F4C /* DSGSeasonModel.h */,
+				0E687F0119140D4F00C28F4C /* DSGSeasonModel.m */,
 				0E687F111918094900C28F4C /* DSGAlbumModel.h */,
 				0E687F121918094900C28F4C /* DSGAlbumModel.m */,
 			);
@@ -198,10 +198,10 @@
 		0E835A361901D64200918A08 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0E835A33190135B700918A08 /* DSGBrowseTableViewController.h */,
-				0E835A34190135B700918A08 /* DSGBrowseTableViewController.m */,
-				0E835A3E1901E04700918A08 /* DSGPhotoAlbumTableViewController.h */,
-				0E835A3F1901E04700918A08 /* DSGPhotoAlbumTableViewController.m */,
+				0E835A33190135B700918A08 /* DSGSeasonTableViewController.h */,
+				0E835A34190135B700918A08 /* DSGSeasonTableViewController.m */,
+				0E835A3E1901E04700918A08 /* DSGAlbumTableViewController.h */,
+				0E835A3F1901E04700918A08 /* DSGAlbumTableViewController.m */,
 				0E687F0B1917B08500C28F4C /* DSGCollectionsSearchViewController.h */,
 				0E687F0C1917B08500C28F4C /* DSGCollectionsSearchViewController.m */,
 			);
@@ -525,10 +525,10 @@
 				0E835A4719026EBF00918A08 /* DSGPhotoAlbumTableViewCell.m in Sources */,
 				0EC0D8A818E8B58000ABC8EE /* DSGHomeViewController.m in Sources */,
 				0E687F101917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m in Sources */,
-				0E835A35190135B700918A08 /* DSGBrowseTableViewController.m in Sources */,
+				0E835A35190135B700918A08 /* DSGSeasonTableViewController.m in Sources */,
 				0E835A3D1901DD6000918A08 /* DSGPhotoSet.m in Sources */,
-				0E835A401901E04700918A08 /* DSGPhotoAlbumTableViewController.m in Sources */,
-				0E687F0219140D4F00C28F4C /* DSGBrowseModel.m in Sources */,
+				0E835A401901E04700918A08 /* DSGAlbumTableViewController.m in Sources */,
+				0E687F0219140D4F00C28F4C /* DSGSeasonModel.m in Sources */,
 				0E687F071914171600C28F4C /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

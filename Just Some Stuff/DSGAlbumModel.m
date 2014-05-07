@@ -31,6 +31,12 @@
     return [[self.filteredPhotos objectAtIndex:index] imageURL];
 }
 
+
+-(void)reset
+{
+    [self setFilteredPhotos:self.allPhotos.photos];
+}
+
 -(void)searchAblumUsingText:(NSString *)searchText completionBlock:(void (^)(BOOL))complection;
 {
     FlickrKit *flickKit = [FlickrKit sharedFlickrKit];
@@ -54,7 +60,7 @@
                     
                     if ([[self.allPhotos photoIDSet] containsObject:[pData objectForKey:@"id"]])
                     {
-                        NSLog(@"%@", pData);
+                        //NSLog(@"%@", pData);
                         [tempBasicPhotoArr addObject:[[DSGBasicPhoto alloc] initWithDictionary:pData]];
                         
                     }

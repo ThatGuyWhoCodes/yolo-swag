@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DSGBrowseModel.h"
+#import "DSGSeasonModel.h"
 
-@interface DSGBrowseTableViewController : UITableViewController
+@interface DSGSeasonTableViewController : UITableViewController
 
-@property (strong, nonatomic) DSGBrowseModel *browseModel;
+@property (strong, nonatomic) DSGSeasonModel *browseModel;
 
 @end

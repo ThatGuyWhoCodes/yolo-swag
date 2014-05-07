@@ -20,5 +20,7 @@
 
 -(NSURL *)imageURLAtIndex:(NSUInteger)index;
 
+-(void)reset;
+
 -(void)searchAblumUsingText:(NSString *)searchText completionBlock:(void (^)(BOOL))complection;
 @end
