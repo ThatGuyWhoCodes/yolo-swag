@@ -111,7 +111,7 @@
     // Pass the selected object to the new view controller.
     DSGBasicPhoto *selectedPhoto = [self.albumModel.filteredPhotos objectAtIndex:indexPath.row];
     [[segue.destinationViewController navigationItem] setTitle:[selectedPhoto title]];
-    [((DSGPhotoInfoViewController*)segue.destinationViewController) setPhoto:selectedPhoto];
+    [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:selectedPhoto];
 }
 
 

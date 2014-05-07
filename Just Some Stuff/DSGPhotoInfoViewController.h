@@ -13,12 +13,14 @@
 @interface DSGPhotoInfoViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) DSGFullDetailPhoto *fullPhoto;
-@property (nonatomic, strong) DSGBasicPhoto *photo;
+@property (nonatomic, strong) DSGBasicPhoto *basicPhoto;
 
-@property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet UILabel *infoLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (nonatomic, strong) NSMutableArray *clickableNotes;
 
 - (IBAction)handlePinch:(UIPinchGestureRecognizer *)pinchRecongizer;
 - (IBAction)handlePan:(UIPanGestureRecognizer *)panRecognizer;
+- (IBAction)displayLinks:(id)sender;
 
 @end

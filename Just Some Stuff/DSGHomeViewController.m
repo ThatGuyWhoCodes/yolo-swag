@@ -112,11 +112,13 @@
     if ([self.homeModel setSelectedPhotoUsingIndex:indexPath.row])
     {
         [[segue.destinationViewController navigationItem] setTitle:self.homeModel.selectedPhoto.title];
-        [((DSGPhotoInfoViewController*)segue.destinationViewController) setPhoto:self.homeModel.selectedPhoto];
+        [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:self.homeModel.selectedPhoto];
     }
     else
     {
         [[segue.destinationViewController navigationItem] setTitle:@"Image"];
     }
+    
+    //self.tabBarController setH
 }
 @end

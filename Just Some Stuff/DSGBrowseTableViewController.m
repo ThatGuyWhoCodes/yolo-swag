@@ -23,6 +23,8 @@
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
     
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
     self.browseModel = [DSGBrowseModel sharedInstance];
     
     __weak DSGBrowseTableViewController *weakSelf = self;
@@ -113,7 +115,6 @@
     DSGPhotoCollection* collection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
     [cell.titleLabel setFont:[UIFont fontWithName:@"Typola" size:40.0f]];
     [cell.titleLabel setText:[[collection title] uppercaseString]];
-    [cell setBackgroundColor:(indexPath.row % 2) ? [UIColor lightGrayColor] : [UIColor darkGrayColor]];
     
     return cell;
 }
