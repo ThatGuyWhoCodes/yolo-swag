@@ -12,6 +12,8 @@
 #import "MBProgressHUD.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 
+static NSString *title = @"BE INSPIRED";
+
 @interface DSGTrendsTableViewController ()
 
 @end
@@ -53,6 +55,15 @@
             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         });
     }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitle:[NSString string]];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:title];
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,15 +139,19 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForCell:sender];
+    DSGPhotoSet *selectedPhotoSet = [self.trendsModel.featuredTrends objectAtIndex:selectedIndexPath.row];
+    
+    [[segue.destinationViewController navigationItem] setTitle:[selectedPhotoSet.title uppercaseString]];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

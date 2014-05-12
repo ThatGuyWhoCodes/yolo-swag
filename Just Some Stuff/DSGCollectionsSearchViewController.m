@@ -25,7 +25,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setTitle:self.navigationItem.title];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitle:[NSString string]];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:self.title];
 }
 
 - (void)didReceiveMemoryWarning

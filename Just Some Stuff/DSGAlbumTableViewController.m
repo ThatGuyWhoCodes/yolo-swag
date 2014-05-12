@@ -14,8 +14,6 @@
 
 @interface DSGAlbumTableViewController ()
 
-
-
 @end
 
 @implementation DSGAlbumTableViewController
@@ -24,6 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setTitle:self.navigationItem.title];
     
 }
 
@@ -72,7 +72,15 @@
     return cell;
 }
 
-
+#pragma mark - Navigation Title
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitle:[NSString string]];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:self.title];
+}
 
 #pragma mark - Navigation
 

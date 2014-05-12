@@ -12,6 +12,8 @@
 #import "MBProgressHUD.h"
 
 
+static NSString *title = @"BROWSE";
+
 @implementation DSGSeasonTableViewController
 
 - (void)viewDidLoad
@@ -51,9 +53,13 @@
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitle:[NSString string]];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
-   
+    [self.navigationItem setTitle:title];
 }
 
 - (void)didReceiveMemoryWarning

@@ -28,7 +28,18 @@
     }];
     */
     
-    _window.tintColor = [UIColor colorWithRed:6.0/255.0 green:94.0/255.0 blue:79.0/255.0 alpha:1.0f];
+    UIColor *themeColour = [UIColor colorWithRed:6.0/255.0 green:94.0/255.0 blue:79.0/255.0 alpha:1.0f];
+    
+    NSShadow* shadow = [NSShadow new];
+    shadow.shadowOffset = CGSizeMake(0.5f, 0.5f);
+    shadow.shadowColor = themeColour;
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSForegroundColorAttributeName: [UIColor blackColor],
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Typola" size:18.0f],
+                                                            NSShadowAttributeName: shadow
+                                                            }];
+    
+    _window.tintColor = themeColour;
     
     
     return YES;

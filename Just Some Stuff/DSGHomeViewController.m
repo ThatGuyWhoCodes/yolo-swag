@@ -12,6 +12,9 @@
 #import "DSGPhotoInfoViewController.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 
+
+static NSString *title = @"CAMPAIGNS";
+
 @implementation DSGHomeViewController
 
 - (void)viewDidLoad
@@ -45,6 +48,15 @@
         });
     }];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitle:[NSString string]];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:title];
 }
 
 - (void)didReceiveMemoryWarning

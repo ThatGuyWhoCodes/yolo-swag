@@ -30,7 +30,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RP4-k9-QCg">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RP4-k9-QCg">
                                             <rect key="frame" x="0.0" y="239" width="320" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
@@ -64,7 +64,7 @@
                             <outlet property="delegate" destination="CXi-Io-cuG" id="GU2-dN-Jna"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="CAMPAIGNS" id="gWF-1Q-B16"/>
+                    <navigationItem key="navigationItem" id="gWF-1Q-B16"/>
                     <size key="freeformSize" width="320" height="568"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Orb-Dj-Z0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -133,12 +133,12 @@
         <scene sceneID="XVp-wE-n9r">
             <objects>
                 <tableViewController title="Season" id="3Bt-DP-aQo" customClass="DSGSeasonTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="DCz-3G-8cB">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="DCz-3G-8cB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="_BROWSE_CELL_ID_" rowHeight="100" id="Ym3-T1-Xil" customClass="DSGCollectionTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="100"/>
@@ -157,10 +157,10 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="Bdv-YB-RVs" firstAttribute="leading" secondItem="tOs-lV-QNo" secondAttribute="leading" id="Ghz-XE-oHa"/>
-                                        <constraint firstItem="Bdv-YB-RVs" firstAttribute="top" secondItem="tOs-lV-QNo" secondAttribute="top" constant="25" id="Jpo-CL-1cy"/>
-                                        <constraint firstAttribute="trailing" secondItem="Bdv-YB-RVs" secondAttribute="trailing" id="XgM-V3-EGm"/>
-                                        <constraint firstItem="Bdv-YB-RVs" firstAttribute="centerY" secondItem="tOs-lV-QNo" secondAttribute="centerY" id="ugv-gm-nel"/>
+                                        <constraint firstItem="Bdv-YB-RVs" firstAttribute="top" secondItem="tOs-lV-QNo" secondAttribute="top" constant="25" id="0fz-v0-huW"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bdv-YB-RVs" secondAttribute="trailing" id="Y8t-1c-Eov"/>
+                                        <constraint firstItem="Bdv-YB-RVs" firstAttribute="leading" secondItem="tOs-lV-QNo" secondAttribute="leading" id="bz1-OP-HTT"/>
+                                        <constraint firstItem="Bdv-YB-RVs" firstAttribute="centerY" secondItem="tOs-lV-QNo" secondAttribute="centerY" id="rek-Ob-gjC"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -443,7 +443,7 @@
                                             <rect key="frame" x="0.0" y="40" width="320" height="70"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
