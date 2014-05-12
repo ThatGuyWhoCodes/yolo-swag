@@ -67,7 +67,6 @@
     __weak DSGSeasonTableViewController *weakSelf = self;
     [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
         
-        
         if (complete)
         {
             [weakSelf.tableView reloadData];

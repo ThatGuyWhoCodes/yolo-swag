@@ -1,21 +1,20 @@
 //
-//  DSGCollectionTableViewCell.m
+//  DSGTrendsTableViewCell.m
 //  DsgnrsStudio
 //
-//  Created by MacBrian Pro on 19/04/2014.
+//  Created by MacBrian Pro on 12/05/2014.
 //  Copyright (c) 2014 ThatGuyOrg. All rights reserved.
 //
 
-#import "DSGCollectionTableViewCell.h"
+#import "DSGTrendsTableViewCell.h"
 
-@implementation DSGCollectionTableViewCell
+@implementation DSGTrendsTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self)
-    {
-        
+    if (self) {
+        // Initialization code
     }
     return self;
 }
@@ -27,7 +26,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    //[super setSelected:selected animated:animated];
+    [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }

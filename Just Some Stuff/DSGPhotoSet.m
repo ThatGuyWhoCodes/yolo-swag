@@ -18,16 +18,16 @@
         _set_title = [dictionary objectForKey:@"title"];
         _set_description = [dictionary objectForKey:@"description"];
         _set_identifer = [dictionary objectForKey:@"id"];
-        [self getPhotoSetCoverImage];
+        //[self getPhotoSetCoverImage];
     }
     return self;
 }
 
--(void)getPhotoSetCoverImage
+-(void)getPhotoSetCoverImageWtihCompletionBlock:(void (^)(BOOL))complection
 {
     FKFlickrPhotosetsGetPhotos *getPhotos = [[FKFlickrPhotosetsGetPhotos alloc] init];
     [getPhotos setPhotoset_id:_set_identifer];
-    
+
      [[FlickrKit sharedFlickrKit] call:getPhotos completion:^(NSDictionary *response, NSError *error) {
      // Note this is not the main thread!
      
@@ -35,10 +35,9 @@
      {
          NSArray *photoData = [[response objectForKey:@"photoset"] objectForKey:@"photo"];
          
-         dispatch_async(dispatch_get_main_queue(), ^{
-             
-             NSMutableArray *photoURLS = [NSMutableArray array];
-             NSMutableArray *photos = [NSMutableArray array];
+         
+         NSMutableArray *photoURLS = [NSMutableArray array];
+         NSMutableArray *photos = [NSMutableArray array];
              
              for (NSDictionary* pData in photoData)
              {
@@ -54,9 +53,11 @@
              }
              self.photoUrls = photoURLS;
              _photos = photos;
-            });
-            }
-        }];
+     }
+         
+         complection(YES);
+        
+    }];
 }
 
 -(NSUInteger)numberOfPhotos

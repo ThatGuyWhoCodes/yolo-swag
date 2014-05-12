@@ -22,7 +22,11 @@
         
         for (NSDictionary* photoset in [dictionary objectForKey:@"set"])
         {
-            [_collection_imagesSet addObject:[[DSGPhotoSet alloc] initWithDitctionary:photoset]];
+            DSGPhotoSet *photoSet = [[DSGPhotoSet alloc] initWithDitctionary:photoset];
+            [photoSet getPhotoSetCoverImageWtihCompletionBlock:^(BOOL complete) {
+                
+            }];
+            [_collection_imagesSet addObject: photoSet];
         }
     }
     return self;
