@@ -7,6 +7,7 @@
 //
 
 #import "DSGTrendsTableViewController.h"
+#import "DSGCollectionsSearchViewController.h"
 #import "DSGTrendsTableViewCell.h"
 
 #import "MBProgressHUD.h"
@@ -148,7 +149,8 @@ static NSString *title = @"BE INSPIRED";
     NSIndexPath *selectedIndexPath = [self.tableView indexPathForCell:sender];
     DSGPhotoSet *selectedPhotoSet = [self.trendsModel.featuredTrends objectAtIndex:selectedIndexPath.row];
     
-    [[segue.destinationViewController navigationItem] setTitle:[selectedPhotoSet.title uppercaseString]];
+    [(DSGCollectionsSearchViewController *)segue.destinationViewController setPhotoSet:selectedPhotoSet];
+    [[(DSGCollectionsSearchViewController *)segue.destinationViewController navigationItem] setTitle:[[selectedPhotoSet title] uppercaseString]];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
