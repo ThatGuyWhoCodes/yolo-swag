@@ -15,6 +15,7 @@
 		0E687F101917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0F1917EEF700C28F4C /* DSGPhotoAlbumCollectionViewCell.m */; };
 		0E687F131918094900C28F4C /* DSGAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F121918094900C28F4C /* DSGAlbumModel.m */; };
 		0E687F1619182F5A00C28F4C /* DSGFullDetailPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */; };
+		0E8311EC191D143C0013CF9B /* DSGLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8311EB191D143C0013CF9B /* DSGLogInViewController.m */; };
 		0E835A3119011D9A00918A08 /* DSGPhotoInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A3019011D9A00918A08 /* DSGPhotoInfoViewController.m */; };
 		0E835A35190135B700918A08 /* DSGSeasonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A34190135B700918A08 /* DSGSeasonTableViewController.m */; };
 		0E835A391901D68E00918A08 /* DSGPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E835A381901D68E00918A08 /* DSGPhotoCollection.m */; };
@@ -92,6 +93,8 @@
 		0E687F121918094900C28F4C /* DSGAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGAlbumModel.m; sourceTree = "<group>"; };
 		0E687F1419182F5A00C28F4C /* DSGFullDetailPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGFullDetailPhoto.h; sourceTree = "<group>"; };
 		0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGFullDetailPhoto.m; sourceTree = "<group>"; };
+		0E8311EA191D143C0013CF9B /* DSGLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGLogInViewController.h; sourceTree = "<group>"; };
+		0E8311EB191D143C0013CF9B /* DSGLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGLogInViewController.m; sourceTree = "<group>"; };
 		0E835A2F19011D9A00918A08 /* DSGPhotoInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhotoInfoViewController.h; sourceTree = "<group>"; };
 		0E835A3019011D9A00918A08 /* DSGPhotoInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhotoInfoViewController.m; sourceTree = "<group>"; };
 		0E835A33190135B700918A08 /* DSGSeasonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGSeasonTableViewController.h; sourceTree = "<group>"; };
@@ -195,6 +198,15 @@
 			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		0E8311E9191D14030013CF9B /* DSGLogin */ = {
+			isa = PBXGroup;
+			children = (
+				0E8311EA191D143C0013CF9B /* DSGLogInViewController.h */,
+				0E8311EB191D143C0013CF9B /* DSGLogInViewController.m */,
+			);
+			name = DSGLogin;
+			sourceTree = "<group>";
+		};
 		0E835A361901D64200918A08 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,8 +299,9 @@
 				0EC0D8A118E8B58000ABC8EE /* DSGAppDelegate.m */,
 				0EC0D8A318E8B58000ABC8EE /* Main.storyboard */,
 				0E835A3A1901DD4A00918A08 /* Objects */,
+				0E8311E9191D14030013CF9B /* DSGLogin */,
 				0EE1FD6C19007A1C00983D87 /* DSGBrowse */,
-				0EE1FD6B19007A0700983D87 /* DSGFavourites */,
+				0EE1FD6B19007A0700983D87 /* DSGHome */,
 				0EC0D8A918E8B58000ABC8EE /* Images.xcassets */,
 				0EC0D89818E8B58000ABC8EE /* Supporting Files */,
 			);
@@ -327,14 +340,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0EE1FD6B19007A0700983D87 /* DSGFavourites */ = {
+		0EE1FD6B19007A0700983D87 /* DSGHome */ = {
 			isa = PBXGroup;
 			children = (
 				0EE1FD7619008D3A00983D87 /* View */,
 				0EE1FD6E190086A700983D87 /* Controller */,
 				0EE1FD6D1900869D00983D87 /* Model */,
 			);
-			name = DSGFavourites;
+			name = DSGHome;
 			sourceTree = "<group>";
 		};
 		0EE1FD6C19007A1C00983D87 /* DSGBrowse */ = {
@@ -516,6 +529,7 @@
 				0E687F131918094900C28F4C /* DSGAlbumModel.m in Sources */,
 				0E687F0A19143A6E00C28F4C /* DSGBasicPhoto.m in Sources */,
 				0E687F1619182F5A00C28F4C /* DSGFullDetailPhoto.m in Sources */,
+				0E8311EC191D143C0013CF9B /* DSGLogInViewController.m in Sources */,
 				0EE1FD71190086DB00983D87 /* DSGHomeModel.m in Sources */,
 				0E835A3119011D9A00918A08 /* DSGPhotoInfoViewController.m in Sources */,
 				0E835A431902685100918A08 /* DSGCollectionTableViewCell.m in Sources */,

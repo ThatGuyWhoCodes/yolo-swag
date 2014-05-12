@@ -14,10 +14,33 @@
 {
     // Override point for customization after application launch.
     
-    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"1d6aa108698333d0f168ecdbc0842b0b" sharedSecret:@"9a5498c3e69fdacb"];
+    //[[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"1d6aa108698333d0f168ecdbc0842b0b" sharedSecret:@"9a5498c3e69fdacb"];
+    
+    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"682e15dd33987184901839a79274887c" sharedSecret:@"1fcbd998a9019980"];
+    
+    /*
+    [[FlickrKit sharedFlickrKit] beginAuthWithCallbackURL:[NSURL URLWithString:@"com.unlimited.thatguy"] permission:FKPermissionRead completion:^(NSURL *flickrLoginPageURL, NSError *error) {
+        [[UIApplication sharedApplication] openURL:flickrLoginPageURL];
+    }];
+    
+    [[FlickrKit sharedFlickrKit] completeAuthWithURL:[NSURL URLWithString:@"com.unlimited.thatguy"] completion:^(NSString *userName, NSString *userId, NSString *fullName, NSError *error) {
+        NSLog(@"Logged in as %@, %@, %@", userName, userId, fullName);
+    }];
+    */
+    
     _window.tintColor = [UIColor colorWithRed:6.0/255.0 green:94.0/255.0 blue:79.0/255.0 alpha:1.0f];
     
     
+    return YES;
+}
+
+- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    NSString *scheme = [url scheme];
+	if([@"dsgnrsstudio" isEqualToString:scheme])
+    {
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"UserAuthCallbackNotification" object:url userInfo:nil];
+    }
     return YES;
 }
 							

@@ -32,7 +32,6 @@
     
     [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
         
-        
         if (complete)
         {
             [weakSelf.tableView reloadData];

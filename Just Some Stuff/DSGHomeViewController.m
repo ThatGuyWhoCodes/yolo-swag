@@ -25,6 +25,7 @@
     [self.collectionView addSubview:refreshControl];
 
     __weak DSGHomeViewController *weakSelf = self;
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self.homeModel freshPullWithCompletionBlock:^(BOOL complete) {

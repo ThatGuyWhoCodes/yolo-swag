@@ -41,27 +41,42 @@
 -(void)freshPullWithCompletionBlock:(void (^)(BOOL))complection
 {
     FlickrKit *fk = [FlickrKit sharedFlickrKit];
-    FKFlickrInterestingnessGetList *interesting = [[FKFlickrInterestingnessGetList alloc] init];
-    [fk call:interesting completion:^(NSDictionary *response, NSError *error) {
-        // Note this is not the main thread!
+    
+    FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
+    [collectionTree setUser_id:@"115055955@N06"];  //TODO: To univeral consts
+    
+    [fk call:collectionTree completion:^(NSDictionary *response, NSError *error) {
         if (response)
         {
-            NSMutableArray *photoURLs = [NSMutableArray array];
-            for (NSDictionary *pData in [response valueForKeyPath:@"photos.photo"])
-            {
-               [photoURLs addObject:[[DSGBasicPhoto alloc] initWithDictionary:pData]];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if ([photoURLs count] > 1)
+            NSDictionary *featuredCollection = [[response valueForKeyPath:@"collections.collection"] firstObject];
+            NSDictionary *photoset = [[featuredCollection objectForKey:@"set"] firstObject];
+            FKFlickrPhotosetsGetPhotos *getPhotos = [[FKFlickrPhotosetsGetPhotos alloc] init];
+            [getPhotos setPhotoset_id:[photoset objectForKey:@"id"]];
+            
+            [[FlickrKit sharedFlickrKit] call:getPhotos completion:^(NSDictionary *response, NSError *error) {
+                
+                NSMutableArray *photoURLs = [NSMutableArray array];
+                for (NSDictionary *pData in [response valueForKeyPath:@"photoset.photo"])
                 {
-                    self.photoData = photoURLs;
-                    complection(YES);
+                    [photoURLs addObject:[[DSGBasicPhoto alloc] initWithDictionary:pData]];
                 }
-                else
-                {
-                    complection(NO);
-                }
-            });
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if ([photoURLs count] > 1)
+                    {
+                        self.photoData = photoURLs;
+                        complection(YES);
+                    }
+                    else
+                    {
+                        complection(NO);
+                    }
+                });
+            }];
+            
+        }
+        else
+        {
+            complection(NO);
         }
     }];
 }

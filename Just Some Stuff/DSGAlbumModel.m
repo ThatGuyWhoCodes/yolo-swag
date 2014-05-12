@@ -42,7 +42,7 @@
     FlickrKit *flickKit = [FlickrKit sharedFlickrKit];
     
     FKFlickrPhotosSearch *searchPhotos = [[FKFlickrPhotosSearch alloc] init];
-    [searchPhotos setUser_id:@"102927591@N02"]; //TODO: To univeral consts
+    [searchPhotos setUser_id:@"115055955@N06"]; //TODO: To univeral consts
     [searchPhotos setText:searchText];
     
     __weak DSGAlbumModel *weakSelf = self;
@@ -51,16 +51,15 @@
         
         if (response)
         {
-            if ([[response objectForKey:@"stat"] isEqualToString:@"ok"] && [[[response objectForKey:@"photos"] objectForKey:@"total"] integerValue] > 0)
+            if ([[response objectForKey:@"stat"] isEqualToString:@"ok"] &&  [[response valueForKeyPath:@"photos.total"] integerValue] > 0)
             {
                 
                 NSMutableArray *tempBasicPhotoArr = [NSMutableArray array];
-                for (NSDictionary *pData in [[response objectForKey:@"photos"] objectForKey:@"photo"])
+                for (NSDictionary *pData in [response valueForKeyPath:@"photos.photo"])
                 {
                     
                     if ([[self.allPhotos photoIDSet] containsObject:[pData objectForKey:@"id"]])
                     {
-                        //NSLog(@"%@", pData);
                         [tempBasicPhotoArr addObject:[[DSGBasicPhoto alloc] initWithDictionary:pData]];
                         
                     }
@@ -70,12 +69,14 @@
             }
             else
             {
+                NSLog(@"Error: %@", error);
                 complection(NO);
                 
             }
         }
         else
         {
+            NSLog(@"Error: %@", error);
             complection(NO);
         }
     }];

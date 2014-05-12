@@ -24,15 +24,20 @@
 -(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection;
 {
     FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
-    [collectionTree setUser_id:@"102927591@N02"];  //TODO: To univeral consts
+    [collectionTree setUser_id:@"115055955@N06"];  //TODO: To univeral consts
+    
     
     [[FlickrKit sharedFlickrKit] call:collectionTree completion:^(NSDictionary *response, NSError *error) {
         if (response)
         {
             NSMutableArray *collectionTreeArray = [NSMutableArray array];
-            for (NSDictionary *collectionData in [response valueForKeyPath:@"collections.collection"])
+            NSArray *collections = [response valueForKeyPath:@"collections.collection"];
+            for (NSDictionary *collectionData in collections)
             {
-                [collectionTreeArray addObject:[[DSGPhotoCollection alloc] initWithDictionary:collectionData]];
+                if (!([collectionData isEqual:[collections firstObject]] || [collectionData isEqual:[collections lastObject]]))
+                {
+                    [collectionTreeArray addObject:[[DSGPhotoCollection alloc] initWithDictionary:collectionData]];
+                }
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -42,10 +47,17 @@
                     complection(YES);
                 }
                 else
-                {complection(NO);
+                {
+                    NSLog(@"Error: %@", error);
+                    complection(NO);
                     
                 }
             });
+        }
+        else
+        {
+            NSLog(@"Error: %@", error);
+            complection(NO);
         }
     }];
 }

@@ -60,8 +60,6 @@
 
 -(void)getOriginalImage
 {
-    //__weak DSGPhotoInfoViewController *weakSelf = self;
-    
     [self.fullPhoto fetchOriginalImageWithCompletetionBlock:^(BOOL complete) {
         if (complete)
         {
@@ -80,12 +78,52 @@
         
         if ([self.fullPhoto hasNotes])
         {
-            /*
-            [self.infoLabel setText:[[self.fullPhoto getNotes] firstObject]];
-            [self.infoLabel setTag:1];
-            [self.infoLabel setUserInteractionEnabled:YES];
-            [self.infoLabel addGestureRecognizer:tapGesture];
-            */
+            static CGFloat spacing = 5.0f;
+            
+            self.clickableNotes = [NSMutableArray array];
+            
+            for (NSString *note in [self.fullPhoto getNotes])
+            {
+                NSArray *segmentedNotes = [note componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";,"]];
+                
+                NSMutableString *mutNoteInfo = [NSMutableString string];
+                
+                for (NSString *stringChunck in segmentedNotes)
+                {
+                    if (![stringChunck isEqualToString:[segmentedNotes lastObject]])
+                    {
+                        [mutNoteInfo appendString:[stringChunck uppercaseString]];
+                    }
+                }
+                
+                UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                
+                [linkButton setTitle:mutNoteInfo forState:UIControlStateNormal];
+                [linkButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                
+                //[linkButton.titleLabel setFont:[UIFont fontWithName:@"Typola" size:16.0]];
+                
+                linkButton.titleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
+                linkButton.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+                linkButton.titleLabel.layer.shadowOpacity = 1.0f;
+                linkButton.titleLabel.layer.shadowRadius = 1.0f;
+                [linkButton sizeToFit];
+                
+                if ([self.clickableNotes count] > 0)
+                {
+                    UIButton *lastButton = [self.clickableNotes lastObject];
+                    [linkButton setFrame:CGRectMake(CGRectGetMinX(lastButton.frame), CGRectGetMaxY(lastButton.frame) + spacing, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
+                }
+                else
+                {
+                    [linkButton setFrame:CGRectMake(20, 80, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
+                }
+                
+                [linkButton addTarget:self action:@selector(handleTap:) forControlEvents:UIControlEventTouchUpInside];
+                [self.view addSubview:linkButton];
+                [self.clickableNotes addObject:linkButton];
+            }
+
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
@@ -95,7 +133,20 @@
 {
     if ([self.clickableNotes count] > 0)
     {
-        NSLog(@"Has notes, display them");
+        if ([self.view.subviews containsObject:[self.clickableNotes firstObject]])
+        {
+            for (UIButton *clickableNote in self.clickableNotes)
+            {
+                [clickableNote removeFromSuperview];
+            }
+        }
+        else
+        {
+            for (UIButton *clickableNote in self.clickableNotes)
+            {
+                [self.view addSubview:clickableNote];
+            }
+        }
     }
     else
     {
@@ -123,12 +174,24 @@
 
 -(void)handleTap:(id)sender
 {
-    NSLog(@"Sender: %@", sender);
+    //Get the Index of th clicked button
+    NSUInteger index = [self.clickableNotes indexOfObject:sender];
+    
+    //Get the array of notes
+    NSArray *arry = [[[self.fullPhoto getNotes] objectAtIndex:index] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";,"]];
+    
+    //Create the URL string
+    NSString *urlString = [NSString stringWithFormat:@"http://www.%@", [[arry lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    
+    //Go baby go!
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
 }
 
 
 - (IBAction)handlePinch:(UIPinchGestureRecognizer *)pinchRecongizer
 {
+    static CGFloat zoomLevel = 6.0f;
+    
     static CGPoint center;
     static CGSize initialSize;
     if (pinchRecongizer.state == UIGestureRecognizerStateBegan)
@@ -148,11 +211,20 @@
     
     if (pinchRecongizer.state == UIGestureRecognizerStateEnded)
     {
-        if (!CGRectContainsRect(pinchRecongizer.view.frame, self.view.bounds) || (CGRectGetHeight(pinchRecongizer.view.frame) >= (CGRectGetHeight(self.view.frame) * 5.0f)))
+        static float animationTime = 0.2f;
+        
+        if (!CGRectContainsRect(pinchRecongizer.view.frame, self.view.bounds))
         {
-            [UIView animateWithDuration:0.6f animations:^{
+            [UIView animateWithDuration:animationTime animations:^{
                 pinchRecongizer.view.frame = self.view.frame;
             }];
+        }
+        if ((CGRectGetHeight(pinchRecongizer.view.frame) > (CGRectGetHeight(self.view.frame) * zoomLevel)))
+        {
+            [UIView animateWithDuration:animationTime animations:^{
+                pinchRecongizer.view.frame = CGRectMake(0, 0, (CGRectGetWidth(self.view.frame) * zoomLevel), (CGRectGetHeight(self.view.frame) * zoomLevel));
+            }];
+            pinchRecongizer.view.center = center;
         }
     }
 }
