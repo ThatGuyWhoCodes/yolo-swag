@@ -10,23 +10,16 @@
 
 @implementation DSGAppDelegate
 
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     
     //[[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"1d6aa108698333d0f168ecdbc0842b0b" sharedSecret:@"9a5498c3e69fdacb"];
-    
     [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"682e15dd33987184901839a79274887c" sharedSecret:@"1fcbd998a9019980"];
-    
-    /*
-    [[FlickrKit sharedFlickrKit] beginAuthWithCallbackURL:[NSURL URLWithString:@"com.unlimited.thatguy"] permission:FKPermissionRead completion:^(NSURL *flickrLoginPageURL, NSError *error) {
-        [[UIApplication sharedApplication] openURL:flickrLoginPageURL];
-    }];
-    
-    [[FlickrKit sharedFlickrKit] completeAuthWithURL:[NSURL URLWithString:@"com.unlimited.thatguy"] completion:^(NSString *userName, NSString *userId, NSString *fullName, NSError *error) {
-        NSLog(@"Logged in as %@, %@, %@", userName, userId, fullName);
-    }];
-    */
     
     UIColor *themeColour = [UIColor colorWithRed:6.0/255.0 green:94.0/255.0 blue:79.0/255.0 alpha:1.0f];
     
@@ -80,6 +73,76 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil)
+    {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
+        {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (_managedObjectContext != nil)
+    {
+        return _managedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil)
+    {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    return _managedObjectContext;
+}
+
+- (NSManagedObjectModel *)managedObjectModel
+{
+    if (_managedObjectModel != nil)
+    {
+        return _managedObjectModel;
+    }
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"DsgnrsStudio" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return _managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (_persistentStoreCoordinator != nil)
+    {
+        return _persistentStoreCoordinator;
+    }
+    
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"DsgnrsStudio.sqlite"];
+    
+    NSError *error = nil;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    {
+        
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _persistentStoreCoordinator;
+}
+
+#pragma mark - Application's Documents directory
+
+// Returns the URL to the application's Documents directory.
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end

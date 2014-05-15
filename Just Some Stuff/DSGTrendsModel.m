@@ -44,7 +44,6 @@
                 DSGPhotoSet *photoSet = [[DSGPhotoSet alloc] initWithDitctionary:setData];
                 [photoSet getPhotoSetCoverImageWtihCompletionBlock:^(BOOL complete) {
                     dispatch_group_leave(taskGroup);
-                    //NSLog(@"Here");
                 }];
                 [photoSets addObject:photoSet];
             }
@@ -59,7 +58,6 @@
                 {
                     complection(NO);
                 }
-                //NSLog(@"Finished");
             });
         }
         else

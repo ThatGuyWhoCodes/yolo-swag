@@ -7,9 +7,9 @@
 //
 
 #import "DSGPhotoInfoViewController.h"
-#import "SDWebImage/UIImageView+WebCache.h"
-#import "MBProgressHUD.h"
+#import "DSGAppDelegate.h"
 #import "DSGHomeModel.h"
+#import "DSGPhoto.h"
 
 @interface DSGPhotoInfoViewController ()
 {
@@ -20,16 +20,19 @@
 
 @implementation DSGPhotoInfoViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.managedObjectContext = ((DSGAppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     
     lastScale = 1.0;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self.imageView setImageWithURL:[self.basicPhoto imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
+    
+    [self.favouriteButton setSelected:[self checkIfFavourite]];
     
     FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
     [getPhotoInfo setPhoto_id:self.basicPhoto.identification];
@@ -58,7 +61,37 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)getOriginalImage
+- (BOOL)checkIfFavourite
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DSGPhoto" inManagedObjectContext:self.managedObjectContext];
+    
+    NSSortDescriptor *identificationSort = [[NSSortDescriptor alloc] initWithKey:@"identification" ascending:YES];
+    
+    [fetchRequest setSortDescriptors:@[identificationSort]];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSError *requestError = nil;
+    
+    NSArray *photoIdentification = [self.managedObjectContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    BOOL isFavourite = NO;
+    
+    for (DSGPhoto *photo in photoIdentification)
+    {
+        if ([photo.identification isEqualToString:self.basicPhoto.identification])
+        {
+            NSLog(@"Found You");
+            isFavourite = YES;
+        }
+    }
+    
+    return isFavourite;
+}
+
+- (void)getOriginalImage
 {
     [self.fullPhoto fetchOriginalImageWithCompletetionBlock:^(BOOL complete) {
         if (complete)
@@ -70,11 +103,9 @@
     }];
 }
 
--(void)insertNotes
+- (void)insertNotes
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        
-        //UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         
         if ([self.fullPhoto hasNotes])
         {
@@ -172,7 +203,7 @@
     return YES;
 }
 
--(void)handleTap:(id)sender
+- (void)handleTap:(id)sender
 {
     //Get the Index of th clicked button
     NSUInteger index = [self.clickableNotes indexOfObject:sender];
@@ -186,7 +217,6 @@
     //Go baby go!
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
 }
-
 
 - (IBAction)handlePinch:(UIPinchGestureRecognizer *)pinchRecongizer
 {
@@ -252,6 +282,91 @@
             initialCenter = panRecognizer.view.center;
             [panRecognizer setTranslation:CGPointZero inView:panRecognizer.view];
         }
+    }
+}
+
+#pragma mark - Core Data
+- (IBAction)favouriteButtonPressed:(id)sender
+{
+    BOOL favouriteButtonIsSelected = ((UIButton *)sender).isSelected;
+    
+    if (favouriteButtonIsSelected)
+    {
+        [self removePhotoFromFavourites:self.basicPhoto];
+    }
+    else
+    {
+        [self createNewPhotoWithBasicPhoto:self.basicPhoto];
+    }
+    
+    [sender setSelected:!favouriteButtonIsSelected];
+}
+
+- (BOOL)createNewPhotoWithBasicPhoto:(DSGBasicPhoto *)basicPhoto
+{
+    BOOL result = NO;
+    
+    DSGPhoto* photo = [NSEntityDescription insertNewObjectForEntityForName:@"DSGPhoto" inManagedObjectContext:self.managedObjectContext];
+    
+    if (!photo)
+    {
+        NSLog(@"Failed to create new photo");
+        return NO;
+    }
+    
+    [photo setTitle:basicPhoto.title];
+    [photo setIdentification:basicPhoto.identification];
+    [photo setImageURLString:basicPhoto.imageURL.absoluteString];
+    
+    NSError *savingError = nil;
+    
+    if ([self.managedObjectContext save:&savingError])
+    {
+        NSLog(@"Saved to favourites");
+        return YES;
+    }
+    else
+    {
+        NSLog(@"Failed to save the photo. Error: %@", savingError);
+    }
+    return result;
+}
+
+- (void)removePhotoFromFavourites:(DSGBasicPhoto *)basicPhoto
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DSGPhoto" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *requestError = nil;
+    
+    NSArray *photos = [self.managedObjectContext executeFetchRequest:fetchRequest error:&requestError];
+    
+    if ([photos count] > 0)
+    {
+        for (DSGPhoto *currentPhoto in photos)
+        {
+            if ([currentPhoto.identification isEqualToString:basicPhoto.identification])
+            {
+                [self.managedObjectContext deleteObject:currentPhoto];
+                
+                NSError *savingError = nil;
+                if ([self.managedObjectContext save:&savingError])
+                {
+                    NSLog(@"Successfully deleted photo");
+                }
+                else
+                {
+                    NSLog(@"Failed to save the context");
+                }
+            }
+        }
+        
+    }
+    else
+    {
+        NSLog(@"Could not find the photo in the context");
     }
 }
 @end

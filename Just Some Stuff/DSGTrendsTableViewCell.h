@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SDWebImage/UIImageView+WebCache.h"
+
 
 @interface DSGTrendsTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
+
+-(void)setCellText:(NSString *)text;
+
+-(void)setCellImage:(NSURL *)imageUrl;
+
 @end

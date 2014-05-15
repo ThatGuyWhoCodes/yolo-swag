@@ -12,10 +12,13 @@
 
 @interface DSGPhotoInfoViewController : UIViewController <UIGestureRecognizerDelegate>
 
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 @property (nonatomic, strong) DSGFullDetailPhoto *fullPhoto;
 @property (nonatomic, strong) DSGBasicPhoto *basicPhoto;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIButton *favouriteButton;
 
 @property (nonatomic, strong) NSMutableArray *clickableNotes;
 
@@ -23,4 +26,5 @@
 - (IBAction)handlePan:(UIPanGestureRecognizer *)panRecognizer;
 - (IBAction)displayLinks:(id)sender;
 
+- (IBAction)favouriteButtonPressed:(id)sender;
 @end

@@ -7,11 +7,8 @@
 //
 
 #import "DSGHomeViewController.h"
-#import "MBProgressHUD.h"
 #import "DSGHomeCollectionViewCell.h"
 #import "DSGPhotoInfoViewController.h"
-#import "SDWebImage/UIImageView+WebCache.h"
-
 
 static NSString *title = @"CAMPAIGNS";
 

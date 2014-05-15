@@ -11,8 +11,6 @@
 #import "DSGTrendsTableViewCell.h"
 
 #import "MBProgressHUD.h"
-#import "SDWebImage/UIImageView+WebCache.h"
-
 static NSString *title = @"BE INSPIRED";
 
 @interface DSGTrendsTableViewController ()
@@ -58,19 +56,21 @@ static NSString *title = @"BE INSPIRED";
     }];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationItem setTitle:[NSString string]];
-}
--(void)viewWillAppear:(BOOL)animated
-{
-    [self.navigationItem setTitle:title];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - Navigation Title
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitle:[NSString string]];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:title];
 }
 
 #pragma mark - Refresh Control
@@ -125,17 +125,8 @@ static NSString *title = @"BE INSPIRED";
     
     DSGPhotoSet *photoAlbum = [self.trendsModel.featuredTrends objectAtIndex:indexPath.row];
     
-    //NSLog(@"Long: %@", photoAlbum.title);
-    
-    [cell.titleLabel setFont:[UIFont fontWithName:@"Typola" size:35.0]];
-    
-    cell.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
-    cell.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    cell.titleLabel.layer.shadowOpacity = 1.0f;
-    cell.titleLabel.layer.shadowRadius = 1.0f;
-    
-    [cell.titleLabel setText:photoAlbum.title];
-    [cell.backgroundImage setImageWithURL:photoAlbum.coverUrl placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+    [cell setCellText:photoAlbum.title];
+    [cell setCellImage:photoAlbum.coverUrl];
     
     return cell;
 }
@@ -151,8 +142,6 @@ static NSString *title = @"BE INSPIRED";
     
     [(DSGCollectionsSearchViewController *)segue.destinationViewController setPhotoSet:selectedPhotoSet];
     [[(DSGCollectionsSearchViewController *)segue.destinationViewController navigationItem] setTitle:[[selectedPhotoSet title] uppercaseString]];
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 
