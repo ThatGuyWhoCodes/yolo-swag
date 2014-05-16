@@ -23,10 +23,42 @@ static NSString *title = @"CAMPAIGNS";
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:refreshControl];
-
-    __weak DSGHomeViewController *weakSelf = self;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [self refreshModelWithCompletionBlock:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitle:[NSString string]];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:title];
+    
+    if ([self.homeModel.photoData count] < 1)
+    {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [self refreshModelWithCompletionBlock:^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshModelWithCompletionBlock:(void (^)(void))complection
+{
+    __weak DSGHomeViewController *weakSelf = self;
     
     [self.homeModel freshPullWithCompletionBlock:^(BOOL complete) {
         
@@ -41,48 +73,15 @@ static NSString *title = @"CAMPAIGNS";
             });
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+            complection();
         });
     }];
-	// Do any additional setup after loading the view, typically from a nib.
 }
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationItem setTitle:[NSString string]];
-}
--(void)viewWillAppear:(BOOL)animated
-{
-    [self.navigationItem setTitle:title];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 -(void)refresh:(id)sender
 {
-    __weak DSGHomeViewController *weakSelf = self;
-    
-    [self.homeModel freshPullWithCompletionBlock:^(BOOL complete) {
-        
-        if (complete)
-        {
-            [weakSelf.collectionView reloadData];
-        }
-        else
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-               [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-           });
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [sender endRefreshing];
-        });
+    [self refreshModelWithCompletionBlock:^{
+        [sender endRefreshing];
     }];
 }
 
@@ -129,6 +128,5 @@ static NSString *title = @"CAMPAIGNS";
         [[segue.destinationViewController navigationItem] setTitle:@"Image"];
     }
     
-    //self.tabBarController setH
 }
 @end

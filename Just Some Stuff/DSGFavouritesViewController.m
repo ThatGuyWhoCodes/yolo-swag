@@ -14,10 +14,6 @@
 
 static NSString *title = @"FAVOURITES";
 
-@interface DSGFavouritesViewController ()
-
-@end
-
 @implementation DSGFavouritesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

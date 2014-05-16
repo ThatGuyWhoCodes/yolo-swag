@@ -32,8 +32,6 @@
     
     [self.imageView setImageWithURL:[self.basicPhoto imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
     
-    [self.favouriteButton setSelected:[self checkIfFavourite]];
-    
     FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
     [getPhotoInfo setPhoto_id:self.basicPhoto.identification];
     
@@ -53,6 +51,13 @@
             });
         }
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.favouriteButton setSelected:[self checkIfFavourite]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -220,7 +225,7 @@
 
 - (IBAction)handlePinch:(UIPinchGestureRecognizer *)pinchRecongizer
 {
-    static CGFloat zoomLevel = 6.0f;
+    static CGFloat zoomLevel = 4.0f;
     
     static CGPoint center;
     static CGSize initialSize;

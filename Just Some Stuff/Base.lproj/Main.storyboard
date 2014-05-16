@@ -93,13 +93,13 @@
                                     <outletCollection property="gestureRecognizers" destination="aWT-xX-k1f" appends="YES" id="MAj-uH-2Gz"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-1w-E7C">
-                                <rect key="frame" x="220" y="487" width="80" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-1w-E7C">
+                                <rect key="frame" x="256" y="459" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Favourite">
+                                <state key="normal" image="icon_relationships.png">
                                     <color key="titleColor" red="0.023576384620000002" green="0.49866253399999999" blue="0.00030410890710000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <state key="selected" title="Remove">
+                                <state key="selected" image="icon_relationships-filled.png">
                                     <color key="titleColor" red="0.023576384620000002" green="0.49866253399999999" blue="0.00030410890710000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -110,12 +110,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="nEE-1w-E7C" secondAttribute="trailing" constant="20" symbolic="YES" id="JVH-cE-iU1"/>
+                            <constraint firstAttribute="trailing" secondItem="nEE-1w-E7C" secondAttribute="trailing" constant="20" id="JVH-cE-iU1"/>
                             <constraint firstItem="Iu8-un-OpB" firstAttribute="leading" secondItem="rkt-aM-Qeg" secondAttribute="leading" id="L1b-DM-erZ"/>
                             <constraint firstItem="YBy-nv-8Au" firstAttribute="top" secondItem="Iu8-un-OpB" secondAttribute="bottom" constant="2" id="YvK-vi-VzP"/>
                             <constraint firstAttribute="trailing" secondItem="Iu8-un-OpB" secondAttribute="trailing" id="beb-o7-tsf"/>
                             <constraint firstItem="Iu8-un-OpB" firstAttribute="top" secondItem="mvu-BM-SXk" secondAttribute="bottom" id="jWU-kR-fRm"/>
-                            <constraint firstItem="YBy-nv-8Au" firstAttribute="top" secondItem="nEE-1w-E7C" secondAttribute="bottom" constant="2" id="xbS-sa-ieI"/>
+                            <constraint firstItem="YBy-nv-8Au" firstAttribute="top" secondItem="nEE-1w-E7C" secondAttribute="bottom" constant="16" id="xbS-sa-ieI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo Title" id="5f9-Mi-DRV">
@@ -265,7 +265,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search Set" translatesAutoresizingMaskIntoConstraints="NO" id="dV6-8Z-4ht">
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="dV6-8Z-4ht">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -393,7 +393,7 @@
         <scene sceneID="dzJ-9a-v2g">
             <objects>
                 <navigationController title="Home" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="amh-l8-Cgk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="RWl-ot-6Im"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Tab-Featured.png" id="RWl-ot-6Im"/>
                     <toolbarItems/>
                     <size key="freeformSize" width="320" height="568"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vce-B9-RYM">
@@ -413,7 +413,7 @@
         <scene sceneID="Z68-xK-Xue">
             <objects>
                 <navigationController title="Browse" automaticallyAdjustsScrollViewInsets="NO" id="RUi-90-Bj5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="Z2h-QJ-jJB"/>
+                    <tabBarItem key="tabBarItem" title="Browse" image="Tab-Browse.png" id="Z2h-QJ-jJB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ylO-14-AjS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -557,11 +557,11 @@
             </objects>
             <point key="canvasLocation" x="1457" y="1330"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Be Inspired-->
         <scene sceneID="sBw-V6-hQ9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ET3-QQ-5i8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="xSJ-N2-iiV"/>
+                    <tabBarItem key="tabBarItem" title="Be Inspired" image="Tab-BeInspired.png" id="xSJ-N2-iiV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zWr-7D-Ifo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -576,11 +576,11 @@
             </objects>
             <point key="canvasLocation" x="565" y="630"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Favourites-->
         <scene sceneID="Nzw-fV-Dmv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OEo-rO-DnU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Nqd-HO-Gdi"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="Tab-Favourites.png" id="Nqd-HO-Gdi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qn-gt-vo2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -596,6 +596,14 @@
             <point key="canvasLocation" x="565" y="1330"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Tab-BeInspired.png" width="22" height="22"/>
+        <image name="Tab-Browse.png" width="22" height="22"/>
+        <image name="Tab-Favourites.png" width="22" height="22"/>
+        <image name="Tab-Featured.png" width="22" height="22"/>
+        <image name="icon_relationships-filled.png" width="44" height="44"/>
+        <image name="icon_relationships.png" width="44" height="44"/>
+    </resources>
     <color key="tintColor" red="0.035294117647058823" green="0.36862745098039218" blue="0.30980392156862746" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -604,6 +612,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="UPO-Je-rCq"/>
-        <segue reference="2JB-ot-MaP"/>
+        <segue reference="9JZ-Ad-moY"/>
     </inferredMetricsTieBreakers>
 </document>
