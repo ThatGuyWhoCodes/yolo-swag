@@ -26,20 +26,29 @@ static NSString *title = @"CAMPAIGNS";
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    __weak DSGHomeViewController *weakSelf = self;
+    
     [self refreshModelWithCompletionBlock:^{
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        });
     }];
 }
 
+# pragma mark - Navigation title managment
 -(void)viewWillDisappear:(BOOL)animated
 {
+    //Set the title to an empty string to remove the title
     [self.navigationItem setTitle:[NSString string]];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    //Reset the Navigation title
     [self.navigationItem setTitle:title];
     
+    //If the momdel is empty, try and get new data
+    /*
     if ([self.homeModel.photoData count] < 1)
     {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -48,6 +57,7 @@ static NSString *title = @"CAMPAIGNS";
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
     }
+    */
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,6 +66,7 @@ static NSString *title = @"CAMPAIGNS";
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark - Model interaction
 - (void)refreshModelWithCompletionBlock:(void (^)(void))complection
 {
     __weak DSGHomeViewController *weakSelf = self;
@@ -72,20 +83,21 @@ static NSString *title = @"CAMPAIGNS";
                 [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
             });
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
             complection();
+    }];
+}
+
+#pragma mark - Refresh Control
+-(void)refresh:(id)sender
+{
+    [self refreshModelWithCompletionBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [sender endRefreshing];
         });
     }];
 }
 
--(void)refresh:(id)sender
-{
-    [self refreshModelWithCompletionBlock:^{
-        [sender endRefreshing];
-    }];
-}
-
-#pragma mark - CollectionView
+#pragma mark - Collection View Data Source
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -117,16 +129,11 @@ static NSString *title = @"CAMPAIGNS";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+    [self.homeModel setSelectedPhotoAtIndex:indexPath.row];
     
-    if ([self.homeModel setSelectedPhotoUsingIndex:indexPath.row])
-    {
-        [[segue.destinationViewController navigationItem] setTitle:self.homeModel.selectedPhoto.title];
-        [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:self.homeModel.selectedPhoto];
-    }
-    else
-    {
-        [[segue.destinationViewController navigationItem] setTitle:@"Image"];
-    }
+    [[segue.destinationViewController navigationItem] setTitle:self.homeModel.selectedPhoto.title];
+    [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:self.homeModel.selectedPhoto];
+    [((DSGPhotoInfoViewController*)segue.destinationViewController) setImageAlbum:self.homeModel];
     
 }
 @end

@@ -21,14 +21,20 @@
     return sharedInstance;
 }
 
--(void)clean
+#pragma mark - DSGImageCollectionProtocol
+-(NSUInteger)numberOfPhotos
 {
-    [self.photoData removeAllObjects];
+    return [self.photoData count];
 }
 
--(BOOL)setSelectedPhotoUsingIndex:(NSUInteger)index
+-(NSURL *)photoURLAtIndex:(NSUInteger)index
 {
-    
+    DSGBasicPhoto *photo = [self.photoData objectAtIndex:index];
+    return photo.imageURL;
+}
+
+-(BOOL)setSelectedPhotoAtIndex:(NSUInteger)index
+{
     if (!self.photoData)
     {
         return NO;
@@ -36,6 +42,22 @@
     
     self.selectedPhoto = [self.photoData objectAtIndex:index];
     return YES;
+}
+
+-(DSGBasicPhoto *)getSelectedPhoto
+{
+    return self.selectedPhoto;
+}
+
+-(NSUInteger)indexOfSlectedPhoto
+{
+    return [self.photoData indexOfObject:self.selectedPhoto];
+}
+
+#pragma mark - Other
+-(void)clean
+{
+    [self.photoData removeAllObjects];
 }
 
 -(void)freshPullWithCompletionBlock:(void (^)(BOOL))complection

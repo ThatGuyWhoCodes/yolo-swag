@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSGImageCollectionProtocol.h"
 #import "DSGBasicPhoto.h"
 #import "DSGFullDetailPhoto.h"
 
@@ -16,6 +17,8 @@
 
 @property (nonatomic, strong) DSGFullDetailPhoto *fullPhoto;
 @property (nonatomic, strong) DSGBasicPhoto *basicPhoto;
+
+@property (nonatomic, strong) id <DSGImageCollectionProtocol> imageAlbum;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIButton *favouriteButton;

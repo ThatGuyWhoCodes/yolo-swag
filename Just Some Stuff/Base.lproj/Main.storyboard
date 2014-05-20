@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qFR-Le-dSt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qFR-Le-dSt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -106,6 +106,16 @@
                                     <action selector="favouriteButtonPressed:" destination="ltq-he-L5L" eventType="touchUpInside" id="dsR-LM-3m0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gd-VN-y9O">
+                                <rect key="frame" x="191" y="269" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="dl8-X7-lmu" kind="modal" identifier="toFullScreen" modalTransitionStyle="crossDissolve" id="vgb-Yp-8S2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -145,6 +155,51 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3009" y="259"/>
+        </scene>
+        <!--Full Screen View Controller-->
+        <scene sceneID="EN9-Zq-6m8">
+            <objects>
+                <viewController id="dl8-X7-lmu" customClass="DSGFullScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gib-B8-hhc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Awy-1m-Ycp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i2v-Oi-UGd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ysw-qe-dj8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="dl8-X7-lmu" id="EFG-rG-UIf"/>
+                                    <outletCollection property="gestureRecognizers" destination="Rbn-iE-qZe" appends="YES" id="LZx-Ga-Ffw"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ysw-qe-dj8" secondAttribute="bottom" id="4na-i4-6ZF"/>
+                            <constraint firstItem="Ysw-qe-dj8" firstAttribute="leading" secondItem="i2v-Oi-UGd" secondAttribute="leading" id="QEA-rV-Z9W"/>
+                            <constraint firstAttribute="trailing" secondItem="Ysw-qe-dj8" secondAttribute="trailing" id="Wbi-h6-RF0"/>
+                            <constraint firstItem="Ysw-qe-dj8" firstAttribute="top" secondItem="i2v-Oi-UGd" secondAttribute="top" id="uzD-Xe-Lvf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="Ysw-qe-dj8" id="aY4-6g-hRR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OGm-6S-p2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" numberOfTapsRequired="2" id="Rbn-iE-qZe">
+                    <connections>
+                        <action selector="handleDoubleTap:" destination="dl8-X7-lmu" id="sDL-JJ-b5h"/>
+                        <outlet property="delegate" destination="dl8-X7-lmu" id="TiU-bK-0Gm"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3453" y="261"/>
         </scene>
         <!--Season Table View Controller - Season-->
         <scene sceneID="XVp-wE-n9r">
@@ -213,7 +268,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ly7-AC-VFM">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ly7-AC-VFM">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
@@ -225,14 +280,14 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fDf-cP-UDe" firstAttribute="leading" secondItem="YiZ-c0-FMa" secondAttribute="leading" id="2uE-mJ-bR4"/>
-                                        <constraint firstAttribute="trailing" secondItem="ly7-AC-VFM" secondAttribute="trailing" id="AHO-PF-5jw"/>
-                                        <constraint firstItem="ly7-AC-VFM" firstAttribute="top" secondItem="YiZ-c0-FMa" secondAttribute="top" id="CN8-u1-LMn"/>
-                                        <constraint firstItem="fDf-cP-UDe" firstAttribute="trailing" secondItem="ly7-AC-VFM" secondAttribute="trailing" id="CUL-ca-4es"/>
-                                        <constraint firstAttribute="bottom" secondItem="ly7-AC-VFM" secondAttribute="bottom" id="W6M-Pk-dPp"/>
-                                        <constraint firstItem="fDf-cP-UDe" firstAttribute="top" secondItem="YiZ-c0-FMa" secondAttribute="top" constant="40" id="WGZ-n3-EfA"/>
+                                        <constraint firstItem="ly7-AC-VFM" firstAttribute="trailing" secondItem="fDf-cP-UDe" secondAttribute="trailing" id="CUL-ca-4es"/>
+                                        <constraint firstItem="ly7-AC-VFM" firstAttribute="top" secondItem="YiZ-c0-FMa" secondAttribute="top" id="QgC-iH-PL0"/>
+                                        <constraint firstItem="ly7-AC-VFM" firstAttribute="trailing" secondItem="YiZ-c0-FMa" secondAttribute="trailing" id="UgU-Ob-auH"/>
+                                        <constraint firstItem="ly7-AC-VFM" firstAttribute="bottom" secondItem="YiZ-c0-FMa" secondAttribute="bottom" id="Uyg-HF-gB4"/>
+                                        <constraint firstItem="ly7-AC-VFM" firstAttribute="leading" secondItem="YiZ-c0-FMa" secondAttribute="leading" id="Xdb-mk-jOs"/>
                                         <constraint firstItem="ly7-AC-VFM" firstAttribute="leading" secondItem="fDf-cP-UDe" secondAttribute="leading" id="jqD-yy-sp0"/>
                                         <constraint firstItem="ly7-AC-VFM" firstAttribute="centerY" secondItem="fDf-cP-UDe" secondAttribute="centerY" id="wpG-Jn-DvT"/>
+                                        <constraint firstItem="fDf-cP-UDe" firstAttribute="top" secondItem="YiZ-c0-FMa" secondAttribute="top" constant="40" id="z0t-UG-KeM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -444,7 +499,7 @@
                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="_TRENDS_CELL_ID_" id="RNu-aH-1zl" customClass="DSGTrendsTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="_TRENDS_CELL_ID_" id="RNu-aH-1zl" customClass="DSGTrendsTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RNu-aH-1zl" id="ZHV-m7-d87">
@@ -522,7 +577,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Again" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uh-hJ-tte">
                                             <rect key="frame" x="0.0" y="279" width="320" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.70588237050000002" green="0.93333339689999995" blue="0.92549026010000002" alpha="0.51000000000000001" colorSpace="deviceRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -612,6 +667,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="UPO-Je-rCq"/>
-        <segue reference="9JZ-Ad-moY"/>
+        <segue reference="2JB-ot-MaP"/>
     </inferredMetricsTieBreakers>
 </document>

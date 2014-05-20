@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DSGImageCollectionProtocol.h"
 #import "DSGBasicPhoto.h"
 
-@interface DSGHomeModel : NSObject
+@interface DSGHomeModel : NSObject <DSGImageCollectionProtocol>
 
 @property (nonatomic, strong) NSMutableArray *photoData;
 
@@ -25,8 +26,6 @@
  * A fresh pull of the photo data
  */
 -(void)freshPullWithCompletionBlock:(void (^)(BOOL))complection;
-
--(BOOL)setSelectedPhotoUsingIndex:(NSUInteger)index;
 
 +(DSGHomeModel *)sharedInstance;
 

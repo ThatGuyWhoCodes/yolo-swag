@@ -7,8 +7,8 @@
 //
 
 #import "DSGPhotoInfoViewController.h"
+#import "DSGFullScreenViewController.h"
 #import "DSGAppDelegate.h"
-#import "DSGHomeModel.h"
 #import "DSGPhoto.h"
 
 @interface DSGPhotoInfoViewController ()
@@ -190,16 +190,19 @@
     }
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"toFullScreen"])
+    {
+        [((DSGFullScreenViewController*)segue.destinationViewController) setCurrentModel:self.imageAlbum];
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 #pragma mark - Gesture Recognizer
 

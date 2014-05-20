@@ -29,7 +29,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes: @{
                                                             NSForegroundColorAttributeName: [UIColor blackColor],
                                                             NSFontAttributeName: [UIFont fontWithName:@"Typola" size:18.0f],
-                                                            NSShadowAttributeName: shadow
+                                                            //NSShadowAttributeName: shadow
                                                             }];
     
     _window.tintColor = themeColour;

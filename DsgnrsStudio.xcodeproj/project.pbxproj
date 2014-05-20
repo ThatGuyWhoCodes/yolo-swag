@@ -53,10 +53,10 @@
 		0EC0D8B318E8B58000ABC8EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89518E8B58000ABC8EE /* UIKit.framework */; };
 		0EC0D8BB18E8B58000ABC8EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D8B918E8B58000ABC8EE /* InfoPlist.strings */; };
 		0EC0D8BD18E8B58000ABC8EE /* Just_Some_StuffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */; };
+		0EC61B27192B965000FB62FF /* DSGFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC61B26192B965000FB62FF /* DSGFullScreenViewController.m */; };
 		0EE1FD71190086DB00983D87 /* DSGHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1FD70190086DB00983D87 /* DSGHomeModel.m */; };
 		0EE1FD7919008D6100983D87 /* DSGHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1FD7819008D6100983D87 /* DSGHomeCollectionViewCell.m */; };
 		0EE1FD811900941F00983D87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD801900941F00983D87 /* ImageIO.framework */; };
-		0EE1FD83190095EB00983D87 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD82190095EB00983D87 /* SDWebImage.framework */; };
 		0EE1FD8819009B2000983D87 /* IMG_0038.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0EE1FD8719009B2000983D87 /* IMG_0038.JPG */; };
 		0EE1FD8A1900A3D500983D87 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD891900A3D500983D87 /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
@@ -165,6 +165,9 @@
 		0EC0D8B818E8B58000ABC8EE /* DsgnrsStudioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DsgnrsStudioTests-Info.plist"; sourceTree = "<group>"; };
 		0EC0D8BA18E8B58000ABC8EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Just_Some_StuffTests.m; sourceTree = "<group>"; };
+		0EC61B25192B965000FB62FF /* DSGFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGFullScreenViewController.h; sourceTree = "<group>"; };
+		0EC61B26192B965000FB62FF /* DSGFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGFullScreenViewController.m; sourceTree = "<group>"; };
+		0EC61B29192B9DE900FB62FF /* DSGImageCollectionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGImageCollectionProtocol.h; sourceTree = "<group>"; };
 		0EE1FD6F190086DB00983D87 /* DSGHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGHomeModel.h; sourceTree = "<group>"; };
 		0EE1FD70190086DB00983D87 /* DSGHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGHomeModel.m; sourceTree = "<group>"; };
 		0EE1FD7719008D6100983D87 /* DSGHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGHomeCollectionViewCell.h; sourceTree = "<group>"; };
@@ -182,7 +185,6 @@
 			files = (
 				0E8311FB1923734C0013CF9B /* CoreData.framework in Frameworks */,
 				0EE1FD8A1900A3D500983D87 /* SDWebImage.framework in Frameworks */,
-				0EE1FD83190095EB00983D87 /* SDWebImage.framework in Frameworks */,
 				0EE1FD811900941F00983D87 /* ImageIO.framework in Frameworks */,
 				0EABEAFC18EE0E4600E95D39 /* libFlickrKit.a in Frameworks */,
 				0EABEAEF18EE099300E95D39 /* SystemConfiguration.framework in Frameworks */,
@@ -416,6 +418,7 @@
 		0EC0D89718E8B58000ABC8EE /* Just Some Stuff */ = {
 			isa = PBXGroup;
 			children = (
+				0EC61B28192B9DB900FB62FF /* Protocols */,
 				0E8311FC1923738C0013CF9B /* CoreData */,
 				0EC0D8A018E8B58000ABC8EE /* DSGAppDelegate.h */,
 				0EC0D8A118E8B58000ABC8EE /* DSGAppDelegate.m */,
@@ -464,6 +467,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0EC61B28192B9DB900FB62FF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0EC61B29192B9DE900FB62FF /* DSGImageCollectionProtocol.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		0EE1FD6B19007A0700983D87 /* DSGHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +511,8 @@
 				0EC0D8A718E8B58000ABC8EE /* DSGHomeViewController.m */,
 				0E835A2F19011D9A00918A08 /* DSGPhotoInfoViewController.h */,
 				0E835A3019011D9A00918A08 /* DSGPhotoInfoViewController.m */,
+				0EC61B25192B965000FB62FF /* DSGFullScreenViewController.h */,
+				0EC61B26192B965000FB62FF /* DSGFullScreenViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -681,6 +694,7 @@
 				0E835A3D1901DD6000918A08 /* DSGPhotoSet.m in Sources */,
 				0E835A401901E04700918A08 /* DSGAlbumTableViewController.m in Sources */,
 				0E687F0219140D4F00C28F4C /* DSGSeasonModel.m in Sources */,
+				0EC61B27192B965000FB62FF /* DSGFullScreenViewController.m in Sources */,
 				0E92F8001924BB8E009149C3 /* DSGFavouritesViewController.m in Sources */,
 				0E8311F31920E7AD0013CF9B /* DSGTrendsTableViewController.m in Sources */,
 				0E687F071914171600C28F4C /* MBProgressHUD.m in Sources */,
