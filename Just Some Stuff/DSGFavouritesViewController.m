@@ -10,6 +10,7 @@
 #import "DSGFavouriteCollectionViewCell.h"
 #import "DSGPhotoInfoViewController.h"
 #import "DSGAppDelegate.h"
+#import "DSGFavouritesModel.h"
 #import "DSGPhoto.h"
 
 static NSString *title = @"FAVOURITES";
@@ -122,15 +123,14 @@ static NSString *title = @"FAVOURITES";
 {
     NSIndexPath *indexpath = [self.collectionView indexPathForCell:sender];
     
-    DSGPhoto *selectedPhoto = [self.photoFetchedResultsController objectAtIndexPath:indexpath];
+    DSGFavouritesModel *favouritesModel = [[DSGFavouritesModel alloc] initWithFetchedResultsController:self.photoFetchedResultsController];
+    [favouritesModel setSelectedPhotoAtIndex:indexpath.row];
     
-    DSGBasicPhoto *basicPhoto = [[DSGBasicPhoto alloc] init];
-    [basicPhoto setTitle:selectedPhoto.title];
-    [basicPhoto setIdentification:selectedPhoto.identification];
-    [basicPhoto setImageURL:[NSURL URLWithString:selectedPhoto.imageURLString]];
+    DSGBasicPhoto *selectedPhoto = [favouritesModel getSelectedPhoto];
     
     [[segue.destinationViewController navigationItem] setTitle:selectedPhoto.title];
-    [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:basicPhoto];
+    [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:selectedPhoto];
+    [((DSGPhotoInfoViewController*)segue.destinationViewController) setImageAlbum:favouritesModel];
 }
 
 

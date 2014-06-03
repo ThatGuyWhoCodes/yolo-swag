@@ -125,7 +125,7 @@ static NSString *title = @"BE INSPIRED";
     
     DSGPhotoSet *photoAlbum = [self.trendsModel.featuredTrends objectAtIndex:indexPath.row];
     
-    [cell setCellText:photoAlbum.title];
+    [cell setCellText:[photoAlbum.title uppercaseString]];
     [cell setCellImage:photoAlbum.coverUrl];
     
     return cell;

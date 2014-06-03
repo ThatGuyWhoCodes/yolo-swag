@@ -8,6 +8,12 @@
 
 #import "DSGAlbumModel.h"
 
+@interface DSGAlbumModel ()
+
+@property (nonatomic, strong) DSGBasicPhoto *selected;
+
+@end
+
 @implementation DSGAlbumModel
 
 -(instancetype)initWithPhotoSet:(DSGPhotoSet *)photoSet
@@ -21,16 +27,31 @@
     return self;
 }
 
+-(NSURL *)photoURLAtIndex:(NSUInteger)index
+{
+     return [[self.filteredPhotos objectAtIndex:index] imageURL];
+}
+
+-(NSUInteger)indexOfSlectedPhoto
+{
+    return [self.filteredPhotos indexOfObject:self.selected];
+}
+
+-(DSGBasicPhoto *)getSelectedPhoto
+{
+    return self.selected;
+}
+
+-(BOOL)setSelectedPhotoAtIndex:(NSUInteger)index
+{
+    self.selected = [self.filteredPhotos objectAtIndex:index];
+    return YES;
+}
+
 -(NSUInteger)numberOfPhotos
 {
     return [self.filteredPhotos count];
 }
-
--(NSURL *)imageURLAtIndex:(NSUInteger)index
-{
-    return [[self.filteredPhotos objectAtIndex:index] imageURL];
-}
-
 
 -(void)reset
 {

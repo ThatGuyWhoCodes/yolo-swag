@@ -377,4 +377,13 @@
         NSLog(@"Could not find the photo in the context");
     }
 }
+
+#pragma mark - Navigation
+-(void)handleDoubleTap:(id)sender
+{
+    if ([self.imageAlbum indexOfSlectedPhoto] <= [self.imageAlbum numberOfPhotos])
+    {
+        [self performSegueWithIdentifier:@"toFullScreen" sender:self];
+    }
+}
 @end

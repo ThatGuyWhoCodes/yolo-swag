@@ -32,12 +32,16 @@
     
     pageCount = [self.currentModel numberOfPhotos];
     
-    NSLog(@"Images: %d", pageCount);
+    //NSLog(@"Images: %d", pageCount);
     
     self.pageViews = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < pageCount; ++i) {
+    for (NSInteger i = 0; i < pageCount; ++i)
+    {
         [self.pageViews addObject:[NSNull null]];
     }
+    
+    [self.scrollView setFrame:[UIScreen mainScreen].bounds];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -46,7 +50,8 @@
     [super viewWillAppear:animated];
     
     // 4
-    CGSize pagesScrollViewSize = self.scrollView.frame.size;
+    CGSize pagesScrollViewSize = self.scrollView.bounds.size;
+    
     self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * pageCount, pagesScrollViewSize.height);
     
     [self.scrollView setContentOffset:CGPointMake([self.currentModel indexOfSlectedPhoto] * self.view.bounds.size.width, 0)];

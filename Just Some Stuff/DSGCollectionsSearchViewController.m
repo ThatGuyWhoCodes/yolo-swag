@@ -70,7 +70,7 @@
         collectioViewCell = [[DSGPhotoAlbumCollectionViewCell alloc] init];
     }
     
-    [collectioViewCell.imageView setImageWithURL:[self.albumModel imageURLAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
+    [collectioViewCell.imageView setImageWithURL:[self.albumModel photoURLAtIndex:indexPath.row] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
     
     return collectioViewCell;
 }
@@ -123,11 +123,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+    [self.albumModel setSelectedPhotoAtIndex:indexPath.row];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    DSGBasicPhoto *selectedPhoto = [self.albumModel.filteredPhotos objectAtIndex:indexPath.row];
+    DSGBasicPhoto *selectedPhoto = [self.albumModel getSelectedPhoto];
     [[segue.destinationViewController navigationItem] setTitle:[selectedPhoto title]];
+    
     [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:selectedPhoto];
+    [((DSGPhotoInfoViewController*)segue.destinationViewController) setImageAlbum:self.albumModel];
 }
 
 

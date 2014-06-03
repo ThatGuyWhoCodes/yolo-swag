@@ -30,4 +30,6 @@
 - (IBAction)displayLinks:(id)sender;
 
 - (IBAction)favouriteButtonPressed:(id)sender;
+
+- (IBAction)handleDoubleTap:(id)sender;
 @end
