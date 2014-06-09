@@ -126,6 +126,11 @@ static NSString *title = @"CAMPAIGNS";
     return cell;
 }
 
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    return NO;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];

@@ -94,7 +94,7 @@
                                     <outletCollection property="gestureRecognizers" destination="G0F-b0-gJh" appends="YES" id="fY5-xf-IrT"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-1w-E7C">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-1w-E7C">
                                 <rect key="frame" x="256" y="459" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon_relationships.png">
@@ -145,7 +145,7 @@
                         <outlet property="delegate" destination="ltq-he-L5L" id="b6N-dd-ko5"/>
                     </connections>
                 </panGestureRecognizer>
-                <tapGestureRecognizer cancelsTouchesInView="NO" numberOfTapsRequired="2" id="G0F-b0-gJh">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="G0F-b0-gJh">
                     <connections>
                         <action selector="handleDoubleTap:" destination="ltq-he-L5L" id="wB6-FD-PgV"/>
                         <outlet property="delegate" destination="ltq-he-L5L" id="4yu-z5-ziC"/>
@@ -650,8 +650,8 @@
         <image name="Tab-Browse.png" width="22" height="22"/>
         <image name="Tab-Favourites.png" width="22" height="22"/>
         <image name="Tab-Featured.png" width="22" height="22"/>
-        <image name="icon_relationships-filled.png" width="44" height="44"/>
-        <image name="icon_relationships.png" width="44" height="44"/>
+        <image name="icon_relationships-filled.png" width="33" height="33"/>
+        <image name="icon_relationships.png" width="33" height="33"/>
     </resources>
     <color key="tintColor" red="0.035294117647058823" green="0.36862745098039218" blue="0.30980392156862746" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -660,7 +660,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="WWm-Ak-o41"/>
         <segue reference="UPO-Je-rCq"/>
-        <segue reference="2JB-ot-MaP"/>
     </inferredMetricsTieBreakers>
 </document>
