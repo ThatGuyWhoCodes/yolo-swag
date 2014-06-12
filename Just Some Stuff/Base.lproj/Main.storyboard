@@ -83,7 +83,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iu8-un-OpB">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iu8-un-OpB">
                                 <rect key="frame" x="0.0" y="64" width="320" height="453"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,8 +94,8 @@
                                     <outletCollection property="gestureRecognizers" destination="G0F-b0-gJh" appends="YES" id="fY5-xf-IrT"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-1w-E7C">
-                                <rect key="frame" x="256" y="459" width="44" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-1w-E7C">
+                                <rect key="frame" x="267" y="470" width="33" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon_relationships.png">
                                     <color key="titleColor" red="0.023576384620000002" green="0.49866253399999999" blue="0.00030410890710000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -186,7 +186,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OGm-6S-p2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer cancelsTouchesInView="NO" numberOfTapsRequired="2" id="Rbn-iE-qZe">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="Rbn-iE-qZe">
                     <connections>
                         <action selector="handleDoubleTap:" destination="dl8-X7-lmu" id="sDL-JJ-b5h"/>
                         <outlet property="delegate" destination="dl8-X7-lmu" id="TiU-bK-0Gm"/>
@@ -660,7 +660,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WWm-Ak-o41"/>
         <segue reference="UPO-Je-rCq"/>
+        <segue reference="9JZ-Ad-moY"/>
     </inferredMetricsTieBreakers>
 </document>

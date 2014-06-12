@@ -119,7 +119,7 @@ static NSString *title = @"CAMPAIGNS";
     
     DSGBasicPhoto *currentPhoto = [self.homeModel.photoData objectAtIndex:indexPath.row];
     [cell.image setContentMode:UIViewContentModeScaleAspectFill];
-    [cell.image setImageWithURL:[currentPhoto imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
+    [cell.image setImageWithURL:[currentPhoto imageURL] placeholderImage:[DSGUtilities placeholderImage]]; //TODO: Replace PlaceHolder
     
     [cell.label setText:[currentPhoto title]];
     
@@ -137,7 +137,7 @@ static NSString *title = @"CAMPAIGNS";
     [self.homeModel setSelectedPhotoAtIndex:indexPath.row];
     
     [[segue.destinationViewController navigationItem] setTitle:self.homeModel.selectedPhoto.title];
-    [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:self.homeModel.selectedPhoto];
+    //[((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:self.homeModel.selectedPhoto];
     [((DSGPhotoInfoViewController*)segue.destinationViewController) setImageAlbum:self.homeModel];
     
 }

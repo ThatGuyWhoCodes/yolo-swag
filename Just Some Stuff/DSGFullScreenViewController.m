@@ -12,7 +12,6 @@
 {
     NSUInteger pageCount;
 }
-
 @end
 
 @implementation DSGFullScreenViewController
@@ -41,7 +40,6 @@
     }
     
     [self.scrollView setFrame:[UIScreen mainScreen].bounds];
-    
     // Do any additional setup after loading the view.
 }
 
@@ -80,12 +78,12 @@
     if ((NSNull*)pageView == [NSNull null])
     {
         // 2
-        CGRect frame = self.scrollView.bounds;
+        CGRect frame = [UIScreen mainScreen].bounds;
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
         
         // 3
-        UIImageView *newPageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+        UIImageView *newPageView = [[UIImageView alloc] initWithImage:[DSGUtilities placeholderImage]];
         [newPageView setImageWithURL:[self.currentModel photoURLAtIndex:page]];
         [newPageView setBackgroundColor:[UIColor clearColor]];
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -111,14 +109,6 @@
         [pageView removeFromSuperview];
         [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
     }
-}
-
-- (IBAction)handleDoubleTap:(id)sender
-{
-    NSLog(@"Double Tap, dismiss");
-    [self dismissViewControllerAnimated:YES completion:^{
-        //Find which page we left on
-    }];
 }
 
 - (void)loadVisiblePages
@@ -155,6 +145,21 @@
     // Load the pages that are now on screen
     [self loadVisiblePages];
 }
+
+#pragma mark - Navigation
+- (IBAction)handleDoubleTap:(id)sender
+{
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    
+    [self.currentModel setSelectedPhotoAtIndex:(NSInteger)page];
+    [self.parentVC didDismissFullScreenView];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 
 /*
 #pragma mark - Navigation

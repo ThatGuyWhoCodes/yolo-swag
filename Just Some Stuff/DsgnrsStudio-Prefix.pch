@@ -17,5 +17,6 @@
 
     #import "FlickrKit.h"
     #import "MBProgressHUD.h"
+    #import "DSGUtilities.h"
     #import "SDWebImage/UIImageView+WebCache.h"
 #endif

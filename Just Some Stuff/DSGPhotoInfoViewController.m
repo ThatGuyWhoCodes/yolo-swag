@@ -28,12 +28,30 @@
     
     lastScale = 1.0;
     
+    [self loadSelectedPhotoFromModel];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.favouriteButton setSelected:[self checkIfFavourite]];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)loadSelectedPhotoFromModel
+{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [self.imageView setImageWithURL:[self.basicPhoto imageURL] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]]; //TODO: Replace PlaceHolder
+    [self.imageView setImageWithURL:[[self.imageAlbum getSelectedPhoto] imageURL] placeholderImage:[DSGUtilities placeholderImage]]; //TODO: Replace PlaceHolder
     
     FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
-    [getPhotoInfo setPhoto_id:self.basicPhoto.identification];
+    [getPhotoInfo setPhoto_id:[[self.imageAlbum getSelectedPhoto] identification]];
     
     __weak DSGPhotoInfoViewController* weakSelf = self;
     
@@ -51,19 +69,6 @@
             });
         }
     }];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.favouriteButton setSelected:[self checkIfFavourite]];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (BOOL)checkIfFavourite
@@ -86,13 +91,12 @@
     
     for (DSGPhoto *photo in photoIdentification)
     {
-        if ([photo.identification isEqualToString:self.basicPhoto.identification])
+        if ([photo.identification isEqualToString:[[self.imageAlbum getSelectedPhoto] identification]])
         {
             NSLog(@"Found You");
             isFavourite = YES;
         }
     }
-    
     return isFavourite;
 }
 
@@ -114,8 +118,6 @@
         
         if ([self.fullPhoto hasNotes])
         {
-            static CGFloat spacing = 5.0f;
-            
             self.clickableNotes = [NSMutableArray array];
             
             for (NSString *note in [self.fullPhoto getNotes])
@@ -137,7 +139,7 @@
                 [linkButton setTitle:mutNoteInfo forState:UIControlStateNormal];
                 [linkButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 
-                //[linkButton.titleLabel setFont:[UIFont fontWithName:@"Typola" size:16.0]];
+                [linkButton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16.0]];
                 
                 linkButton.titleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
                 linkButton.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
@@ -148,11 +150,13 @@
                 if ([self.clickableNotes count] > 0)
                 {
                     UIButton *lastButton = [self.clickableNotes lastObject];
-                    [linkButton setFrame:CGRectMake(CGRectGetMinX(lastButton.frame), CGRectGetMaxY(lastButton.frame) + spacing, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
+                    CGFloat alignX = CGRectGetWidth(self.view.frame) - (CGRectGetWidth(linkButton.frame) + 20);
+                    [linkButton setFrame:CGRectMake(/*CGRectGetMinX(lastButton.frame)*/ alignX, CGRectGetMidY(lastButton.frame) + 5.0f, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
                 }
                 else
                 {
-                    [linkButton setFrame:CGRectMake(20, 80, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
+                    CGFloat alignX = CGRectGetWidth(self.view.frame) - (CGRectGetWidth(linkButton.frame) + 20);
+                    [linkButton setFrame:CGRectMake(alignX, 70, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
                 }
                 
                 [linkButton addTarget:self action:@selector(handleTap:) forControlEvents:UIControlEventTouchUpInside];
@@ -199,6 +203,8 @@
     if ([segue.identifier isEqualToString:@"toFullScreen"])
     {
         [((DSGFullScreenViewController*)segue.destinationViewController) setCurrentModel:self.imageAlbum];
+        [((DSGFullScreenViewController*)segue.destinationViewController) setParentVC:self];
+        
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
@@ -220,7 +226,7 @@
     NSArray *arry = [[[self.fullPhoto getNotes] objectAtIndex:index] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";,"]];
     
     //Create the URL string
-    NSString *urlString = [NSString stringWithFormat:@"http://www.%@", [[arry lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@", [[arry lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     
     //Go baby go!
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
@@ -228,6 +234,7 @@
 
 - (IBAction)handlePinch:(UIPinchGestureRecognizer *)pinchRecongizer
 {
+    /*
     static CGFloat zoomLevel = 4.0f;
     
     static CGPoint center;
@@ -245,7 +252,6 @@
         pinchRecongizer.view.frame = CGRectMake(0, 0, initialSize.width * scale, initialSize.height * scale);
         pinchRecongizer.view.center = center;
     }
-
     
     if (pinchRecongizer.state == UIGestureRecognizerStateEnded)
     {
@@ -265,10 +271,12 @@
             pinchRecongizer.view.center = center;
         }
     }
+     */
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panRecognizer
 {
+    /*
     static CGPoint initialCenter;
     if (panRecognizer.state == UIGestureRecognizerStateBegan)
     {
@@ -291,6 +299,7 @@
             [panRecognizer setTranslation:CGPointZero inView:panRecognizer.view];
         }
     }
+     */
 }
 
 #pragma mark - Core Data
@@ -300,11 +309,11 @@
     
     if (favouriteButtonIsSelected)
     {
-        [self removePhotoFromFavourites:self.basicPhoto];
+        [self removePhotoFromFavourites:[self.imageAlbum getSelectedPhoto]];
     }
     else
     {
-        [self createNewPhotoWithBasicPhoto:self.basicPhoto];
+        [self createNewPhotoWithBasicPhoto:[self.imageAlbum getSelectedPhoto]];
     }
     
     [sender setSelected:!favouriteButtonIsSelected];
@@ -386,4 +395,19 @@
         [self performSegueWithIdentifier:@"toFullScreen" sender:self];
     }
 }
+
+-(void)didDismissFullScreenView
+{
+    if ([self.view.subviews containsObject:[self.clickableNotes firstObject]])
+    {
+        for (UIButton *clickableNote in self.clickableNotes)
+        {
+            [clickableNote removeFromSuperview];
+        }
+    }
+
+    
+    [self loadSelectedPhotoFromModel];
+}
+
 @end

@@ -32,6 +32,7 @@
 		0E91BE231934B5F800E6760C /* DSGFavouritesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E91BE221934B5F800E6760C /* DSGFavouritesModel.m */; };
 		0E92E1201945C1F000ED74EC /* icon_relationships-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92E11E1945C1F000ED74EC /* icon_relationships-filled@2x.png */; };
 		0E92E1211945C1F000ED74EC /* icon_relationships@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92E11F1945C1F000ED74EC /* icon_relationships@2x.png */; };
+		0E92E1241949BE9200ED74EC /* DSGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E92E1231949BE9200ED74EC /* DSGUtilities.m */; };
 		0E92F8001924BB8E009149C3 /* DSGFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E92F7FF1924BB8E009149C3 /* DSGFavouritesViewController.m */; };
 		0E92F8051924C291009149C3 /* DSGFavouriteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E92F8041924C291009149C3 /* DSGFavouriteCollectionViewCell.m */; };
 		0E92F80B1924FDF1009149C3 /* Tab-Featured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92F8071924FDF1009149C3 /* Tab-Featured@2x.png */; };
@@ -140,6 +141,9 @@
 		0E91BE221934B5F800E6760C /* DSGFavouritesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGFavouritesModel.m; sourceTree = "<group>"; };
 		0E92E11E1945C1F000ED74EC /* icon_relationships-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_relationships-filled@2x.png"; path = "../../../../Downloads/icons/icon_relationships-filled@2x.png"; sourceTree = "<group>"; };
 		0E92E11F1945C1F000ED74EC /* icon_relationships@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_relationships@2x.png"; path = "../../../../Downloads/icons/icon_relationships@2x.png"; sourceTree = "<group>"; };
+		0E92E1221949BE9200ED74EC /* DSGUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGUtilities.h; sourceTree = "<group>"; };
+		0E92E1231949BE9200ED74EC /* DSGUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGUtilities.m; sourceTree = "<group>"; };
+		0E92E1251949C90500ED74EC /* DSGSingleImageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGSingleImageProtocol.h; sourceTree = "<group>"; };
 		0E92F7FE1924BB8E009149C3 /* DSGFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGFavouritesViewController.h; sourceTree = "<group>"; };
 		0E92F7FF1924BB8E009149C3 /* DSGFavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGFavouritesViewController.m; sourceTree = "<group>"; };
 		0E92F8031924C291009149C3 /* DSGFavouriteCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGFavouriteCollectionViewCell.h; sourceTree = "<group>"; };
@@ -322,6 +326,8 @@
 				0E687F0919143A6E00C28F4C /* DSGBasicPhoto.m */,
 				0E687F1419182F5A00C28F4C /* DSGFullDetailPhoto.h */,
 				0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */,
+				0E92E1221949BE9200ED74EC /* DSGUtilities.h */,
+				0E92E1231949BE9200ED74EC /* DSGUtilities.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 			isa = PBXGroup;
 			children = (
 				0EC61B29192B9DE900FB62FF /* DSGImageCollectionProtocol.h */,
+				0E92E1251949C90500ED74EC /* DSGSingleImageProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -734,6 +741,7 @@
 				0E687F0219140D4F00C28F4C /* DSGSeasonModel.m in Sources */,
 				0EC61B27192B965000FB62FF /* DSGFullScreenViewController.m in Sources */,
 				0E92F8001924BB8E009149C3 /* DSGFavouritesViewController.m in Sources */,
+				0E92E1241949BE9200ED74EC /* DSGUtilities.m in Sources */,
 				0E8311F31920E7AD0013CF9B /* DSGTrendsTableViewController.m in Sources */,
 				0E687F071914171600C28F4C /* MBProgressHUD.m in Sources */,
 			);

@@ -33,12 +33,12 @@
 
 -(void)setCellImage:(NSURL *)imageUrl
 {
-    [self.backgroundImage setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+    [self.backgroundImage setImageWithURL:imageUrl placeholderImage:[DSGUtilities placeholderImage]];
 }
 
 -(void)setCellText:(NSString *)text
 {
-    [self.titleLabel setFont:[UIFont fontWithName:@"Typola" size:35.0]];
+    [self.titleLabel setFont:[DSGUtilities fontTyploaWithSize:35]];
     
     self.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
     self.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);

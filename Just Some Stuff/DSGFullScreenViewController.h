@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "DSGImageCollectionProtocol.h"
+#import "DSGSingleImageProtocol.h"
 
 @interface DSGFullScreenViewController : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) id <DSGImageCollectionProtocol> currentModel;
+
+@property (weak, nonatomic) id <DSGSingleImageProtocol> parentVC;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 

@@ -59,7 +59,7 @@
     }
     
     DSGPhotoSet *photoSet = [self.photoSet objectAtIndex:indexPath.row];
-    [cell.titleLabel setFont:[UIFont fontWithName:@"Typola" size:35.0]];
+    [cell.titleLabel setFont:[DSGUtilities fontTyploaWithSize:35]];
     
     cell.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
     cell.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);

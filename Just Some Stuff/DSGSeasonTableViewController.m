@@ -117,7 +117,7 @@ static NSString *title = @"BROWSE";
     }
     
     DSGPhotoCollection* collection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
-    [cell.titleLabel setFont:[UIFont fontWithName:@"Typola" size:40.0f]];
+    [cell.titleLabel setFont:[DSGUtilities fontTyploaWithSize:35]];
     [cell.titleLabel setText:[[collection title] uppercaseString]];
     
     return cell;

@@ -129,7 +129,7 @@ static NSString *title = @"FAVOURITES";
     DSGBasicPhoto *selectedPhoto = [favouritesModel getSelectedPhoto];
     
     [[segue.destinationViewController navigationItem] setTitle:selectedPhoto.title];
-    [((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:selectedPhoto];
+    //[((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:selectedPhoto];
     [((DSGPhotoInfoViewController*)segue.destinationViewController) setImageAlbum:favouritesModel];
 }
 

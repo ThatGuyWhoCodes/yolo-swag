@@ -21,19 +21,34 @@
     //[[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"1d6aa108698333d0f168ecdbc0842b0b" sharedSecret:@"9a5498c3e69fdacb"];
     [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"682e15dd33987184901839a79274887c" sharedSecret:@"1fcbd998a9019980"];
     
-    UIColor *themeColour = [UIColor colorWithRed:6.0/255.0 green:94.0/255.0 blue:79.0/255.0 alpha:1.0f];
     
-    NSShadow* shadow = [NSShadow new];
-    shadow.shadowOffset = CGSizeMake(0.5f, 0.5f);
-    shadow.shadowColor = themeColour;
-    [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSForegroundColorAttributeName: [UIColor blackColor],
-                                                            NSFontAttributeName: [UIFont fontWithName:@"Typola" size:18.0f],
-                                                            //NSShadowAttributeName: shadow
+    //NSShadow* shadow = [NSShadow new];
+    //shadow.shadowOffset = CGSizeMake(0.5f, 0.5f);
+    //shadow.shadowColor = themeColour;
+    [[UINavigationBar appearance] setTitleTextAttributes: @{NSForegroundColorAttributeName: [DSGUtilities colourTheme],
+                                                            NSFontAttributeName: [DSGUtilities fontTyploaWithSize:22],
                                                             }];
     
-    _window.tintColor = themeColour;
+    _window.tintColor = [DSGUtilities colourTheme];
     
+    /*
+    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
+    NSArray *fontNames;
+    NSInteger indFamily, indFont;
+    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
+    {
+        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
+        fontNames = [[NSArray alloc] initWithArray:
+                     [UIFont fontNamesForFamilyName:
+                      [familyNames objectAtIndex:indFamily]]];
+        for (indFont=0; indFont<[fontNames count]; ++indFont)
+        {
+            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
+        }
+        //[fontNames release];
+    }
+    //[familyNames release];
+    */
     
     return YES;
 }
