@@ -139,12 +139,13 @@
                 [linkButton setTitle:mutNoteInfo forState:UIControlStateNormal];
                 [linkButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 
-                [linkButton.titleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:16.0]];
+                [linkButton.titleLabel setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:12.0]];
                 
                 linkButton.titleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
                 linkButton.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
                 linkButton.titleLabel.layer.shadowOpacity = 1.0f;
                 linkButton.titleLabel.layer.shadowRadius = 1.0f;
+                
                 [linkButton sizeToFit];
                 
                 if ([self.clickableNotes count] > 0)
