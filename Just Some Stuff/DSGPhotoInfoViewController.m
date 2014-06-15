@@ -139,7 +139,7 @@
                 [linkButton setTitle:mutNoteInfo forState:UIControlStateNormal];
                 [linkButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 
-                [linkButton.titleLabel setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:12.0]];
+                [linkButton.titleLabel setFont:[DSGUtilities fontAvenirNextWithSize:13]];
                 
                 linkButton.titleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
                 linkButton.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
@@ -406,6 +406,8 @@
             [clickableNote removeFromSuperview];
         }
     }
+    
+    [self.navigationItem setTitle:[[[self.imageAlbum getSelectedPhoto] title] uppercaseString]];
 
     
     [self loadSelectedPhotoFromModel];

@@ -103,9 +103,10 @@ static NSString *title = @"FAVOURITES";
     
     DSGPhoto *photo = [self.photoFetchedResultsController objectAtIndexPath:indexPath];
     
-    
+    [collectionViewCell.titleLabel setFont:[DSGUtilities fontAvenirNextWithSize:13]];
+    [collectionViewCell.titleLabel setTextColor:[DSGUtilities colourTheme]];
     [collectionViewCell.titleLabel setText: photo.title];
-    [collectionViewCell.backgroundImageView setImageWithURL:[NSURL URLWithString:photo.imageURLString] placeholderImage:[UIImage imageNamed:@"IMG_0038.JPG"]];
+    [collectionViewCell.backgroundImageView setImageWithURL:[NSURL URLWithString:photo.imageURLString] placeholderImage:[DSGUtilities placeholderImage]];
     
     return collectionViewCell;
 }

@@ -121,6 +121,8 @@ static NSString *title = @"CAMPAIGNS";
     [cell.image setContentMode:UIViewContentModeScaleAspectFill];
     [cell.image setImageWithURL:[currentPhoto imageURL] placeholderImage:[DSGUtilities placeholderImage]]; //TODO: Replace PlaceHolder
     
+    [cell.label setFont:[DSGUtilities fontAvenirNextWithSize:13]];
+    [cell.label setTextColor:[DSGUtilities colourTheme]];
     [cell.label setText:[currentPhoto title]];
     
     return cell;

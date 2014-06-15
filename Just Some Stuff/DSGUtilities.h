@@ -12,6 +12,8 @@
 
 +(UIFont *)fontTyploaWithSize:(NSUInteger)fontSize;
 
++(UIFont *)fontAvenirNextWithSize:(NSUInteger)fontSize;
+
 +(UIColor *)colourTheme;
 
 +(UIImage *)placeholderImage;

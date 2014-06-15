@@ -15,6 +15,11 @@
   return [UIFont fontWithName:@"Typola" size:(float)fontSize];
 }
 
++(UIFont *)fontAvenirNextWithSize:(NSUInteger)fontSize
+{
+    return [UIFont fontWithName:@"AvenirNext-Regular" size:(float)fontSize];
+}
+
 +(UIColor *)colourTheme
 {
     return [UIColor colorWithRed:6.0/255.0 green:94.0/255.0 blue:79.0/255.0 alpha:1.0f];
