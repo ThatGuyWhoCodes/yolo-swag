@@ -39,6 +39,8 @@
 		0E92F80C1924FDF1009149C3 /* Tab-Favourites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92F8081924FDF1009149C3 /* Tab-Favourites@2x.png */; };
 		0E92F80D1924FDF1009149C3 /* Tab-BeInspired@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92F8091924FDF1009149C3 /* Tab-BeInspired@2x.png */; };
 		0E92F8101924FEF8009149C3 /* Tab-Browse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92F80F1924FEF8009149C3 /* Tab-Browse@2x.png */; };
+		0E941DCB196162B9001749C3 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E941DCA196162B9001749C3 /* Icon-Small@2x.png */; };
+		0E941DCD1961630E001749C3 /* placement.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E941DCC1961630E001749C3 /* placement.png */; };
 		0EABEAEF18EE099300E95D39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */; };
 		0EABEAFC18EE0E4600E95D39 /* libFlickrKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAF918EE0CD300E95D39 /* libFlickrKit.a */; };
 		0EC0D89218E8B58000ABC8EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0D89118E8B58000ABC8EE /* Foundation.framework */; };
@@ -152,6 +154,8 @@
 		0E92F8081924FDF1009149C3 /* Tab-Favourites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab-Favourites@2x.png"; sourceTree = "<group>"; };
 		0E92F8091924FDF1009149C3 /* Tab-BeInspired@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab-BeInspired@2x.png"; sourceTree = "<group>"; };
 		0E92F80F1924FEF8009149C3 /* Tab-Browse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab-Browse@2x.png"; sourceTree = "<group>"; };
+		0E941DCA196162B9001749C3 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		0E941DCC1961630E001749C3 /* placement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placement.png; sourceTree = "<group>"; };
 		0E9E5226191402060025E3B3 /* TYPOLA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TYPOLA.ttf; sourceTree = "<group>"; };
 		0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0EABEAF318EE0CD200E95D39 /* FlickrKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FlickrKit.xcodeproj; path = "../../../Downloads/FlickrKit-master/FlickrKit.xcodeproj"; sourceTree = "<group>"; };
@@ -511,6 +515,7 @@
 		0EC61B2B192CC59600FB62FF /* App Icons */ = {
 			isa = PBXGroup;
 			children = (
+				0E941DCA196162B9001749C3 /* Icon-Small@2x.png */,
 				0EC61B2C192CC5B100FB62FF /* Icon-40@2x.png */,
 				0EC61B2D192CC5B100FB62FF /* Icon-60@2x.png */,
 			);
@@ -571,6 +576,7 @@
 		0EE1FD84190096B800983D87 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0E941DCC1961630E001749C3 /* placement.png */,
 				0EC61B2B192CC59600FB62FF /* App Icons */,
 				0EC61B2A192CC57F00FB62FF /* Various Icons */,
 				0EE1FD8719009B2000983D87 /* IMG_0038.JPG */,
@@ -686,6 +692,7 @@
 				0EC0D8AA18E8B58000ABC8EE /* Images.xcassets in Resources */,
 				0EC0D89C18E8B58000ABC8EE /* InfoPlist.strings in Resources */,
 				0EC61B2F192CC5B100FB62FF /* Icon-60@2x.png in Resources */,
+				0E941DCD1961630E001749C3 /* placement.png in Resources */,
 				0E92F80C1924FDF1009149C3 /* Tab-Favourites@2x.png in Resources */,
 				0EE1FD8819009B2000983D87 /* IMG_0038.JPG in Resources */,
 				0E92F80B1924FDF1009149C3 /* Tab-Featured@2x.png in Resources */,
@@ -696,6 +703,7 @@
 				0E92E1211945C1F000ED74EC /* icon_relationships@2x.png in Resources */,
 				0E92E1201945C1F000ED74EC /* icon_relationships-filled@2x.png in Resources */,
 				0E92F8101924FEF8009149C3 /* Tab-Browse@2x.png in Resources */,
+				0E941DCB196162B9001749C3 /* Icon-Small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,8 +879,8 @@
 		0EC0D8C118E8B58000ABC8EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Munjoma (93VWVPDZGQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Munjoma (93VWVPDZGQ)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -900,8 +908,8 @@
 		0EC0D8C218E8B58000ABC8EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Brian Munjoma (592QM63P2J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brian Munjoma (592QM63P2J)";
 				FRAMEWORK_SEARCH_PATHS = (

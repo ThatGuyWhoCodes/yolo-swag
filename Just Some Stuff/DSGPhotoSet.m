@@ -55,7 +55,7 @@
              _photos = photos;
      }
          
-         complection(YES);
+    complection(YES);
         
     }];
 }

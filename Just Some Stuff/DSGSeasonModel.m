@@ -36,9 +36,14 @@
             {
                 if (!([collectionData isEqual:[collections firstObject]] || [collectionData isEqual:[collections lastObject]]))
                 {
-                    [collectionTreeArray addObject:[[DSGPhotoCollection alloc] initWithDictionary:collectionData]];
+                    DSGPhotoCollection* collection = [[DSGPhotoCollection alloc] initWithDictionary:collectionData];
+                    [collection parseCoverWithDitction:collectionData andCompletetion:^(BOOL complete) {
+                        NSLog(@"+Leaving Group");
+                    }];
+                    [collectionTreeArray addObject:collection];
                 }
             }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 if ([collectionTreeArray count] > 1)
@@ -53,6 +58,7 @@
                     
                 }
             });
+        
         }
         else
         {

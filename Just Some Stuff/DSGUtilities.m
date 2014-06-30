@@ -27,6 +27,6 @@
 
 +(UIImage *)placeholderImage
 {
-    return [UIImage imageNamed:@"IMG_0038.JPG"];
+    return [UIImage imageNamed:@"placement.png"];
 }
 @end

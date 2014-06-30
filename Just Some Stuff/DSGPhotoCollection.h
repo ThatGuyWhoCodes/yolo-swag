@@ -21,4 +21,6 @@
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
+-(void)parseCoverWithDitction:(NSDictionary *)dict andCompletetion:(void (^)(BOOL))completion;
+
 @end

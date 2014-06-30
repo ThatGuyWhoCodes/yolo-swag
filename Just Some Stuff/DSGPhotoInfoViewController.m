@@ -409,7 +409,6 @@
     
     [self.navigationItem setTitle:[[[self.imageAlbum getSelectedPhoto] title] uppercaseString]];
 
-    
     [self loadSelectedPhotoFromModel];
 }
 

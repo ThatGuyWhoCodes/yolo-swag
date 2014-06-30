@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DSGImageCollectionProtocol.h"
 #import "DSGSingleImageProtocol.h"
-#import "DSGBasicPhoto.h"
 #import "DSGFullDetailPhoto.h"
 
 @interface DSGPhotoInfoViewController : UIViewController <UIGestureRecognizerDelegate, DSGSingleImageProtocol>
@@ -17,7 +16,6 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) DSGFullDetailPhoto *fullPhoto;
-//@property (nonatomic, strong) DSGBasicPhoto *basicPhoto;
 
 @property (nonatomic, strong) id <DSGImageCollectionProtocol> imageAlbum;
 
