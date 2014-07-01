@@ -58,7 +58,7 @@
     [self setFilteredPhotos:self.allPhotos.photos];
 }
 
--(void)searchAblumUsingText:(NSString *)searchText completionBlock:(void (^)(BOOL))complection;
+-(void)searchAblumUsingText:(NSString *)searchText completionBlock:(void (^)(BOOL))completion;
 {
     FlickrKit *flickKit = [FlickrKit sharedFlickrKit];
     
@@ -86,19 +86,19 @@
                     }
                 }
                 weakSelf.filteredPhotos = tempBasicPhotoArr;
-                complection(YES);
+                completion(YES);
             }
             else
             {
                 NSLog(@"Error: %@", error);
-                complection(NO);
+                completion(NO);
                 
             }
         }
         else
         {
             NSLog(@"Error: %@", error);
-            complection(NO);
+            completion(NO);
         }
     }];
 }

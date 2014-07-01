@@ -29,6 +29,6 @@
 
 -(NSSet *) photoIDSet;
 
--(void)getPhotoSetCoverImageWtihCompletionBlock:(void (^)(BOOL))complection;
+-(void)getPhotoSetCoverImageWtihCompletionBlock:(void (^)(BOOL))completion;
 
 @end

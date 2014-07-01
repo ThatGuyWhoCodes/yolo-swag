@@ -15,6 +15,6 @@
 
 +(DSGSeasonModel *)sharedInstance; 
 
--(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection;
+-(void)fetchDataWithCompletionBlock:(void (^)(BOOL))completion;
 
 @end

@@ -11,6 +11,7 @@
 
 @interface DSGHomeViewController : UICollectionViewController
 
+///The model for the view controller
 @property (strong, nonatomic) DSGHomeModel *homeModel;
 
 @end

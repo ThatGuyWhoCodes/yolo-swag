@@ -18,4 +18,7 @@
 
 +(UIImage *)placeholderImage;
 
++(UIButton *)noConnectionButtonWithTarget:(UIViewController *)target selector:(SEL)selector;
+
++(UIButton *)linkButtonWithTitle:(NSString *)title;
 @end

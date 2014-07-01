@@ -21,7 +21,7 @@
     return sharedInstance;
 }
 
--(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection;
+-(void)fetchDataWithCompletionBlock:(void (^)(BOOL))completion;
 {
     FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
     [collectionTree setUser_id:@"115055955@N06"];  //TODO: To univeral consts
@@ -49,12 +49,12 @@
                 if ([collectionTreeArray count] > 1)
                 {
                     self.collectionsData = collectionTreeArray;
-                    complection(YES);
+                    completion(YES);
                 }
                 else
                 {
                     NSLog(@"Error: %@", error);
-                    complection(NO);
+                    completion(NO);
                     
                 }
             });
@@ -63,7 +63,7 @@
         else
         {
             NSLog(@"Error: %@", error);
-            complection(NO);
+            completion(NO);
         }
     }];
 }

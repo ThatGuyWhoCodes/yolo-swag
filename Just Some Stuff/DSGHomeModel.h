@@ -25,7 +25,7 @@
 /**
  * A fresh pull of the photo data
  */
--(void)freshPullWithCompletionBlock:(void (^)(BOOL))complection;
+-(void)freshPullWithCompletionBlock:(void (^)(BOOL))completion;
 
 +(DSGHomeModel *)sharedInstance;
 

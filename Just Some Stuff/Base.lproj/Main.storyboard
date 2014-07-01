@@ -431,7 +431,6 @@
                     </view>
                     <connections>
                         <outlet property="webView" destination="6Cs-lc-2GD" id="S9x-1Z-cFx"/>
-                        <segue destination="qFR-Le-dSt" kind="modal" identifier="beginApp" id="A8b-bj-wQL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNE-DE-eRV" userLabel="First Responder" sceneMemberID="firstResponder"/>

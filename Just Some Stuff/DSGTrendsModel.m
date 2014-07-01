@@ -20,7 +20,7 @@
     return sharedInstance;
 }
 
--(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection
+-(void)fetchDataWithCompletionBlock:(void (^)(BOOL))completion
 {
     dispatch_group_t taskGroup = dispatch_group_create();
     dispatch_queue_t taskQueue = dispatch_get_main_queue();
@@ -52,17 +52,17 @@
                 if ([photoSets count] > 1)
                 {
                     self.featuredTrends = photoSets;
-                    complection(YES);
+                    completion(YES);
                 }
                 else
                 {
-                    complection(NO);
+                    completion(NO);
                 }
             });
         }
         else
         {
-            complection(NO);
+            completion(NO);
         }
     }];
 

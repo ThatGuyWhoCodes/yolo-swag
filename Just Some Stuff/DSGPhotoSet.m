@@ -23,7 +23,7 @@
     return self;
 }
 
--(void)getPhotoSetCoverImageWtihCompletionBlock:(void (^)(BOOL))complection
+-(void)getPhotoSetCoverImageWtihCompletionBlock:(void (^)(BOOL))completion
 {
     FKFlickrPhotosetsGetPhotos *getPhotos = [[FKFlickrPhotosetsGetPhotos alloc] init];
     [getPhotos setPhotoset_id:_set_identifer];
@@ -55,7 +55,7 @@
              _photos = photos;
      }
          
-    complection(YES);
+    completion(YES);
         
     }];
 }

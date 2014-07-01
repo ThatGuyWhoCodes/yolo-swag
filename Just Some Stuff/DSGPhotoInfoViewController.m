@@ -24,10 +24,12 @@
 {
     [super viewDidLoad];
     
+    //grab the Core Data MOC
     self.managedObjectContext = ((DSGAppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     
     lastScale = 1.0;
     
+    //Load the selected photo from the model
     [self loadSelectedPhotoFromModel];
 }
 
@@ -35,6 +37,7 @@
 {
     [super viewWillAppear:animated];
     
+    //Set the favourites button is selected or not
     [self.favouriteButton setSelected:[self checkIfFavourite]];
 }
 
@@ -46,24 +49,33 @@
 
 -(void)loadSelectedPhotoFromModel
 {
+    //Add progress wheel to view
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    //Set the image along with a placeholder
     [self.imageView setImageWithURL:[[self.imageAlbum getSelectedPhoto] imageURL] placeholderImage:[DSGUtilities placeholderImage]]; //TODO: Replace PlaceHolder
     
+    //Set up GetPhotoInfo Object
     FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
     [getPhotoInfo setPhoto_id:[[self.imageAlbum getSelectedPhoto] identification]];
     
+    //Get full info about the current photo
     __weak DSGPhotoInfoViewController* weakSelf = self;
-    
     [[FlickrKit sharedFlickrKit] call:getPhotoInfo completion:^(NSDictionary *response, NSError *error) {
         if ([[response objectForKey:@"stat"] isEqualToString:@"ok"])
         {
+            //Set the full photo
             weakSelf.fullPhoto = [[DSGFullDetailPhoto alloc] initWithDictionary:response];
+            
+            //Get the original image
             [weakSelf getOriginalImage];
+            
+            //Insert any notes found
             [weakSelf insertNotes];
         }
         else
         {
+            //Remove progress whell
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
             });
@@ -73,40 +85,44 @@
 
 - (BOOL)checkIfFavourite
 {
+    //Generate a fecthRequest on CD for the selected photo
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"DSGPhoto" inManagedObjectContext:self.managedObjectContext];
-    
     NSSortDescriptor *identificationSort = [[NSSortDescriptor alloc] initWithKey:@"identification" ascending:YES];
     
+    //Set the sortDescriptor and entity
     [fetchRequest setSortDescriptors:@[identificationSort]];
-    
     [fetchRequest setEntity:entity];
     
+    //Execute the fecthRequest
     NSError *requestError = nil;
-    
-    NSArray *photoIdentification = [self.managedObjectContext executeFetchRequest:fetchRequest error:&requestError];
+    NSArray *favouritePhotos = [self.managedObjectContext executeFetchRequest:fetchRequest error:&requestError];
     
     BOOL isFavourite = NO;
     
-    for (DSGPhoto *photo in photoIdentification)
+    //Loop through all photos returned
+    for (DSGPhoto *photo in favouritePhotos)
     {
+        //Set flag if photo IDs match
         if ([photo.identification isEqualToString:[[self.imageAlbum getSelectedPhoto] identification]])
         {
             NSLog(@"Found You");
             isFavourite = YES;
         }
     }
+    
+    //Return flag
     return isFavourite;
 }
 
 - (void)getOriginalImage
 {
+    __weak DSGPhotoInfoViewController* weakSelf = self;
     [self.fullPhoto fetchOriginalImageWithCompletetionBlock:^(BOOL complete) {
         if (complete)
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.imageView setImageWithURL:self.fullPhoto.orginalImage placeholderImage:self.imageView.image];
+                [weakSelf.imageView setImageWithURL:weakSelf.fullPhoto.orginalImage placeholderImage:weakSelf.imageView.image];
             });
         }
     }];
@@ -126,15 +142,18 @@
                 
                 NSMutableString *mutNoteInfo = [NSMutableString string];
                 
-                for (NSString *stringChunck in segmentedNotes)
+                for (NSString *stringChunk in segmentedNotes)
                 {
-                    if (![stringChunck isEqualToString:[segmentedNotes lastObject]])
+                    if (![stringChunk isEqualToString:[segmentedNotes lastObject]])
                     {
-                        [mutNoteInfo appendString:[stringChunck uppercaseString]];
+                        [mutNoteInfo appendString:[stringChunk uppercaseString]];
                     }
                 }
                 
-                UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                UIButton *linkButton = [DSGUtilities linkButtonWithTitle:mutNoteInfo];
+                
+                /*
+                [UIButton buttonWithType:UIButtonTypeCustom];
                 
                 [linkButton setTitle:mutNoteInfo forState:UIControlStateNormal];
                 [linkButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -147,12 +166,13 @@
                 linkButton.titleLabel.layer.shadowRadius = 1.0f;
                 
                 [linkButton sizeToFit];
+                 */
                 
                 if ([self.clickableNotes count] > 0)
                 {
                     UIButton *lastButton = [self.clickableNotes lastObject];
                     CGFloat alignX = CGRectGetWidth(self.view.frame) - (CGRectGetWidth(linkButton.frame) + 20);
-                    [linkButton setFrame:CGRectMake(/*CGRectGetMinX(lastButton.frame)*/ alignX, CGRectGetMidY(lastButton.frame) + 5.0f, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
+                    [linkButton setFrame:CGRectMake(alignX, CGRectGetMidY(lastButton.frame) + 5.0f, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
                 }
                 else
                 {
@@ -195,7 +215,6 @@
     }
 }
 
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -220,14 +239,14 @@
 
 - (void)handleTap:(id)sender
 {
-    //Get the Index of th clicked button
+    //Get the Index of the clicked button
     NSUInteger index = [self.clickableNotes indexOfObject:sender];
     
     //Get the array of notes
-    NSArray *arry = [[[self.fullPhoto getNotes] objectAtIndex:index] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";,"]];
+    NSArray *seperatedNoteInfoList = [[[self.fullPhoto getNotes] objectAtIndex:index] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@";,"]];
     
-    //Create the URL string
-    NSString *urlString = [NSString stringWithFormat:@"http://%@", [[arry lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    //Create the URL string and remove any whitespace
+    NSString *urlString = [NSString stringWithFormat:@"http://%@", [[seperatedNoteInfoList lastObject] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     
     //Go baby go!
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
@@ -306,7 +325,7 @@
 #pragma mark - Core Data
 - (IBAction)favouriteButtonPressed:(id)sender
 {
-    BOOL favouriteButtonIsSelected = ((UIButton *)sender).isSelected;
+    BOOL favouriteButtonIsSelected = [((UIButton *)sender) isSelected];
     
     if (favouriteButtonIsSelected)
     {

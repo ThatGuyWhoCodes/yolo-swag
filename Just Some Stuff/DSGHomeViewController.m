@@ -19,15 +19,17 @@ static NSString *title = @"CAMPAIGNS";
     [super viewDidLoad];
     
     self.homeModel = [DSGHomeModel sharedInstance];
-    //Add the refresh control
+    
+    //Add the refresh control to the collectionView
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:refreshControl];
     
+    //Add progress wheel to view
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    //Pull new data
     __weak DSGHomeViewController *weakSelf = self;
-    
     [self refreshModelWithCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
              [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
@@ -46,18 +48,6 @@ static NSString *title = @"CAMPAIGNS";
 {
     //Reset the Navigation title
     [self.navigationItem setTitle:title];
-    
-    //If the momdel is empty, try and get new data
-    /*
-    if ([self.homeModel.photoData count] < 1)
-    {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        [self refreshModelWithCompletionBlock:^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        }];
-    }
-    */
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,26 +60,55 @@ static NSString *title = @"CAMPAIGNS";
 - (void)refreshModelWithCompletionBlock:(void (^)(void))complection
 {
     __weak DSGHomeViewController *weakSelf = self;
-    
     [self.homeModel freshPullWithCompletionBlock:^(BOOL complete) {
         
         if (complete)
         {
+            //If pulled new data, reload collectionView
             [weakSelf.collectionView reloadData];
         }
         else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //Display alertView
                 [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                
+                //Display 'no connection image' is model is empty
+                if ([weakSelf.homeModel.photoData count] < 1)
+                {
+                    UIButton *refreshButton = [DSGUtilities noConnectionButtonWithTarget:weakSelf selector:@selector(retryConnection:)];
+                    [weakSelf.view addSubview:refreshButton];
+                }
             });
         }
-            complection();
+        complection();
     }];
 }
+
+#pragma mark - Retry Connection
+-(void)retryConnection:(id)sender
+{
+    //Remove the button from view
+    [sender removeFromSuperview];
+    
+    //Add a progress wheel
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    //Attempt to pull new data
+    __weak DSGHomeViewController *weakSelf = self;
+    [self refreshModelWithCompletionBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        });
+    }];
+}
+
 
 #pragma mark - Refresh Control
 -(void)refresh:(id)sender
 {
+    //Attempt to puul new and remove refresh control when complete
     [self refreshModelWithCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [sender endRefreshing];
@@ -117,10 +136,14 @@ static NSString *title = @"CAMPAIGNS";
         cell = [[DSGHomeCollectionViewCell alloc] init];
     }
     
+    //Get image data at index
     DSGBasicPhoto *currentPhoto = [self.homeModel.photoData objectAtIndex:indexPath.row];
-    [cell.image setContentMode:UIViewContentModeScaleAspectFill];
-    [cell.image setImageWithURL:[currentPhoto imageURL] placeholderImage:[DSGUtilities placeholderImage]]; //TODO: Replace PlaceHolder
     
+    //Set the photo
+    [cell.image setContentMode:UIViewContentModeScaleAspectFill];
+    [cell.image setImageWithURL:[currentPhoto imageURL] placeholderImage:[DSGUtilities placeholderImage]];
+    
+    //Set the text label
     [cell.label setFont:[DSGUtilities fontAvenirNextWithSize:13]];
     [cell.label setTextColor:[DSGUtilities colourTheme]];
     [cell.label setText:[currentPhoto title]];
@@ -128,6 +151,8 @@ static NSString *title = @"CAMPAIGNS";
     return cell;
 }
 
+
+#pragma mark - Navigation
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     return NO;
@@ -139,8 +164,6 @@ static NSString *title = @"CAMPAIGNS";
     [self.homeModel setSelectedPhotoAtIndex:indexPath.row];
     
     [[segue.destinationViewController navigationItem] setTitle:self.homeModel.selectedPhoto.title];
-    //[((DSGPhotoInfoViewController*)segue.destinationViewController) setBasicPhoto:self.homeModel.selectedPhoto];
     [((DSGPhotoInfoViewController*)segue.destinationViewController) setImageAlbum:self.homeModel];
-    
 }
 @end

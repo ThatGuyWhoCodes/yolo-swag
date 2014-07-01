@@ -60,7 +60,7 @@
     [self.photoData removeAllObjects];
 }
 
--(void)freshPullWithCompletionBlock:(void (^)(BOOL))complection
+-(void)freshPullWithCompletionBlock:(void (^)(BOOL))completion
 {
     FlickrKit *fk = [FlickrKit sharedFlickrKit];
     
@@ -82,15 +82,16 @@
                 {
                     [photoURLs addObject:[[DSGBasicPhoto alloc] initWithDictionary:pData]];
                 }
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if ([photoURLs count] > 1)
                     {
                         self.photoData = photoURLs;
-                        complection(YES);
+                        completion(YES);
                     }
                     else
                     {
-                        complection(NO);
+                        completion(NO);
                     }
                 });
             }];
@@ -98,7 +99,7 @@
         }
         else
         {
-            complection(NO);
+            completion(NO);
         }
     }];
 }

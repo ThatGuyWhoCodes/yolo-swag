@@ -29,4 +29,33 @@
 {
     return [UIImage imageNamed:@"placement.png"];
 }
+
++(UIButton *)noConnectionButtonWithTarget:(UIViewController *)target selector:(SEL)selector
+{
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setFrame:target.view.frame];
+    [refreshButton setImage:[UIImage imageNamed:@"No_Connection.png"] forState:UIControlStateNormal];
+    [refreshButton addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+    
+    return refreshButton;
+}
+
++(UIButton *)linkButtonWithTitle:(NSString *)title
+{
+    UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [linkButton setTitle:title forState:UIControlStateNormal];
+    [linkButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [linkButton.titleLabel setFont:[DSGUtilities fontAvenirNextWithSize:13]];
+    
+    linkButton.titleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
+    linkButton.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    linkButton.titleLabel.layer.shadowOpacity = 1.0f;
+    linkButton.titleLabel.layer.shadowRadius = 1.0f;
+    
+    [linkButton sizeToFit];
+    
+    return linkButton;
+}
 @end

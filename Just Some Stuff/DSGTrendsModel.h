@@ -15,7 +15,7 @@
 
 +(DSGTrendsModel *)sharedInstance;
 
--(void)fetchDataWithCompletionBlock:(void (^)(BOOL))complection;
+-(void)fetchDataWithCompletionBlock:(void (^)(BOOL))completion;
 
 -(NSUInteger)numberOfTrends;
 

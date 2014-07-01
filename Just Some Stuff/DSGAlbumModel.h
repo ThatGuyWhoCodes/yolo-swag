@@ -19,5 +19,5 @@
 
 -(void)reset;
 
--(void)searchAblumUsingText:(NSString *)searchText completionBlock:(void (^)(BOOL))complection;
+-(void)searchAblumUsingText:(NSString *)searchText completionBlock:(void (^)(BOOL))completion;
 @end
