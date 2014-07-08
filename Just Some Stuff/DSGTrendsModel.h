@@ -17,6 +17,6 @@
 
 -(void)fetchDataWithCompletionBlock:(void (^)(BOOL))completion;
 
--(NSUInteger)numberOfTrends;
+-(NSUInteger)count;
 
 @end

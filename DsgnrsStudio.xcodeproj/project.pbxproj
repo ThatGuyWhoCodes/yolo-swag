@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E052052196AA857008F101B /* DSGConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E052051196AA857008F101B /* DSGConfig.m */; };
 		0E687EFD1914045200C28F4C /* TYPOLA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E9E5226191402060025E3B3 /* TYPOLA.ttf */; };
 		0E687F0219140D4F00C28F4C /* DSGSeasonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F0119140D4F00C28F4C /* DSGSeasonModel.m */; };
 		0E687F071914171600C28F4C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E687F061914171600C28F4C /* MBProgressHUD.m */; };
@@ -101,6 +102,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E052050196AA857008F101B /* DSGConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGConfig.h; sourceTree = "<group>"; };
+		0E052051196AA857008F101B /* DSGConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGConfig.m; sourceTree = "<group>"; };
 		0E687F0019140D4F00C28F4C /* DSGSeasonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGSeasonModel.h; sourceTree = "<group>"; };
 		0E687F0119140D4F00C28F4C /* DSGSeasonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGSeasonModel.m; sourceTree = "<group>"; };
 		0E687F051914171600C28F4C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 				0E687F1519182F5A00C28F4C /* DSGFullDetailPhoto.m */,
 				0E92E1221949BE9200ED74EC /* DSGUtilities.h */,
 				0E92E1231949BE9200ED74EC /* DSGUtilities.m */,
+				0E052050196AA857008F101B /* DSGConfig.h */,
+				0E052051196AA857008F101B /* DSGConfig.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				0E687F0219140D4F00C28F4C /* DSGSeasonModel.m in Sources */,
 				0EC61B27192B965000FB62FF /* DSGFullScreenViewController.m in Sources */,
 				0E92F8001924BB8E009149C3 /* DSGFavouritesViewController.m in Sources */,
+				0E052052196AA857008F101B /* DSGConfig.m in Sources */,
 				0E92E1241949BE9200ED74EC /* DSGUtilities.m in Sources */,
 				0E8311F31920E7AD0013CF9B /* DSGTrendsTableViewController.m in Sources */,
 				0E687F071914171600C28F4C /* MBProgressHUD.m in Sources */,

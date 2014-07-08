@@ -17,4 +17,6 @@
 
 -(void)fetchDataWithCompletionBlock:(void (^)(BOOL))completion;
 
+-(NSUInteger) count;
+
 @end

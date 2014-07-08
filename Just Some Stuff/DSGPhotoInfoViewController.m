@@ -53,7 +53,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     //Set the image along with a placeholder
-    [self.imageView setImageWithURL:[[self.imageAlbum getSelectedPhoto] imageURL] placeholderImage:[DSGUtilities placeholderImage]]; //TODO: Replace PlaceHolder
+    [self.imageView setImageWithURL:[[self.imageAlbum getSelectedPhoto] imageURL] placeholderImage:[DSGUtilities placeholderImage]];
     
     //Set up GetPhotoInfo Object
     FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
@@ -322,27 +322,39 @@
      */
 }
 
-#pragma mark - Core Data
+#pragma mark - Core Data Interaction
 - (IBAction)favouriteButtonPressed:(id)sender
 {
-    BOOL favouriteButtonIsSelected = [((UIButton *)sender) isSelected];
-    
-    if (favouriteButtonIsSelected)
+    BOOL actionIsSuccessful = NO;
+    //Add or remove photo from favourotes depending if it is selected
+    if ([sender isSelected])
     {
-        [self removePhotoFromFavourites:[self.imageAlbum getSelectedPhoto]];
+        //Show alert if unable to add photo to favourites
+        actionIsSuccessful = [self removePhotoFromFavourites:[self.imageAlbum getSelectedPhoto]];
+        if (!actionIsSuccessful)
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Unable to remove photo to favourites" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        }
     }
     else
     {
-        [self createNewPhotoWithBasicPhoto:[self.imageAlbum getSelectedPhoto]];
+        //Show alert if unable to add photo to favourites
+        actionIsSuccessful = [self addPhotoToFavourites:[self.imageAlbum getSelectedPhoto]];
+        if (!actionIsSuccessful)
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Unable to add photo to favourites" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        }
     }
     
-    [sender setSelected:!favouriteButtonIsSelected];
+    //Reverse isSelected property
+    if (actionIsSuccessful)
+    {
+        [sender setSelected:![sender isSelected]];
+    }
 }
 
-- (BOOL)createNewPhotoWithBasicPhoto:(DSGBasicPhoto *)basicPhoto
+- (BOOL)addPhotoToFavourites:(DSGBasicPhoto *)basicPhoto
 {
-    BOOL result = NO;
-    
     DSGPhoto* photo = [NSEntityDescription insertNewObjectForEntityForName:@"DSGPhoto" inManagedObjectContext:self.managedObjectContext];
     
     if (!photo)
@@ -366,10 +378,10 @@
     {
         NSLog(@"Failed to save the photo. Error: %@", savingError);
     }
-    return result;
+    return NO;
 }
 
-- (void)removePhotoFromFavourites:(DSGBasicPhoto *)basicPhoto
+- (BOOL)removePhotoFromFavourites:(DSGBasicPhoto *)basicPhoto
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     
@@ -392,6 +404,7 @@
                 if ([self.managedObjectContext save:&savingError])
                 {
                     NSLog(@"Successfully deleted photo");
+                    return YES;
                 }
                 else
                 {
@@ -405,6 +418,8 @@
     {
         NSLog(@"Could not find the photo in the context");
     }
+    
+    return NO;
 }
 
 #pragma mark - Navigation

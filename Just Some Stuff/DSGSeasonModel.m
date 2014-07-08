@@ -7,6 +7,7 @@
 //
 
 #import "DSGSeasonModel.h"
+#import "DSGConfig.h"
 
 @implementation DSGSeasonModel
 
@@ -21,10 +22,15 @@
     return sharedInstance;
 }
 
+-(NSUInteger) count
+{
+    return [self.collectionsData count];
+}
+
 -(void)fetchDataWithCompletionBlock:(void (^)(BOOL))completion;
 {
     FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
-    [collectionTree setUser_id:@"115055955@N06"];  //TODO: To univeral consts
+    [collectionTree setUser_id:[DSGConfig userID]];
     
     
     [[FlickrKit sharedFlickrKit] call:collectionTree completion:^(NSDictionary *response, NSError *error) {
@@ -38,7 +44,7 @@
                 {
                     DSGPhotoCollection* collection = [[DSGPhotoCollection alloc] initWithDictionary:collectionData];
                     [collection parseCoverWithDitction:collectionData andCompletetion:^(BOOL complete) {
-                        NSLog(@"+Leaving Group");
+                        //NSLog(@"+Leaving Group");
                     }];
                     [collectionTreeArray addObject:collection];
                 }

@@ -19,8 +19,6 @@
         _collection_title = [dictionary objectForKey:@"title"];
         _collection_description = [dictionary objectForKey:@"description"];
         _collection_imagesSet = [NSMutableArray array];
-        
-        //[self parseCoverWithDitction:dictionary andCompletetion:completion];
     }
     return self;
 }

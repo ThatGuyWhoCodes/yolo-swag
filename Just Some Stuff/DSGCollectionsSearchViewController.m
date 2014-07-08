@@ -70,7 +70,7 @@
         collectioViewCell = [[DSGPhotoAlbumCollectionViewCell alloc] init];
     }
     
-    [collectioViewCell.imageView setImageWithURL:[self.albumModel photoURLAtIndex:indexPath.row] placeholderImage:[DSGUtilities placeholderImage]]; //TODO: Replace PlaceHolder
+    [collectioViewCell.imageView setImageWithURL:[self.albumModel photoURLAtIndex:indexPath.row] placeholderImage:[DSGUtilities placeholderImage]];
     
     return collectioViewCell;
 }

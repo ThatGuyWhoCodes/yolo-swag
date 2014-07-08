@@ -7,6 +7,7 @@
 //
 
 #import "DSGTrendsModel.h"
+#import "DSGConfig.h"
 
 @implementation DSGTrendsModel
 
@@ -28,7 +29,7 @@
     FlickrKit *fk = [FlickrKit sharedFlickrKit];
     
     FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
-    [collectionTree setUser_id:@"115055955@N06"];  //TODO: To univeral consts
+    [collectionTree setUser_id:[DSGConfig userID]];
     
     [fk call:collectionTree completion:^(NSDictionary *response, NSError *error) {
         if (response)
@@ -68,7 +69,7 @@
 
 }
 
--(NSUInteger)numberOfTrends
+-(NSUInteger)count
 {
     return [self.featuredTrends count];
 }

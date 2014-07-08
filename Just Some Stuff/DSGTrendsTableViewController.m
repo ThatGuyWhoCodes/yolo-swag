@@ -10,7 +10,6 @@
 #import "DSGCollectionsSearchViewController.h"
 #import "DSGTrendsTableViewCell.h"
 
-#import "MBProgressHUD.h"
 static NSString *title = @"BE INSPIRED";
 
 @interface DSGTrendsTableViewController ()
@@ -36,20 +35,7 @@ static NSString *title = @"BE INSPIRED";
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [self.trendsModel fetchDataWithCompletionBlock:^(BOOL complete) {
-        if (complete)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.tableView reloadData];
-            });
-        }
-        else
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-            });
-        }
-        
+    [self refreshModelWithCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         });
@@ -73,10 +59,12 @@ static NSString *title = @"BE INSPIRED";
     [self.navigationItem setTitle:title];
 }
 
-#pragma mark - Refresh Control
--(void)refresh:(id)sender
+# pragma mark - Model interaction
+
+- (void)refreshModelWithCompletionBlock:(void (^)(void))complection
 {
     __weak DSGTrendsTableViewController *weakSelf = self;
+    
     [self.trendsModel fetchDataWithCompletionBlock:^(BOOL complete) {
         if (complete)
         {
@@ -88,9 +76,44 @@ static NSString *title = @"BE INSPIRED";
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                
+                //Display 'no connection image' is model is empty
+                if ([weakSelf.trendsModel count] < 1)
+                {
+                    UIButton *refreshButton = [DSGUtilities noConnectionButtonWithTarget:weakSelf selector:@selector(retryConnection:)];
+                    [weakSelf.view addSubview:refreshButton];
+                }
             });
         }
         
+        complection();
+    }];
+}
+
+#pragma mark - Retry Connection
+
+-(void)retryConnection:(id)sender
+{
+    //Remove the button from view
+    [sender removeFromSuperview];
+    
+    //Add a progress wheel
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    //Attempt to pull new data
+    __weak DSGTrendsTableViewController *weakSelf = self;
+    [self refreshModelWithCompletionBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        });
+    }];
+}
+
+#pragma mark - Refresh Control
+
+-(void)refresh:(id)sender
+{
+    [self refreshModelWithCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [sender endRefreshing];
         });
@@ -108,7 +131,7 @@ static NSString *title = @"BE INSPIRED";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.trendsModel numberOfTrends];
+    return [self.trendsModel count];
 }
 
 

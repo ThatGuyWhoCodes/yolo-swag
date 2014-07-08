@@ -7,6 +7,7 @@
 //
 
 #import "DSGAlbumModel.h"
+#import "DSGConfig.h"
 
 @interface DSGAlbumModel ()
 
@@ -63,7 +64,7 @@
     FlickrKit *flickKit = [FlickrKit sharedFlickrKit];
     
     FKFlickrPhotosSearch *searchPhotos = [[FKFlickrPhotosSearch alloc] init];
-    [searchPhotos setUser_id:@"115055955@N06"]; //TODO: To univeral consts
+    [searchPhotos setUser_id:[DSGConfig userID]];
     [searchPhotos setText:searchText];
     
     __weak DSGAlbumModel *weakSelf = self;

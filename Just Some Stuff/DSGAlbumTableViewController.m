@@ -67,7 +67,7 @@
     cell.titleLabel.layer.shadowRadius = 1.0f;
     
     [cell.titleLabel setText:[photoSet.set_title uppercaseString]];
-    [cell.backgroundImage setImageWithURL:photoSet.coverUrl placeholderImage:[DSGUtilities placeholderImage]]; //TODO: Replace PlaceHolder
+    [cell.backgroundImage setImageWithURL:photoSet.coverUrl placeholderImage:[DSGUtilities placeholderImage]];
     
     return cell;
 }

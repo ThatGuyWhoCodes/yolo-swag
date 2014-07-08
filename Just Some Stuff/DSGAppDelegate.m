@@ -7,6 +7,7 @@
 //
 
 #import "DSGAppDelegate.h"
+#import "DSGConfig.h"
 
 @implementation DSGAppDelegate
 
@@ -17,49 +18,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
-    //[[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"1d6aa108698333d0f168ecdbc0842b0b" sharedSecret:@"9a5498c3e69fdacb"];
-    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"682e15dd33987184901839a79274887c" sharedSecret:@"1fcbd998a9019980"];
+    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:[DSGConfig APIKey] sharedSecret:[DSGConfig sharedSecret]];
     
     
     //NSShadow* shadow = [NSShadow new];
     //shadow.shadowOffset = CGSizeMake(0.5f, 0.5f);
     //shadow.shadowColor = themeColour;
+    
+    //Set the font of the NavigationBar
     [[UINavigationBar appearance] setTitleTextAttributes: @{NSForegroundColorAttributeName: [DSGUtilities colourTheme],
                                                             NSFontAttributeName: [DSGUtilities fontTyploaWithSize:22],
                                                             }];
     
+    //Set the colour/tint
     _window.tintColor = [DSGUtilities colourTheme];
     
-    /*
-    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
-    NSArray *fontNames;
-    NSInteger indFamily, indFont;
-    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
-    {
-        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
-        fontNames = [[NSArray alloc] initWithArray:
-                     [UIFont fontNamesForFamilyName:
-                      [familyNames objectAtIndex:indFamily]]];
-        for (indFont=0; indFont<[fontNames count]; ++indFont)
-        {
-            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
-        }
-        //[fontNames release];
-    }
-    //[familyNames release];
-    */
-    
-    return YES;
-}
-
-- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    NSString *scheme = [url scheme];
-	if([@"dsgnrsstudio" isEqualToString:scheme])
-    {
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"UserAuthCallbackNotification" object:url userInfo:nil];
-    }
     return YES;
 }
 							

@@ -32,25 +32,11 @@ static NSString *title = @"BROWSE";
     __weak DSGSeasonTableViewController *weakSelf = self;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
-        
-        if (complete)
-        {
-            [weakSelf.tableView reloadData];
-        }
-        else
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                 [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-            });
-        }
-        
+    [self refreshModelWithCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         });
-        
     }];
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -68,9 +54,12 @@ static NSString *title = @"BROWSE";
     // Dispose of any resources that can be recreated.
 }
 
--(void)refresh:(id)sender
+# pragma mark - Model interaction
+
+- (void)refreshModelWithCompletionBlock:(void (^)(void))complection
 {
     __weak DSGSeasonTableViewController *weakSelf = self;
+    
     [self.browseModel fetchDataWithCompletionBlock:^(BOOL complete) {
         
         if (complete)
@@ -81,9 +70,46 @@ static NSString *title = @"BROWSE";
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                
+                //Display 'no connection image' is model is empty
+                if ([weakSelf.browseModel count] < 1)
+                {
+                    UIButton *refreshButton = [DSGUtilities noConnectionButtonWithTarget:weakSelf selector:@selector(retryConnection:)];
+                    [weakSelf.view addSubview:refreshButton];
+                }
             });
         }
         
+        complection();
+        
+    }];
+}
+
+#pragma mark - Retry Connection
+
+-(void)retryConnection:(id)sender
+{
+    //Remove the button from view
+    [sender removeFromSuperview];
+    
+    //Add a progress wheel
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    //Attempt to pull new data
+    __weak DSGSeasonTableViewController *weakSelf = self;
+    [self refreshModelWithCompletionBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        });
+    }];
+}
+
+
+#pragma mark - Refresh Control
+
+-(void)refresh:(id)sender
+{
+    [self refreshModelWithCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [sender endRefreshing];
         });

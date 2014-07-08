@@ -120,7 +120,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo Title" id="5f9-Mi-DRV">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="OKh-uh-IN6">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="compose" id="OKh-uh-IN6">
                             <connections>
                                 <action selector="displayLinks:" destination="ltq-he-L5L" id="Iyv-OZ-Qsd"/>
                             </connections>
@@ -409,34 +409,6 @@
             </objects>
             <point key="canvasLocation" x="-479" y="259"/>
         </scene>
-        <!--Log In View Controller - Login-->
-        <scene sceneID="alX-1H-Yzv">
-            <objects>
-                <viewController title="Login" id="b67-dx-hKn" customClass="DSGLogInViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TYL-c8-zrF"/>
-                        <viewControllerLayoutGuide type="bottom" id="fhv-dP-7Bw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jth-3a-jZe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Cs-lc-2GD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="webView" destination="6Cs-lc-2GD" id="S9x-1Z-cFx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gNE-DE-eRV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1010" y="259"/>
-        </scene>
         <!--Navigation Controller - Home-->
         <scene sceneID="dzJ-9a-v2g">
             <objects>
@@ -468,11 +440,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="yF5-uG-8Ms">
-                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.38431376220000002" green="0.90980398650000005" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
-                    </toolbar>
                     <connections>
                         <segue destination="3Bt-DP-aQo" kind="relationship" relationship="rootViewController" id="cwb-lu-i2H"/>
                     </connections>
