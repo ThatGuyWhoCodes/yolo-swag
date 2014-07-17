@@ -27,7 +27,9 @@
 
 +(UIImage *)placeholderImage
 {
-    return [UIImage imageNamed:@"placement.png"];
+    //return [UIImage imageNamed:@"placement.png"];
+    
+    return [UIImage imageNamed:@"image_placeholder.jpg"];
 }
 
 +(UIButton *)noConnectionButtonWithTarget:(UIViewController *)target selector:(SEL)selector

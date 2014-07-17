@@ -84,7 +84,7 @@
         
         // 3
         UIImageView *newPageView = [[UIImageView alloc] initWithImage:[DSGUtilities placeholderImage]];
-        [newPageView setImageWithURL:[self.currentModel photoURLAtIndex:page]];
+        [newPageView setImageWithURL:[self.currentModel photoURLAtIndex:page] placeholderImage:[DSGUtilities placeholderImage]];
         [newPageView setBackgroundColor:[UIColor clearColor]];
         newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;

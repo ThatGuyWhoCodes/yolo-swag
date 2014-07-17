@@ -68,6 +68,7 @@
 		0EE1FD7919008D6100983D87 /* DSGHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1FD7819008D6100983D87 /* DSGHomeCollectionViewCell.m */; };
 		0EE1FD811900941F00983D87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD801900941F00983D87 /* ImageIO.framework */; };
 		0EE1FD8A1900A3D500983D87 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1FD891900A3D500983D87 /* SDWebImage.framework */; };
+		0EF09EE1197403CB00179E7B /* image_placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0EF09EE0197403CB00179E7B /* image_placeholder.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 		0EE1FD801900941F00983D87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		0EE1FD82190095EB00983D87 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		0EE1FD891900A3D500983D87 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		0EF09EE0197403CB00179E7B /* image_placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_placeholder.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,6 +438,7 @@
 		0EB026981962DB9E002B462B /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
+				0EF09EE0197403CB00179E7B /* image_placeholder.jpg */,
 				0EB0269B1962DE26002B462B /* No_Connection@2x.png */,
 				0E941DCC1961630E001749C3 /* placement.png */,
 			);
@@ -725,6 +728,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EB026961962DA05002B462B /* Default@2x.png in Resources */,
+				0EF09EE1197403CB00179E7B /* image_placeholder.jpg in Resources */,
 				0EC0D8AA18E8B58000ABC8EE /* Images.xcassets in Resources */,
 				0EC0D89C18E8B58000ABC8EE /* InfoPlist.strings in Resources */,
 				0EB026951962DA05002B462B /* Default-568h@2x.png in Resources */,
