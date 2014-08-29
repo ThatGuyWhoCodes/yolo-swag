@@ -152,22 +152,6 @@
                 
                 UIButton *linkButton = [DSGUtilities linkButtonWithTitle:mutNoteInfo];
                 
-                /*
-                [UIButton buttonWithType:UIButtonTypeCustom];
-                
-                [linkButton setTitle:mutNoteInfo forState:UIControlStateNormal];
-                [linkButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                
-                [linkButton.titleLabel setFont:[DSGUtilities fontAvenirNextWithSize:13]];
-                
-                linkButton.titleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
-                linkButton.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-                linkButton.titleLabel.layer.shadowOpacity = 1.0f;
-                linkButton.titleLabel.layer.shadowRadius = 1.0f;
-                
-                [linkButton sizeToFit];
-                 */
-                
                 if ([self.clickableNotes count] > 0)
                 {
                     UIButton *lastButton = [self.clickableNotes lastObject];
@@ -177,7 +161,7 @@
                 else
                 {
                     CGFloat alignX = CGRectGetWidth(self.view.frame) - (CGRectGetWidth(linkButton.frame) + 20);
-                    [linkButton setFrame:CGRectMake(alignX, 140, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
+                    [linkButton setFrame:CGRectMake(alignX, 120, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
                 }
                 
                 [linkButton addTarget:self action:@selector(handleTap:) forControlEvents:UIControlEventTouchUpInside];
