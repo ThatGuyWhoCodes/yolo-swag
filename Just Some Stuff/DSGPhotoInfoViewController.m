@@ -177,7 +177,7 @@
                 else
                 {
                     CGFloat alignX = CGRectGetWidth(self.view.frame) - (CGRectGetWidth(linkButton.frame) + 20);
-                    [linkButton setFrame:CGRectMake(alignX, 70, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
+                    [linkButton setFrame:CGRectMake(alignX, 140, CGRectGetWidth(linkButton.frame), CGRectGetHeight(linkButton.frame))];
                 }
                 
                 [linkButton addTarget:self action:@selector(handleTap:) forControlEvents:UIControlEventTouchUpInside];
