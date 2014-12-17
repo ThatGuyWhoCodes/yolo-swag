@@ -11,5 +11,6 @@
 @interface DSGCollectionTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *cellBackGroundImage;
 
 @end

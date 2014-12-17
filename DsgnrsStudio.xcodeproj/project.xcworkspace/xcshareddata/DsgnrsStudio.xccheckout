@@ -10,22 +10,26 @@
 	<string>DsgnrsStudio</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>78898A75511299DFAFB3DF526EAB623593142FA2</key>
+		<string>github.com:ThatGuyWhoCodes/yolo-swag.git</string>
 		<key>CF06F623-53FA-4F43-A719-A493403996A8</key>
 		<string>ssh://github.com/ThatGuyWhoCodes/yolo-swag.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>DsgnrsStudio.xcodeproj/project.xcworkspace</string>
+	<string>DsgnrsStudio.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CF06F623-53FA-4F43-A719-A493403996A8</key>
+		<key>78898A75511299DFAFB3DF526EAB623593142FA2</key>
 		<string>../..</string>
+		<key>CF06F623-53FA-4F43-A719-A493403996A8</key>
+		<string>../../../Just Some Stuff</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/ThatGuyWhoCodes/yolo-swag.git</string>
+	<string>github.com:ThatGuyWhoCodes/yolo-swag.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CF06F623-53FA-4F43-A719-A493403996A8</string>
+	<string>78898A75511299DFAFB3DF526EAB623593142FA2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>CF06F623-53FA-4F43-A719-A493403996A8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Just Some Stuff</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>78898A75511299DFAFB3DF526EAB623593142FA2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Just%20Some%20Stuff</string>
 		</dict>
 	</array>
 </dict>

@@ -1,4 +1,4 @@
-//
+///
 //  DSGPhotoAlbumTableViewController.m
 //  DsgnrsStudio
 //
@@ -7,10 +7,13 @@
 //
 
 #import "DSGAlbumTableViewController.h"
-#import "DSGCollectionsSearchViewController.h"
+//#import "DSGCollectionsSearchViewController.h"
+#import "DSGNestedCollectionViewController.h"
+
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "DSGPhotoAlbumTableViewCell.h"
-#import "DSGPhotoSet.h"
+//#import "DSGPhotoSet.h"
+#import "DSGPhotoCollection.h"
 
 @interface DSGAlbumTableViewController ()
 
@@ -43,7 +46,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.photoSet count];
+    return [self.albumCollection count];
 }
 
 
@@ -58,7 +61,7 @@
         cell = [[DSGPhotoAlbumTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:photoSetCellID];
     }
     
-    DSGPhotoSet *photoSet = [self.photoSet objectAtIndex:indexPath.row];
+    DSGPhotoCollection *collection = [self.albumCollection objectAtIndex:indexPath.row];
     [cell.titleLabel setFont:[DSGUtilities fontTyploaWithSize:35]];
     
     cell.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
@@ -66,8 +69,8 @@
     cell.titleLabel.layer.shadowOpacity = 1.0f;
     cell.titleLabel.layer.shadowRadius = 1.0f;
     
-    [cell.titleLabel setText:[photoSet.set_title uppercaseString]];
-    [cell.backgroundImage setImageWithURL:photoSet.coverUrl placeholderImage:[DSGUtilities placeholderImage]];
+    [cell.titleLabel setText:[collection.title uppercaseString]];
+    [cell.backgroundImage setImageWithURL:[collection getRandomCoverImageURL] placeholderImage:[DSGUtilities placeholderImage]];
     
     return cell;
 }
@@ -76,9 +79,11 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationItem setTitle:[NSString string]];
+    [super viewWillDisappear:animated];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.navigationItem setTitle:self.title];
 }
 
@@ -91,10 +96,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
-    DSGPhotoSet *selectedPhotoset = [self.photoSet objectAtIndex:indexPath.row];
+    DSGPhotoCollection *selectedCollection = [self.albumCollection objectAtIndex:indexPath.row];
     
-    [(DSGCollectionsSearchViewController *)segue.destinationViewController setPhotoSet:selectedPhotoset];
-    [[(DSGCollectionsSearchViewController *)segue.destinationViewController navigationItem] setTitle:[[selectedPhotoset title] uppercaseString]];
+    [(DSGNestedCollectionViewController *)segue.destinationViewController setPhotoCollection:selectedCollection];
+    [[(DSGNestedCollectionViewController *)segue.destinationViewController navigationItem] setTitle:[[selectedCollection title] uppercaseString]];
+    
 }
 
 

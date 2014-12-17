@@ -18,7 +18,6 @@
         _set_title = [dictionary objectForKey:@"title"];
         _set_description = [dictionary objectForKey:@"description"];
         _set_identifer = [dictionary objectForKey:@"id"];
-        //[self getPhotoSetCoverImage];
     }
     return self;
 }
@@ -53,9 +52,13 @@
              }
              self.photoUrls = photoURLS;
              _photos = photos;
-     }
          
-    completion(YES);
+         completion(YES);
+     }
+     else
+     {
+         completion(NO);
+     }
         
     }];
 }

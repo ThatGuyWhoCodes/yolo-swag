@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DSGPhotoCollection.h"
+//#import "DSGPhotoCollection.h"
+#import "DSGNestedCollection.h"
 
 @interface DSGSeasonModel : NSObject
 

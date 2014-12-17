@@ -32,6 +32,7 @@
     [collectionTree setUser_id:[DSGConfig userID]];
     
     [fk call:collectionTree completion:^(NSDictionary *response, NSError *error) {
+        
         if (response)
         {
             NSDictionary *featuredCollection = [[response valueForKeyPath:@"collections.collection"] lastObject];

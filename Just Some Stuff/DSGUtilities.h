@@ -21,4 +21,6 @@
 +(UIButton *)noConnectionButtonWithTarget:(UIViewController *)target selector:(SEL)selector;
 
 +(UIButton *)linkButtonWithTitle:(NSString *)title;
+
++(UIImage *)imageForTitle:(NSString *)collectionTitle;
 @end

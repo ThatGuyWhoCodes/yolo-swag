@@ -52,10 +52,12 @@ static NSString *title = @"BE INSPIRED";
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationItem setTitle:[NSString string]];
+    [super viewWillDisappear:animated];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.navigationItem setTitle:title];
 }
 
@@ -75,7 +77,7 @@ static NSString *title = @"BE INSPIRED";
         else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
                 
                 //Display 'no connection image' is model is empty
                 if ([weakSelf.trendsModel count] < 1)

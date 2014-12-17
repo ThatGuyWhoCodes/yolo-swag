@@ -32,26 +32,54 @@ static NSString *title = @"BROWSE";
     __weak DSGSeasonTableViewController *weakSelf = self;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [self refreshModelWithCompletionBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-        });
-    }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self refreshModelWithCompletionBlock:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+            });
+        }];
+    });
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationItem setTitle:[NSString string]];
+    [super viewWillDisappear:animated];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationItem setTitle:title];
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // iOS 7
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    // iOS 8
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)viewDidLayoutSubviews
+{
+    // iOS 7
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    // iOS 8
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 # pragma mark - Model interaction
@@ -64,12 +92,14 @@ static NSString *title = @"BROWSE";
         
         if (complete)
         {
-            [weakSelf.tableView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.tableView reloadData];
+            });
         }
         else
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, trya again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Unable to retirve photos, try again later" delegate:weakSelf cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
                 
                 //Display 'no connection image' is model is empty
                 if ([weakSelf.browseModel count] < 1)
@@ -140,11 +170,19 @@ static NSString *title = @"BROWSE";
     if (!cell)
     {
         cell = [[DSGCollectionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableCellID];
+        cell.imageView.contentMode = UIViewContentModeScaleToFill;
     }
     
-    DSGPhotoCollection* collection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
+    DSGNestedCollection* collection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
     [cell.titleLabel setFont:[DSGUtilities fontTyploaWithSize:35]];
+    
+    cell.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
+    cell.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    cell.titleLabel.layer.shadowOpacity = 1.0f;
+    cell.titleLabel.layer.shadowRadius = 2.0f;
+    
     [cell.titleLabel setText:[[collection title] uppercaseString]];
+    [cell.cellBackGroundImage setImage:[DSGUtilities imageForTitle:[collection title]]];
     
     return cell;
 }
@@ -155,9 +193,9 @@ static NSString *title = @"BROWSE";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
-    DSGPhotoCollection *currentCollection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
+    DSGNestedCollection *currentCollection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
     
-    [(DSGAlbumTableViewController *)segue.destinationViewController setPhotoSet:[currentCollection collectionImageSet]];
+    [(DSGAlbumTableViewController *)segue.destinationViewController setAlbumCollection:[currentCollection collectionCollection]];
     [[(DSGAlbumTableViewController *)segue.destinationViewController navigationItem] setTitle:[[currentCollection title] uppercaseString]];
 }
 

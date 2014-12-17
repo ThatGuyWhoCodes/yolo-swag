@@ -7,6 +7,8 @@
 //
 
 #import "DSGSeasonModel.h"
+#import "DSGPhotoSet.h"
+#import "DSGPhotoCollection.h"
 #import "DSGConfig.h"
 
 @implementation DSGSeasonModel
@@ -32,46 +34,69 @@
     FKFlickrCollectionsGetTree *collectionTree = [[FKFlickrCollectionsGetTree alloc] init];
     [collectionTree setUser_id:[DSGConfig userID]];
     
+    dispatch_group_t taskGroup = dispatch_group_create();
+    dispatch_queue_t taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    __weak DSGSeasonModel *weakSelf = self;
     
     [[FlickrKit sharedFlickrKit] call:collectionTree completion:^(NSDictionary *response, NSError *error) {
         if (response)
         {
             NSMutableArray *collectionTreeArray = [NSMutableArray array];
             NSArray *collections = [response valueForKeyPath:@"collections.collection"];
+
+            
             for (NSDictionary *collectionData in collections)
             {
                 if (!([collectionData isEqual:[collections firstObject]] || [collectionData isEqual:[collections lastObject]]))
                 {
-                    DSGPhotoCollection* collection = [[DSGPhotoCollection alloc] initWithDictionary:collectionData];
-                    [collection parseCoverWithDitction:collectionData andCompletetion:^(BOOL complete) {
-                        //NSLog(@"+Leaving Group");
-                    }];
+                    
+                    DSGNestedCollection* collection = [[DSGNestedCollection alloc] initWithDictionary:collectionData];
+                    [collection pareseData:collectionData];
                     [collectionTreeArray addObject:collection];
                 }
             }
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                if ([collectionTreeArray count] > 1)
+             weakSelf.collectionsData = collectionTreeArray;
+            
+            for (DSGNestedCollection *currentNest in weakSelf.collectionsData)
+            {
+                for (DSGPhotoCollection *currentCollection in currentNest.collectionCollection)
                 {
-                    self.collectionsData = collectionTreeArray;
+                    for (DSGPhotoSet *currentSet in currentCollection.collection_imagesSet)
+                    {
+                        
+                        dispatch_group_enter(taskGroup);
+                        
+                        [currentSet getPhotoSetCoverImageWtihCompletionBlock:^(BOOL complete) {
+                            
+                            dispatch_group_leave(taskGroup);
+                        }];
+                    }
+                }
+            }
+            
+            dispatch_group_notify(taskGroup, taskQueue, ^{
+                
+                if ([collectionTreeArray count] > 0)
+                {
+                    DLog(@"Finished");
                     completion(YES);
                 }
                 else
                 {
-                    NSLog(@"Error: %@", error);
+                    DLog(@"Error: %@", error);
                     completion(NO);
                     
                 }
             });
-        
+            
         }
         else
         {
-            NSLog(@"Error: %@", error);
+            DLog(@"Error: %@", error);
             completion(NO);
         }
-    }];
-}
+    }];}
 
 @end

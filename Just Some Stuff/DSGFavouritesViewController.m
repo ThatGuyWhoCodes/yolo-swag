@@ -71,9 +71,11 @@ static NSString *title = @"FAVOURITES";
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationItem setTitle:[NSString string]];
+    [super viewWillDisappear:animated];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.navigationItem setTitle:title];
 }
 

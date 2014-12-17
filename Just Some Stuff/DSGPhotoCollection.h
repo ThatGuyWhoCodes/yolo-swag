@@ -23,4 +23,10 @@
 
 -(void)parseCoverWithDitction:(NSDictionary *)dict andCompletetion:(void (^)(BOOL))completion;
 
+-(void)parseCoverWithDitction:(NSDictionary *)dict group:(dispatch_group_t)disPatchGroup andCompletetion:(void (^)(BOOL))completion;
+
+- (void) pareseData:(NSDictionary *)dictionary;
+
+-(NSURL *)getRandomCoverImageURL;
+
 @end

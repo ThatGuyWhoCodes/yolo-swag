@@ -33,6 +33,10 @@
     //Set the colour/tint
     _window.tintColor = [DSGUtilities colourTheme];
     
+    if ([self.window.rootViewController isKindOfClass:[UITabBarController class]]) {
+        [(UITabBarController *)self.window.rootViewController setSelectedIndex:1];
+    }
+    
     return YES;
 }
 							
@@ -50,6 +54,9 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    if ([self.window.rootViewController isKindOfClass:[UITabBarController class]]) {
+        [(UITabBarController *)self.window.rootViewController setSelectedIndex:1];
+    }
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 

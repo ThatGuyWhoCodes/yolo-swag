@@ -82,6 +82,8 @@
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
         
+        DLog(@"%@", NSStringFromCGRect(frame));
+        
         // 3
         UIImageView *newPageView = [[UIImageView alloc] initWithImage:[DSGUtilities placeholderImage]];
         [newPageView setImageWithURL:[self.currentModel photoURLAtIndex:page] placeholderImage:[DSGUtilities placeholderImage]];
@@ -156,7 +158,7 @@
     [self.parentVC didDismissFullScreenView];
     
     [self dismissViewControllerAnimated:YES completion:^{
-        
+        DLog(@"Something");
     }];
 }
 

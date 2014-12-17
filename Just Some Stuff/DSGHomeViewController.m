@@ -42,10 +42,12 @@ static NSString *title = @"CAMPAIGNS";
 {
     //Set the title to an empty string to remove the title
     [self.navigationItem setTitle:[NSString string]];
+    [super viewWillDisappear:animated];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     //Reset the Navigation title
     [self.navigationItem setTitle:title];
 }

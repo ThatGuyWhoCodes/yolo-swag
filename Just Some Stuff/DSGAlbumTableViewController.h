@@ -10,6 +10,6 @@
 
 @interface DSGAlbumTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *photoSet;
+@property (strong, nonatomic) NSArray *albumCollection;
 
 @end
