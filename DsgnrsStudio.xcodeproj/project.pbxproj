@@ -1045,7 +1045,7 @@
 					/Users/Unbounded/Downloads,
 					"$(PROJECT_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Just Some Stuff/DsgnrsStudio-Prefix.pch";
 				INFOPLIST_FILE = "Just Some Stuff/DsgnrsStudio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1075,7 +1075,7 @@
 					/Users/Unbounded/Downloads,
 					"$(PROJECT_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Just Some Stuff/DsgnrsStudio-Prefix.pch";
 				INFOPLIST_FILE = "Just Some Stuff/DsgnrsStudio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1102,7 +1102,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
+				GCC_PREFIX_HEADER = "Just Some Stuff/DsgnrsStudio-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1124,7 +1124,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Just Some Stuff/Just Some Stuff-Prefix.pch";
+				GCC_PREFIX_HEADER = "Just Some Stuff/DsgnrsStudio-Prefix.pch";
 				INFOPLIST_FILE = "Just Some StuffTests/DsgnrsStudioTests-Info.plist";
 				PRODUCT_NAME = DsgnrsStudioTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";

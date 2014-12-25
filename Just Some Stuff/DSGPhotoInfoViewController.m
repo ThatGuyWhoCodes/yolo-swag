@@ -236,70 +236,70 @@
 - (IBAction)handlePinch:(UIPinchGestureRecognizer *)pinchRecongizer
 {
     
-//    static CGFloat zoomLevel = 4.0f;
-//    
-//    static CGPoint center;
-//    static CGSize initialSize;
-//    if (pinchRecongizer.state == UIGestureRecognizerStateBegan)
-//    {
-//        center = pinchRecongizer.view.center;
-//        initialSize = pinchRecongizer.view.frame.size;
-//    }
-//    
-//    CGFloat scale = pinchRecongizer.scale;
-//    //lastScale += (1 - scale);
-//    if (scale > 0.5f && scale < 2.5f)
-//    {
-//        pinchRecongizer.view.frame = CGRectMake(0, 0, initialSize.width * scale, initialSize.height * scale);
-//        pinchRecongizer.view.center = center;
-//    }
-//    
-//    if (pinchRecongizer.state == UIGestureRecognizerStateEnded)
-//    {
-//        static float animationTime = 0.2f;
-//        
-//        if (!CGRectContainsRect(pinchRecongizer.view.frame, self.view.bounds))
-//        {
-//            [UIView animateWithDuration:animationTime animations:^{
-//                pinchRecongizer.view.frame = self.view.frame;
-//            }];
-//        }
-//        if ((CGRectGetHeight(pinchRecongizer.view.frame) > (CGRectGetHeight(self.view.frame) * zoomLevel)))
-//        {
-//            [UIView animateWithDuration:animationTime animations:^{
-//                pinchRecongizer.view.frame = CGRectMake(0, 0, (CGRectGetWidth(self.view.frame) * zoomLevel), (CGRectGetHeight(self.view.frame) * zoomLevel));
-//            }];
-//            pinchRecongizer.view.center = center;
-//        }
-//    }
+    static CGFloat zoomLevel = 4.0f;
+    
+    static CGPoint center;
+    static CGSize initialSize;
+    if (pinchRecongizer.state == UIGestureRecognizerStateBegan)
+    {
+        center = pinchRecongizer.view.center;
+        initialSize = pinchRecongizer.view.frame.size;
+    }
+    
+    CGFloat scale = pinchRecongizer.scale;
+    //lastScale += (1 - scale);
+    if (scale > 0.5f && scale < 2.5f)
+    {
+        pinchRecongizer.view.frame = CGRectMake(0, 0, initialSize.width * scale, initialSize.height * scale);
+        pinchRecongizer.view.center = center;
+    }
+    
+    if (pinchRecongizer.state == UIGestureRecognizerStateEnded)
+    {
+        static float animationTime = 0.2f;
+        
+        if (!CGRectContainsRect(pinchRecongizer.view.frame, self.view.bounds))
+        {
+            [UIView animateWithDuration:animationTime animations:^{
+                pinchRecongizer.view.frame = self.view.frame;
+            }];
+        }
+        if ((CGRectGetHeight(pinchRecongizer.view.frame) > (CGRectGetHeight(self.view.frame) * zoomLevel)))
+        {
+            [UIView animateWithDuration:animationTime animations:^{
+                pinchRecongizer.view.frame = CGRectMake(0, 0, (CGRectGetWidth(self.view.frame) * zoomLevel), (CGRectGetHeight(self.view.frame) * zoomLevel));
+            }];
+            pinchRecongizer.view.center = center;
+        }
+    }
     
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panRecognizer
 {
     
-//    static CGPoint initialCenter;
-//    if (panRecognizer.state == UIGestureRecognizerStateBegan)
-//    {
-//        initialCenter = panRecognizer.view.center;
-//    }
-//    
-//    if (panRecognizer.state == UIGestureRecognizerStateChanged)
-//    {
-//        CGPoint translation = [panRecognizer translationInView:panRecognizer.view];
-//        UIView *newView = [[UIView alloc] initWithFrame:panRecognizer.view.frame];
-//        newView.center = CGPointMake(initialCenter.x + translation.x, initialCenter.y + translation.y);
-//        
-//        if (CGRectContainsRect(newView.frame, self.view.bounds))
-//        {
-//            panRecognizer.view.center = CGPointMake(initialCenter.x + translation.x, initialCenter.y + translation.y);
-//        }
-//        else
-//        {
-//            initialCenter = panRecognizer.view.center;
-//            [panRecognizer setTranslation:CGPointZero inView:panRecognizer.view];
-//        }
-//    }
+    static CGPoint initialCenter;
+    if (panRecognizer.state == UIGestureRecognizerStateBegan)
+    {
+        initialCenter = panRecognizer.view.center;
+    }
+    
+    if (panRecognizer.state == UIGestureRecognizerStateChanged)
+    {
+        CGPoint translation = [panRecognizer translationInView:panRecognizer.view];
+        UIView *newView = [[UIView alloc] initWithFrame:panRecognizer.view.frame];
+        newView.center = CGPointMake(initialCenter.x + translation.x, initialCenter.y + translation.y);
+        
+        if (CGRectContainsRect(newView.frame, self.view.bounds))
+        {
+            panRecognizer.view.center = CGPointMake(initialCenter.x + translation.x, initialCenter.y + translation.y);
+        }
+        else
+        {
+            initialCenter = panRecognizer.view.center;
+            [panRecognizer setTranslation:CGPointZero inView:panRecognizer.view];
+        }
+    }
 }
 
 #pragma mark - Core Data Interaction
