@@ -23,4 +23,7 @@
 +(UIButton *)linkButtonWithTitle:(NSString *)title;
 
 +(UIImage *)imageForTitle:(NSString *)collectionTitle;
+
++(CGRect) deviceSize;
+
 @end

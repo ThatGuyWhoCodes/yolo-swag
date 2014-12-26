@@ -183,22 +183,17 @@ static NSString *title = @"CAMPAIGNS";
 
 
 #pragma mark - ADBannerViewDelegate
--(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
-    NSLog(@"Unable to show ads. Error: %@", [error localizedDescription]);
-    
-    // Hide the ad banner.
-    [UIView animateWithDuration:0.5 animations:^{
-        self.iAd.alpha = 0.0;
-    }];
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"%@", [error localizedDescription]);
+    [self hideAd];
 }
 
--(void)bannerViewDidLoadAd:(ADBannerView *)banner{
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
     NSLog(@"Ad Banner did load ad.");
     
-    // Show the ad banner.
-    [UIView animateWithDuration:0.5 animations:^{
-        self.iAd.alpha = 1.0;
-    }];
+    [self displayAd];
 }
 
 -(BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
@@ -212,6 +207,38 @@ static NSString *title = @"CAMPAIGNS";
 {
     NSLog(@"Ad Banner action did finish");
 }
+
+
+#pragma mark - Display/Hide iAd
+- (void) displayAd
+{
+    // Show the ad banner.
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        if (CGRectGetMaxY(self.collectionView.frame) >= CGRectGetMaxY(self.view.frame))
+        {
+            CGRect tempRect = self.collectionView.frame;
+            tempRect.size.height -= CGRectGetHeight(self.iAd.frame);
+            self.collectionView.frame = tempRect;
+        }
+        
+        self.iAd.alpha = 1.0;
+    }];
+}
+
+- (void) hideAd
+{
+    // Hide the ad banner.
+    [UIView animateWithDuration:0.5 animations:^{
+        self.iAd.alpha = 0.0;
+        
+        if (CGRectGetMaxY(self.collectionView.frame) != CGRectGetMaxY(self.view.frame))
+        {
+            self.collectionView.frame = self.view.frame;
+        }
+    }];
+}
+
 
 @end
 

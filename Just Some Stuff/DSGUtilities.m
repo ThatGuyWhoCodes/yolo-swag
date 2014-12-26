@@ -81,4 +81,9 @@
     
     return [self placeholderImage];
 }
+
++(CGRect) deviceSize
+{
+    return [[UIScreen mainScreen] bounds];
+}
 @end
