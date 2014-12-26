@@ -62,6 +62,7 @@
 		0E92F80D1924FDF1009149C3 /* Tab-BeInspired@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92F8091924FDF1009149C3 /* Tab-BeInspired@2x.png */; };
 		0E92F8101924FEF8009149C3 /* Tab-Browse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92F80F1924FEF8009149C3 /* Tab-Browse@2x.png */; };
 		0E941DCD1961630E001749C3 /* placement.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E941DCC1961630E001749C3 /* placement.png */; };
+		0E94524F1A4CDCEC0030CB4A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94524E1A4CDCEC0030CB4A /* iAd.framework */; };
 		0EABEAEF18EE099300E95D39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */; };
 		0EABEAFC18EE0E4600E95D39 /* libFlickrKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAF918EE0CD300E95D39 /* libFlickrKit.a */; };
 		0EB026951962DA05002B462B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB026931962DA05002B462B /* Default-568h@2x.png */; };
@@ -205,6 +206,7 @@
 		0E92F8091924FDF1009149C3 /* Tab-BeInspired@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab-BeInspired@2x.png"; sourceTree = "<group>"; };
 		0E92F80F1924FEF8009149C3 /* Tab-Browse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab-Browse@2x.png"; sourceTree = "<group>"; };
 		0E941DCC1961630E001749C3 /* placement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placement.png; sourceTree = "<group>"; };
+		0E94524E1A4CDCEC0030CB4A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		0E9E5226191402060025E3B3 /* TYPOLA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TYPOLA.ttf; sourceTree = "<group>"; };
 		0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0EABEAF318EE0CD200E95D39 /* FlickrKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FlickrKit.xcodeproj; path = "../../../Downloads/FlickrKit-master/FlickrKit.xcodeproj"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E94524F1A4CDCEC0030CB4A /* iAd.framework in Frameworks */,
 				0E8311FB1923734C0013CF9B /* CoreData.framework in Frameworks */,
 				0EE1FD8A1900A3D500983D87 /* SDWebImage.framework in Frameworks */,
 				0EE1FD811900941F00983D87 /* ImageIO.framework in Frameworks */,
@@ -524,6 +527,7 @@
 		0EC0D89018E8B58000ABC8EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E94524E1A4CDCEC0030CB4A /* iAd.framework */,
 				0E8311FA1923734C0013CF9B /* CoreData.framework */,
 				0EE1FD82190095EB00983D87 /* SDWebImage.framework */,
 				0EE1FD891900A3D500983D87 /* SDWebImage.framework */,

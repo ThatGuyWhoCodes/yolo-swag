@@ -7,66 +7,86 @@
     </dependencies>
     <scenes>
         <!--Campaigns-->
-        <scene sceneID="GMD-do-KJH">
+        <scene sceneID="9SK-MB-1zv">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" title="Campaigns" id="CXi-Io-cuG" customClass="DSGHomeViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="x10-Vu-iQE">
+                <viewController id="EWg-FZ-jZV" customClass="DSGHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zlb-zi-JXf"/>
+                        <viewControllerLayoutGuide type="bottom" id="cFy-vy-7Mc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NEB-Oi-Cmi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="phK-3N-6OW">
-                            <size key="itemSize" width="320" height="280"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" reuseIdentifier="CollectionViewCell" id="sXb-97-9x5" customClass="DSGHomeCollectionViewCell">
-                                <rect key="frame" x="0.0" y="64" width="320" height="280"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6Z-kg-ezF">
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="black" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ug2-oS-awy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l1v-ot-lu3">
+                                    <size key="itemSize" width="320" height="280"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" reuseIdentifier="CollectionViewCell" id="h36-kg-Q8R" customClass="DSGHomeCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="280"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkV-ma-Qcu">
-                                            <rect key="frame" x="0.0" y="239" width="320" height="21"/>
-                                            <color key="backgroundColor" white="1" alpha="0.65000000000000002" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RP4-k9-QCg">
-                                            <rect key="frame" x="8" y="239" width="304" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ByI-cU-8LG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yv-MH-VJL">
+                                                    <rect key="frame" x="0.0" y="239" width="320" height="21"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.65000000000000002" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHK-Xc-bzl">
+                                                    <rect key="frame" x="8" y="239" width="304" height="21"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="customSize" width="320" height="280"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="customSize" width="320" height="280"/>
+                                        <connections>
+                                            <outlet property="image" destination="ByI-cU-8LG" id="UCc-Gq-tnw"/>
+                                            <outlet property="label" destination="uHK-Xc-bzl" id="WcE-4b-rEZ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <outlet property="image" destination="K6Z-kg-ezF" id="aDi-Es-dF8"/>
-                                    <outlet property="label" destination="RP4-k9-QCg" id="AJO-jh-2zF"/>
-                                    <segue destination="ltq-he-L5L" kind="push" id="WWm-Ak-o41"/>
+                                    <outlet property="dataSource" destination="EWg-FZ-jZV" id="2mi-bu-b6a"/>
+                                    <outlet property="delegate" destination="EWg-FZ-jZV" id="kEW-4U-rOm"/>
                                 </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="CXi-Io-cuG" id="wvt-ur-8vd"/>
-                            <outlet property="delegate" destination="CXi-Io-cuG" id="GU2-dN-Jna"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="CAMPAIGNS" id="gWF-1Q-B16"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Orb-Dj-Z0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                            </collectionView>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="975-OI-9rP">
+                                <rect key="frame" x="0.0" y="469" width="320" height="50"/>
+                                <connections>
+                                    <outlet property="delegate" destination="EWg-FZ-jZV" id="A7n-xm-An9"/>
+                                </connections>
+                            </adBannerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Campaigns" id="4Z8-rp-zSp"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Ug2-oS-awy" id="qxU-oE-ID4"/>
+                        <outlet property="iAd" destination="975-OI-9rP" id="nnt-jk-LGq"/>
+                        <segue destination="ltq-he-L5L" kind="push" id="IVw-tj-E46"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3MH-n9-GrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="-818"/>
+            <point key="canvasLocation" x="1860" y="-783"/>
         </scene>
         <!--Ham-->
         <scene sceneID="2C9-mt-jIJ">
@@ -469,7 +489,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="CXi-Io-cuG" kind="relationship" relationship="rootViewController" id="m5M-ki-IaR"/>
+                        <segue destination="EWg-FZ-jZV" kind="relationship" relationship="rootViewController" id="ZSM-2R-O3G"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="obS-lZ-MQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -669,7 +689,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="B4w-sq-Fq2"/>
-        <segue reference="WWm-Ak-o41"/>
+        <segue reference="IVw-tj-E46"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.035294117647058823" green="0.36862745098039218" blue="0.30980392156862746" alpha="1" colorSpace="deviceRGB"/>
 </document>

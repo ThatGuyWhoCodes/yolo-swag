@@ -153,6 +153,18 @@ static NSString *title = @"CAMPAIGNS";
     return cell;
 }
 
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:
+//                                   UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+//    
+//
+//    self.iAd = [[ADBannerView alloc] initWithFrame:headerView.frame];
+//    [headerView addSubview:self.iAd];
+//    
+//    return headerView;
+//}
+
 
 #pragma mark - Navigation
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -168,4 +180,38 @@ static NSString *title = @"CAMPAIGNS";
     [[segue.destinationViewController navigationItem] setTitle:self.homeModel.selectedPhoto.title];
     [((DSGPhotoInfoViewController*)segue.destinationViewController) setImageAlbum:self.homeModel];
 }
+
+
+#pragma mark - ADBannerViewDelegate
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    NSLog(@"Unable to show ads. Error: %@", [error localizedDescription]);
+    
+    // Hide the ad banner.
+    [UIView animateWithDuration:0.5 animations:^{
+        self.iAd.alpha = 0.0;
+    }];
+}
+
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    NSLog(@"Ad Banner did load ad.");
+    
+    // Show the ad banner.
+    [UIView animateWithDuration:0.5 animations:^{
+        self.iAd.alpha = 1.0;
+    }];
+}
+
+-(BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    NSLog(@"Ad Banner action is about to begin.");
+    
+    return YES;
+}
+
+-(void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    NSLog(@"Ad Banner action did finish");
+}
+
 @end
+

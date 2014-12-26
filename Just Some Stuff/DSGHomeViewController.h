@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 #import "DSGHomeModel.h"
 
-@interface DSGHomeViewController : UICollectionViewController
+@interface DSGHomeViewController : UIViewController <ADBannerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 ///The model for the view controller
 @property (strong, nonatomic) DSGHomeModel *homeModel;
+
+//@property (strong, nonatomic) ADBannerView *iAd;
+
+@property (assign, nonatomic) BOOL bannerIsVisible;
+
+@property (strong, nonatomic) IBOutlet ADBannerView *iAd;
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
