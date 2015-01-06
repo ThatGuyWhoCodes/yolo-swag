@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+
 - (IBAction)handleDoubleTap:(id)sender;
 
 - (void)loadVisiblePages;

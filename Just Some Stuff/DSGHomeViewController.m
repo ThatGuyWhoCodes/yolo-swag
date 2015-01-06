@@ -13,6 +13,12 @@
 static NSString *title = @"CAMPAIGNS";
 
 @implementation DSGHomeViewController
+{
+    ADInterstitialAd *interstitial;
+    BOOL requestingAd;
+    UIView *holderView;
+    NSTimer *adTimer;
+}
 
 - (void)viewDidLoad
 {
@@ -24,6 +30,8 @@ static NSString *title = @"CAMPAIGNS";
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:refreshControl];
+    
+    requestingAd = NO;
     
     //Add progress wheel to view
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -50,6 +58,13 @@ static NSString *title = @"CAMPAIGNS";
     [super viewWillAppear:animated];
     //Reset the Navigation title
     [self.navigationItem setTitle:title];
+    
+    //[holderView removeFromSuperview];
+    
+    if (!adTimer)
+    {
+        adTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(showFullScreenAd:) userInfo:nil repeats:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,19 +168,6 @@ static NSString *title = @"CAMPAIGNS";
     return cell;
 }
 
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:
-//                                   UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-//    
-//
-//    self.iAd = [[ADBannerView alloc] initWithFrame:headerView.frame];
-//    [headerView addSubview:self.iAd];
-//    
-//    return headerView;
-//}
-
-
 #pragma mark - Navigation
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
@@ -183,9 +185,10 @@ static NSString *title = @"CAMPAIGNS";
 
 
 #pragma mark - ADBannerViewDelegate
+/*
 -(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-    NSLog(@"%@", [error localizedDescription]);
+    NSLog(@"Ad Error: %@", [error localizedDescription]);
     [self hideAd];
 }
 
@@ -193,7 +196,14 @@ static NSString *title = @"CAMPAIGNS";
 {
     NSLog(@"Ad Banner did load ad.");
     
-    [self displayAd];
+    if (!isDisplayingAd)
+    {
+        [self displayAd];
+    }
+    else
+    {
+        NSLog(@"Cannot Display New Ad");
+    }
 }
 
 -(BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
@@ -206,39 +216,97 @@ static NSString *title = @"CAMPAIGNS";
 -(void)bannerViewActionDidFinish:(ADBannerView *)banner
 {
     NSLog(@"Ad Banner action did finish");
+    [self hideAd];
 }
-
 
 #pragma mark - Display/Hide iAd
 - (void) displayAd
 {
     // Show the ad banner.
-    [UIView animateWithDuration:0.5 animations:^{
-        
-        if (CGRectGetMaxY(self.collectionView.frame) >= CGRectGetMaxY(self.view.frame))
-        {
-            CGRect tempRect = self.collectionView.frame;
-            tempRect.size.height -= CGRectGetHeight(self.iAd.frame);
-            self.collectionView.frame = tempRect;
-        }
-        
+    [UIView animateWithDuration:1.0 animations:^{
+        NSLog(@"Displaying Ad");
         self.iAd.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        isDisplayingAd = YES;
     }];
 }
 
 - (void) hideAd
 {
     // Hide the ad banner.
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:1.0 animations:^{
         self.iAd.alpha = 0.0;
-        
-        if (CGRectGetMaxY(self.collectionView.frame) != CGRectGetMaxY(self.view.frame))
-        {
-            self.collectionView.frame = self.view.frame;
-        }
+        NSLog(@"Hiding Ad");
+    } completion:^(BOOL finished) {
+        isDisplayingAd = NO;
     }];
 }
+*/
 
+#pragma mark - ADInterstitialAd
+-(void)showFullScreenAd:(NSTimer *)timer {
+    //Check if already requesting ad
+    if (requestingAd == NO)
+    {
+        interstitial = [[ADInterstitialAd alloc] init];
+        interstitial.delegate = self;
+        self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
+        [self requestInterstitialAdPresentation];
+        NSLog(@"interstitialAdREQUEST");
+        requestingAd = YES;
+    }
+    else
+    {
+        NSLog(@"Already interstitialAdREQUEST");
+    }
+}
+
+-(void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
+    interstitial = nil;
+    requestingAd = NO;
+    [holderView removeFromSuperview];
+    NSLog(@"interstitialAd didFailWithERROR");
+    NSLog(@"%@", error);
+}
+
+-(void)interstitialAdDidLoad:(ADInterstitialAd *)interstitialAd {
+    NSLog(@"interstitialAdDidLOAD");
+    if (interstitialAd != nil && interstitial != nil && requestingAd == YES)
+    {
+        CGRect interstitialFrame = self.view.bounds;
+        interstitialFrame.origin = self.view.frame.origin;
+        holderView = [[UIView alloc] initWithFrame:interstitialFrame];
+        [self.view addSubview:holderView];
+        [interstitial presentInView:holderView];
+        NSLog(@"interstitialAdDidPRESENT");
+    }//end if
+}
+
+-(void)interstitialAdDidUnload:(ADInterstitialAd *)interstitialAd {
+    interstitial = nil;
+    requestingAd = NO;
+    [holderView removeFromSuperview];
+    NSLog(@"interstitialAdDidUNLOAD");
+}
+
+-(BOOL)interstitialAdActionShouldBegin:(ADInterstitialAd *)interstitialAd willLeaveApplication:(BOOL)willLeave
+{
+    if (willLeave)
+    {
+        [adTimer invalidate];
+        adTimer = nil;
+    }
+    
+    NSLog(@"interstitialAdActionShouldBegin");
+    return willLeave;
+}
+
+-(void)interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd {
+    interstitial = nil;
+    requestingAd = NO;
+    [holderView removeFromSuperview];
+    NSLog(@"interstitialAdDidFINISH");
+}
 
 @end
 

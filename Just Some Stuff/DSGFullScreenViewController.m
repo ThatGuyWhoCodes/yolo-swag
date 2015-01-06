@@ -31,6 +31,7 @@
     
     pageCount = [self.currentModel numberOfPhotos];
     
+    [self.pageControl setNumberOfPages:pageCount];
     //NSLog(@"Images: %d", pageCount);
     
     self.pageViews = [[NSMutableArray alloc] init];
@@ -82,7 +83,7 @@
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
         
-        DLog(@"%@", NSStringFromCGRect(frame));
+        //DLog(@"%@", NSStringFromCGRect(frame));
         
         // 3
         UIImageView *newPageView = [[UIImageView alloc] initWithImage:[DSGUtilities placeholderImage]];
@@ -94,6 +95,8 @@
         // 4
         [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
     }
+    
+    [self.pageControl setCurrentPage:page];
 }
 
 - (void)purgePage:(NSInteger)page

@@ -412,7 +412,7 @@
 {
     if ([self.imageAlbum indexOfSlectedPhoto] <= [self.imageAlbum numberOfPhotos])
     {
-        //[self performSegueWithIdentifier:@"toFullScreen" sender:self];
+        [self performSegueWithIdentifier:@"toFullScreen" sender:self];
     }
 }
 
