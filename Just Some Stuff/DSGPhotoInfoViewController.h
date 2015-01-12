@@ -11,13 +11,14 @@
 #import "DSGSingleImageProtocol.h"
 #import "DSGFullDetailPhoto.h"
 
-@interface DSGPhotoInfoViewController : UIViewController <UIGestureRecognizerDelegate, DSGSingleImageProtocol>
+@interface DSGPhotoInfoViewController : UIViewController <UIGestureRecognizerDelegate, DSGSingleImageProtocol, UIScrollViewDelegate>
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) DSGFullDetailPhoto *fullPhoto;
 
 @property (nonatomic, strong) id <DSGImageCollectionProtocol> imageAlbum;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIButton *favouriteButton;

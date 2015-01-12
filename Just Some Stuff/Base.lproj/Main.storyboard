@@ -85,23 +85,27 @@
             <objects>
                 <viewController title="Ham" id="ltq-he-L5L" customClass="DSGPhotoInfoViewController" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="rkt-aM-Qeg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Iu8-un-OpB">
-                                <rect key="frame" x="0.0" y="64" width="320" height="453"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Fyf-6z-zSX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jyj-vV-IUQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.078873141480000006" blue="0.1142965326" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.70588237050000002" green="0.93333339689999995" blue="0.92549026010000002" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="0Yv-ul-mgs" appends="YES" id="dDr-ac-iZQ"/>
-                                    <outletCollection property="gestureRecognizers" destination="aWT-xX-k1f" appends="YES" id="MAj-uH-2Gz"/>
-                                    <outletCollection property="gestureRecognizers" destination="G0F-b0-gJh" appends="YES" id="fY5-xf-IrT"/>
+                                    <outlet property="delegate" destination="ltq-he-L5L" id="9u2-af-6dQ"/>
                                 </connections>
-                            </imageView>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nEE-1w-E7C">
-                                <rect key="frame" x="267" y="470" width="33" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="271" y="402" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <state key="normal" image="icon_relationships.png">
                                     <color key="titleColor" red="0.023576384620000002" green="0.49866253399999999" blue="0.00030410890710000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -116,6 +120,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Photo Title" id="5f9-Mi-DRV">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="compose" id="OKh-uh-IN6">
                             <connections>
@@ -125,29 +130,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="favouriteButton" destination="nEE-1w-E7C" id="9O0-9t-Xv4"/>
-                        <outlet property="imageView" destination="Iu8-un-OpB" id="lTl-k1-TuV"/>
+                        <outlet property="imageView" destination="jyj-vV-IUQ" id="tiD-XJ-umr"/>
+                        <outlet property="scrollView" destination="Fyf-6z-zSX" id="IZW-5y-MQb"/>
                         <segue destination="dl8-X7-lmu" kind="modal" identifier="toFullScreen" modalTransitionStyle="crossDissolve" id="Z1z-Jo-Nmz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bor-kb-cEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="aWT-xX-k1f">
-                    <connections>
-                        <action selector="handlePinch:" destination="ltq-he-L5L" id="qCi-zx-Tci"/>
-                        <outlet property="delegate" destination="ltq-he-L5L" id="je6-Nd-272"/>
-                    </connections>
-                </pinchGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="0Yv-ul-mgs">
-                    <connections>
-                        <action selector="handlePan:" destination="ltq-he-L5L" id="uWC-ig-xuO"/>
-                        <outlet property="delegate" destination="ltq-he-L5L" id="b6N-dd-ko5"/>
-                    </connections>
-                </panGestureRecognizer>
-                <tapGestureRecognizer cancelsTouchesInView="NO" id="G0F-b0-gJh">
-                    <connections>
-                        <action selector="handleDoubleTap:" destination="ltq-he-L5L" id="wB6-FD-PgV"/>
-                        <outlet property="delegate" destination="ltq-he-L5L" id="4yu-z5-ziC"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3009" y="259"/>
         </scene>
@@ -621,7 +609,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="B4w-sq-Fq2"/>
-        <segue reference="IVw-tj-E46"/>
+        <segue reference="9JZ-Ad-moY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.035294117647058823" green="0.36862745098039218" blue="0.30980392156862746" alpha="1" colorSpace="deviceRGB"/>
 </document>
