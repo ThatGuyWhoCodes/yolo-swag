@@ -58,6 +58,8 @@
     //Set the image along with a placeholder
     [self.imageView setImageWithURL:[[self.imageAlbum getSelectedPhoto] imageURL] placeholderImage:[DSGUtilities placeholderImage] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         
+        [weakSelf setUpInterations];
+        
         //Set up GetPhotoInfo Object
         FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
         [getPhotoInfo setPhoto_id:[[weakSelf.imageAlbum getSelectedPhoto] identification]];
