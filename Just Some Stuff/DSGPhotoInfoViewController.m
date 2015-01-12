@@ -57,33 +57,32 @@
     
     //Set the image along with a placeholder
     [self.imageView setImageWithURL:[[self.imageAlbum getSelectedPhoto] imageURL] placeholderImage:[DSGUtilities placeholderImage] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        [weakSelf setUpInterations];
-    }];
-    
-    //Set up GetPhotoInfo Object
-    FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
-    [getPhotoInfo setPhoto_id:[[self.imageAlbum getSelectedPhoto] identification]];
-    
-    //Get full info about the current photo
-    [[FlickrKit sharedFlickrKit] call:getPhotoInfo completion:^(NSDictionary *response, NSError *error) {
-        if ([[response objectForKey:@"stat"] isEqualToString:@"ok"])
-        {
-            //Set the full photo
-            weakSelf.fullPhoto = [[DSGFullDetailPhoto alloc] initWithDictionary:response];
-            
-            //Get the original image
-            [weakSelf getOriginalImage];
-            
-            //Insert any notes found
-            [weakSelf insertNotes];
-        }
-        else
-        {
-            //Remove progress whell
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-            });
-        }
+        
+        //Set up GetPhotoInfo Object
+        FKFlickrPhotosGetInfo *getPhotoInfo = [[FKFlickrPhotosGetInfo alloc] init];
+        [getPhotoInfo setPhoto_id:[[weakSelf.imageAlbum getSelectedPhoto] identification]];
+        
+        //Get full info about the current photo
+        [[FlickrKit sharedFlickrKit] call:getPhotoInfo completion:^(NSDictionary *response, NSError *error) {
+            if ([[response objectForKey:@"stat"] isEqualToString:@"ok"])
+            {
+                //Set the full photo
+                weakSelf.fullPhoto = [[DSGFullDetailPhoto alloc] initWithDictionary:response];
+                
+                //Get the original image
+                [weakSelf getOriginalImage];
+                
+                //Insert any notes found
+                [weakSelf insertNotes];
+            }
+            else
+            {
+                //Remove progress whell
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+                });
+            }
+        }];
     }];
 }
 
@@ -125,12 +124,10 @@
     [self.fullPhoto fetchOriginalImageWithCompletetionBlock:^(BOOL complete) {
         if (complete)
         {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.imageView setImageWithURL:weakSelf.fullPhoto.orginalImage placeholderImage:weakSelf.imageView.image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                    //Setup the interactions
-                    [weakSelf setUpInterations];
-                }];
-            });
+            [weakSelf.imageView setImageWithURL:weakSelf.fullPhoto.orginalImage placeholderImage:weakSelf.imageView.image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                //Setup the interactions
+                [weakSelf setUpInterations];
+            }];
         }
     }];
 }
@@ -468,32 +465,31 @@
 
 -(void)setUpInterations
 {
-    [self.imageView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.imageView setFrame:self.view.frame];
-    
-    self.scrollView.contentSize = self.imageView.image.size;
-    
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTap:)];
-    doubleTap.numberOfTapsRequired = 2;
-    doubleTap.numberOfTouchesRequired = 1;
-    [self.scrollView addGestureRecognizer:doubleTap];
-    
-    UITapGestureRecognizer *twoFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTwoFingerTapped:)];
-    twoFingerTap.numberOfTapsRequired = 1;
-    twoFingerTap.numberOfTouchesRequired = 2;
-    [self.scrollView addGestureRecognizer:twoFingerTap];
-    
-    CGRect scrolliewFrame = self.scrollView.frame;
-    CGFloat scaleWidth = scrolliewFrame.size.width / self.scrollView.contentSize.width;
-    CGFloat scaleHeight = scrolliewFrame.size.height / self.scrollView.contentSize.height;
-    
-    CGFloat minScale = MIN(scaleWidth, scaleHeight);
-    self.scrollView.minimumZoomScale = minScale;
-    
-    self.scrollView.maximumZoomScale = 1.0f;
-    self.scrollView.zoomScale = minScale;
-    
-    [self centerScrollViewContents];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.scrollView.contentSize = self.imageView.image.size;
+        
+        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTap:)];
+        doubleTap.numberOfTapsRequired = 2;
+        doubleTap.numberOfTouchesRequired = 1;
+        [self.scrollView addGestureRecognizer:doubleTap];
+        
+        UITapGestureRecognizer *twoFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTwoFingerTapped:)];
+        twoFingerTap.numberOfTapsRequired = 1;
+        twoFingerTap.numberOfTouchesRequired = 2;
+        [self.scrollView addGestureRecognizer:twoFingerTap];
+        
+        CGRect scrolliewFrame = self.scrollView.frame;
+        CGFloat scaleWidth = self.scrollView.contentSize.width / scrolliewFrame.size.width;
+        CGFloat scaleHeight = self.scrollView.contentSize.height / scrolliewFrame.size.height;
+        
+        CGFloat maxScale = MIN(scaleWidth, scaleHeight);
+        self.scrollView.minimumZoomScale = 1.0f;
+        
+        self.scrollView.maximumZoomScale = maxScale;
+        self.scrollView.zoomScale = 1.0f;
+        
+        [self centerScrollViewContents];
+    });
 }
 
 #pragma mark - Tap Guestures
