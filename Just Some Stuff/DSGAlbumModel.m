@@ -33,7 +33,7 @@
      return [[self.filteredPhotos objectAtIndex:index] imageURL];
 }
 
--(NSUInteger)indexOfSlectedPhoto
+-(NSInteger)indexOfSlectedPhoto
 {
     return [self.filteredPhotos indexOfObject:self.selected];
 }

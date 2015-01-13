@@ -44,7 +44,7 @@
     [self setFetechedResults:resultsArray];
 }
 
--(NSUInteger)indexOfSlectedPhoto
+-(NSInteger)indexOfSlectedPhoto
 {
     return [self.fetechedResults indexOfObject:self.selectedPhoto];
 }

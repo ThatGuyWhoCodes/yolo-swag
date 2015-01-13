@@ -50,7 +50,7 @@
     return self.selectedPhoto;
 }
 
--(NSUInteger)indexOfSlectedPhoto
+-(NSInteger)indexOfSlectedPhoto
 {
     return [self.photoData indexOfObject:self.selectedPhoto];
 }

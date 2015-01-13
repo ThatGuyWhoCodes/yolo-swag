@@ -20,6 +20,6 @@
 
 - (DSGBasicPhoto *)getSelectedPhoto;
 
-- (NSUInteger)indexOfSlectedPhoto;
+- (NSInteger)indexOfSlectedPhoto;
 
 @end

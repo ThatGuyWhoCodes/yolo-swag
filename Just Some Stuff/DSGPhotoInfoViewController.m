@@ -32,6 +32,22 @@
     
     //Load the selected photo from the model
     [self loadSelectedPhotoFromModel];
+    
+    //Create the left swipe
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDidSwipe:)];
+    swipeGesture.numberOfTouchesRequired = 1;
+    [swipeGesture setDirection:UISwipeGestureRecognizerDirectionLeft];
+    
+    //Add the left swipe to the scroll view
+    [self.scrollView addGestureRecognizer:swipeGesture];
+    
+    //Create the right swipe
+    swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDidSwipe:)];
+    swipeGesture.numberOfTouchesRequired = 1;
+    [swipeGesture setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    //Add the right swipe to the scroll view
+    [self.scrollView addGestureRecognizer:swipeGesture];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -40,6 +56,23 @@
     
     //Set the favourites button is selected or not
     [self.favouriteButton setSelected:[self checkIfFavourite]];
+    
+    //Assign the delegate to prevent it working as it normal does
+    [self.navigationController.interactivePopGestureRecognizer setDelegate:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    //Re-assign the delegate to get it working
+    [self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
+}
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    //Return NO if it's the navPop, YES otherwise
+    return gestureRecognizer != self.navigationController.interactivePopGestureRecognizer;
 }
 
 - (void)didReceiveMemoryWarning
@@ -203,6 +236,64 @@
     {
         [[[UIAlertView alloc] initWithTitle:@"No items" message:@"There are no items in this photo" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
     }
+}
+
+#pragma mark - Swipe Gesture
+- (void)scrollViewDidSwipe:(UISwipeGestureRecognizer *)recogniser
+{
+    if ([self canSwipeInDirection:recogniser.direction])
+    {
+        //Get the new Image Index
+        NSInteger index = [self.imageAlbum indexOfSlectedPhoto];
+        
+        //Set the new Image Index
+        index = (recogniser.direction == UISwipeGestureRecognizerDirectionLeft) ? (index + 1) : (index - 1);
+        
+        //Update the model
+        [self.imageAlbum setSelectedPhotoAtIndex:index];
+        
+        //Remove the buttons
+        for (UIButton *clickableNote in self.clickableNotes)
+        {
+            [clickableNote removeFromSuperview];
+        }
+
+        //nil the reference
+        self.clickableNotes = nil;
+        
+        //First animation = Fade to white
+        [UIView animateWithDuration:0.2 animations:^{
+            
+            //Fade the image view to white
+            [self.imageView setAlpha:0.0f];
+        } completion:^(BOOL finished) {
+            
+            //Load the image back up
+            [self loadSelectedPhotoFromModel];
+            
+            [self.favouriteButton setSelected:[self checkIfFavourite]];
+            
+            [UIView animateWithDuration:0.25 animations:^{
+                
+                //Fade from white
+                [self.imageView setAlpha:1.0f];
+                
+            } completion:^(BOOL finished) {
+                DLog(@"Animations Fished");
+                
+                //Update the title
+                [self.navigationItem setTitle:[[[self.imageAlbum getSelectedPhoto] title] uppercaseString]];
+            }];
+        }];
+    }
+}
+
+- (BOOL)canSwipeInDirection:(UISwipeGestureRecognizerDirection) direction
+{
+    NSInteger currentIndex = [self.imageAlbum indexOfSlectedPhoto];
+    
+    return (direction == UISwipeGestureRecognizerDirectionRight && (currentIndex - 1) >= 0) ||
+    (direction == UISwipeGestureRecognizerDirectionLeft && (currentIndex + 1) < [self.imageAlbum numberOfPhotos]);
 }
 
 #pragma mark - Navigation
