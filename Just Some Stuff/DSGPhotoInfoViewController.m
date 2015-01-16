@@ -58,7 +58,7 @@
     [self.favouriteButton setSelected:[self checkIfFavourite]];
     
     //Assign the delegate to prevent it working as it normal does
-    [self.navigationController.interactivePopGestureRecognizer setDelegate:self];
+    //[self.navigationController.interactivePopGestureRecognizer setDelegate:self];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -66,7 +66,7 @@
     [super viewDidDisappear:animated];
     
     //Re-assign the delegate to get it working
-    [self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
+    //[self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
