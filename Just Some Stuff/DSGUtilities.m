@@ -63,7 +63,6 @@
 
 +(UIImage *)imageForTitle:(NSString *)collectionTitle
 {
-    
     if ([[collectionTitle lowercaseString] rangeOfString:@"win"].location != NSNotFound)
     {
         return [UIImage imageNamed:@"Winter.JPG"];
@@ -72,6 +71,11 @@
     if ([[collectionTitle lowercaseString] rangeOfString:@"aut"].location != NSNotFound)
     {
         return [UIImage imageNamed:@"Autunm.JPG"];
+    }
+    
+    if ([[collectionTitle lowercaseString] rangeOfString:@"sum"].location != NSNotFound)
+    {
+        return [UIImage imageNamed:@"Summer.JPG"];
     }
     
     if ([[collectionTitle lowercaseString] rangeOfString:@"spr"].location != NSNotFound)

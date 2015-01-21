@@ -174,14 +174,14 @@ static NSString *title = @"BROWSE";
     }
     
     DSGNestedCollection* collection = [self.browseModel.collectionsData objectAtIndex:indexPath.row];
-    [cell.titleLabel setFont:[DSGUtilities fontTyploaWithSize:35]];
+//    [cell.titleLabel setFont:[DSGUtilities fontTyploaWithSize:35]];
+//    
+//    cell.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
+//    cell.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+//    cell.titleLabel.layer.shadowOpacity = 1.0f;
+//    cell.titleLabel.layer.shadowRadius = 2.0f;
     
-    cell.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
-    cell.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    cell.titleLabel.layer.shadowOpacity = 1.0f;
-    cell.titleLabel.layer.shadowRadius = 2.0f;
-    
-    [cell.titleLabel setText:[[collection title] uppercaseString]];
+    [cell setCellText:[[collection title] uppercaseString]];
     [cell.cellBackGroundImage setImage:[DSGUtilities imageForTitle:[collection title]]];
     
     return cell;

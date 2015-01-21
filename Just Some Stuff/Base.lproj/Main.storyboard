@@ -204,7 +204,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bdv-YB-RVs">
                                             <rect key="frame" x="0.0" y="36" width="320" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.77453364158163263" green="0.77453364158163263" blue="0.77453364158163263" alpha="0.35000000000000003" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="25"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -606,7 +606,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="B4w-sq-Fq2"/>
+        <segue reference="UPO-Je-rCq"/>
         <segue reference="9JZ-Ad-moY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.035294117647058823" green="0.36862745098039218" blue="0.30980392156862746" alpha="1" colorSpace="deviceRGB"/>

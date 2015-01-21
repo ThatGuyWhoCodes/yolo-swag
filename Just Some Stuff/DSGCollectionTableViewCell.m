@@ -32,4 +32,16 @@
     // Configure the view for the selected state
 }
 
+-(void)setCellText:(NSString *)text
+{
+    [self.titleLabel setFont:[DSGUtilities fontTyploaWithSize:35]];
+    
+    self.titleLabel.layer.shadowColor = [[UIColor whiteColor] CGColor];
+    self.titleLabel.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    self.titleLabel.layer.shadowOpacity = 1.0f;
+    self.titleLabel.layer.shadowRadius = 1.0f;
+    
+    [self.titleLabel setText:text];
+}
+
 @end
