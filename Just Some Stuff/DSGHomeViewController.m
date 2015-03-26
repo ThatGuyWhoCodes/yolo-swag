@@ -14,10 +14,11 @@ static NSString *title = @"CAMPAIGNS";
 
 @implementation DSGHomeViewController
 {
-    ADInterstitialAd *interstitial;
+    //ADInterstitialAd *interstitial;
     BOOL requestingAd;
     UIView *holderView;
     NSTimer *adTimer;
+    BOOL isDisplayingAd;
 }
 
 - (void)viewDidLoad
@@ -61,10 +62,10 @@ static NSString *title = @"CAMPAIGNS";
     
     //[holderView removeFromSuperview];
     
-    if (!adTimer)
-    {
-        adTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(showFullScreenAd:) userInfo:nil repeats:YES];
-    }
+//    if (!adTimer)
+//    {
+//        adTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(showFullScreenAd:) userInfo:nil repeats:YES];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -183,9 +184,8 @@ static NSString *title = @"CAMPAIGNS";
     [((DSGPhotoInfoViewController*)segue.destinationViewController) setImageAlbum:self.homeModel];
 }
 
-
 #pragma mark - ADBannerViewDelegate
-/*
+
 -(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
     NSLog(@"Ad Error: %@", [error localizedDescription]);
@@ -241,72 +241,72 @@ static NSString *title = @"CAMPAIGNS";
         isDisplayingAd = NO;
     }];
 }
-*/
+
 
 #pragma mark - ADInterstitialAd
--(void)showFullScreenAd:(NSTimer *)timer {
-    //Check if already requesting ad
-    if (requestingAd == NO)
-    {
-        interstitial = [[ADInterstitialAd alloc] init];
-        interstitial.delegate = self;
-        self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
-        [self requestInterstitialAdPresentation];
-        NSLog(@"interstitialAdREQUEST");
-        requestingAd = YES;
-    }
-    else
-    {
-        NSLog(@"Already interstitialAdREQUEST");
-    }
-}
-
--(void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
-    interstitial = nil;
-    requestingAd = NO;
-    [holderView removeFromSuperview];
-    NSLog(@"interstitialAd didFailWithERROR");
-    NSLog(@"%@", error);
-}
-
--(void)interstitialAdDidLoad:(ADInterstitialAd *)interstitialAd {
-    NSLog(@"interstitialAdDidLOAD");
-    if (interstitialAd != nil && interstitial != nil && requestingAd == YES)
-    {
-        CGRect interstitialFrame = self.view.bounds;
-        interstitialFrame.origin = self.view.frame.origin;
-        holderView = [[UIView alloc] initWithFrame:interstitialFrame];
-        [self.view addSubview:holderView];
-        [interstitial presentInView:holderView];
-        NSLog(@"interstitialAdDidPRESENT");
-    }//end if
-}
-
--(void)interstitialAdDidUnload:(ADInterstitialAd *)interstitialAd {
-    interstitial = nil;
-    requestingAd = NO;
-    [holderView removeFromSuperview];
-    NSLog(@"interstitialAdDidUNLOAD");
-}
-
--(BOOL)interstitialAdActionShouldBegin:(ADInterstitialAd *)interstitialAd willLeaveApplication:(BOOL)willLeave
-{
-    if (willLeave)
-    {
-        [adTimer invalidate];
-        adTimer = nil;
-    }
-    
-    NSLog(@"interstitialAdActionShouldBegin");
-    return willLeave;
-}
-
--(void)interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd {
-    interstitial = nil;
-    requestingAd = NO;
-    [holderView removeFromSuperview];
-    NSLog(@"interstitialAdDidFINISH");
-}
+//-(void)showFullScreenAd:(NSTimer *)timer {
+//    //Check if already requesting ad
+//    if (requestingAd == NO)
+//    {
+//        interstitial = [[ADInterstitialAd alloc] init];
+//        interstitial.delegate = self;
+//        self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
+//        [self requestInterstitialAdPresentation];
+//        NSLog(@"interstitialAdREQUEST");
+//        requestingAd = YES;
+//    }
+//    else
+//    {
+//        NSLog(@"Already interstitialAdREQUEST");
+//    }
+//}
+//
+//-(void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
+//    interstitial = nil;
+//    requestingAd = NO;
+//    [holderView removeFromSuperview];
+//    NSLog(@"interstitialAd didFailWithERROR");
+//    NSLog(@"%@", error);
+//}
+//
+//-(void)interstitialAdDidLoad:(ADInterstitialAd *)interstitialAd {
+//    NSLog(@"interstitialAdDidLOAD");
+//    if (interstitialAd != nil && interstitial != nil && requestingAd == YES)
+//    {
+//        CGRect interstitialFrame = self.view.bounds;
+//        interstitialFrame.origin = self.view.frame.origin;
+//        holderView = [[UIView alloc] initWithFrame:interstitialFrame];
+//        [self.view addSubview:holderView];
+//        [interstitial presentInView:holderView];
+//        NSLog(@"interstitialAdDidPRESENT");
+//    }//end if
+//}
+//
+//-(void)interstitialAdDidUnload:(ADInterstitialAd *)interstitialAd {
+//    interstitial = nil;
+//    requestingAd = NO;
+//    [holderView removeFromSuperview];
+//    NSLog(@"interstitialAdDidUNLOAD");
+//}
+//
+//-(BOOL)interstitialAdActionShouldBegin:(ADInterstitialAd *)interstitialAd willLeaveApplication:(BOOL)willLeave
+//{
+//    if (willLeave)
+//    {
+//        [adTimer invalidate];
+//        adTimer = nil;
+//    }
+//    
+//    NSLog(@"interstitialAdActionShouldBegin");
+//    return willLeave;
+//}
+//
+//-(void)interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd {
+//    interstitial = nil;
+//    requestingAd = NO;
+//    [holderView removeFromSuperview];
+//    NSLog(@"interstitialAdDidFINISH");
+//}
 
 @end
 

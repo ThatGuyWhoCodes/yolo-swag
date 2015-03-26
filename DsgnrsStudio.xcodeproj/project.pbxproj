@@ -63,7 +63,9 @@
 		0E92F8101924FEF8009149C3 /* Tab-Browse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E92F80F1924FEF8009149C3 /* Tab-Browse@2x.png */; };
 		0E941DCD1961630E001749C3 /* placement.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E941DCC1961630E001749C3 /* placement.png */; };
 		0E94524F1A4CDCEC0030CB4A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94524E1A4CDCEC0030CB4A /* iAd.framework */; };
-		0E97093F1A6FBAF100B151A8 /* Spring.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0E97093E1A6FBAF100B151A8 /* Spring.JPG */; };
+		0E9709431A7AA6BE00B151A8 /* Spring.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0E9709401A7AA6BE00B151A8 /* Spring.JPG */; };
+		0E9709441A7AA6BE00B151A8 /* Summer.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0E9709411A7AA6BE00B151A8 /* Summer.JPG */; };
+		0E9709451A7AA6BE00B151A8 /* Winter.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0E9709421A7AA6BE00B151A8 /* Winter.JPG */; };
 		0EABEAEF18EE099300E95D39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */; };
 		0EABEAFC18EE0E4600E95D39 /* libFlickrKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EABEAF918EE0CD300E95D39 /* libFlickrKit.a */; };
 		0EB026951962DA05002B462B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB026931962DA05002B462B /* Default-568h@2x.png */; };
@@ -83,8 +85,6 @@
 		0EC0D8BB18E8B58000ABC8EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EC0D8B918E8B58000ABC8EE /* InfoPlist.strings */; };
 		0EC0D8BD18E8B58000ABC8EE /* Just_Some_StuffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */; };
 		0EC5812619EEE728004D46C6 /* Autunm.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0EC5812319EEE728004D46C6 /* Autunm.JPG */; };
-		0EC5812719EEE728004D46C6 /* Summer.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0EC5812419EEE728004D46C6 /* Summer.JPG */; };
-		0EC5812819EEE728004D46C6 /* Winter.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0EC5812519EEE728004D46C6 /* Winter.JPG */; };
 		0EC61B27192B965000FB62FF /* DSGFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC61B26192B965000FB62FF /* DSGFullScreenViewController.m */; };
 		0EE1FD71190086DB00983D87 /* DSGHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1FD70190086DB00983D87 /* DSGHomeModel.m */; };
 		0EE1FD7919008D6100983D87 /* DSGHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1FD7819008D6100983D87 /* DSGHomeCollectionViewCell.m */; };
@@ -208,7 +208,9 @@
 		0E92F80F1924FEF8009149C3 /* Tab-Browse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab-Browse@2x.png"; sourceTree = "<group>"; };
 		0E941DCC1961630E001749C3 /* placement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placement.png; sourceTree = "<group>"; };
 		0E94524E1A4CDCEC0030CB4A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		0E97093E1A6FBAF100B151A8 /* Spring.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Spring.JPG; sourceTree = "<group>"; };
+		0E9709401A7AA6BE00B151A8 /* Spring.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Spring.JPG; sourceTree = "<group>"; };
+		0E9709411A7AA6BE00B151A8 /* Summer.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Summer.JPG; sourceTree = "<group>"; };
+		0E9709421A7AA6BE00B151A8 /* Winter.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Winter.JPG; sourceTree = "<group>"; };
 		0E9E5226191402060025E3B3 /* TYPOLA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TYPOLA.ttf; sourceTree = "<group>"; };
 		0EABEAEE18EE099300E95D39 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0EABEAF318EE0CD200E95D39 /* FlickrKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FlickrKit.xcodeproj; path = "../../../Downloads/FlickrKit-master/FlickrKit.xcodeproj"; sourceTree = "<group>"; };
@@ -234,8 +236,6 @@
 		0EC0D8BA18E8B58000ABC8EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0EC0D8BC18E8B58000ABC8EE /* Just_Some_StuffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Just_Some_StuffTests.m; sourceTree = "<group>"; };
 		0EC5812319EEE728004D46C6 /* Autunm.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Autunm.JPG; sourceTree = "<group>"; };
-		0EC5812419EEE728004D46C6 /* Summer.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Summer.JPG; sourceTree = "<group>"; };
-		0EC5812519EEE728004D46C6 /* Winter.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Winter.JPG; sourceTree = "<group>"; };
 		0EC61B25192B965000FB62FF /* DSGFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGFullScreenViewController.h; sourceTree = "<group>"; };
 		0EC61B26192B965000FB62FF /* DSGFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGFullScreenViewController.m; sourceTree = "<group>"; };
 		0EC61B29192B9DE900FB62FF /* DSGImageCollectionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGImageCollectionProtocol.h; sourceTree = "<group>"; };
@@ -599,9 +599,9 @@
 			isa = PBXGroup;
 			children = (
 				0EC5812319EEE728004D46C6 /* Autunm.JPG */,
-				0E97093E1A6FBAF100B151A8 /* Spring.JPG */,
-				0EC5812419EEE728004D46C6 /* Summer.JPG */,
-				0EC5812519EEE728004D46C6 /* Winter.JPG */,
+				0E9709401A7AA6BE00B151A8 /* Spring.JPG */,
+				0E9709411A7AA6BE00B151A8 /* Summer.JPG */,
+				0E9709421A7AA6BE00B151A8 /* Winter.JPG */,
 			);
 			name = Seasons;
 			sourceTree = "<group>";
@@ -825,10 +825,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EC5812819EEE728004D46C6 /* Winter.JPG in Resources */,
 				0EB026961962DA05002B462B /* Default@2x.png in Resources */,
 				0E694AD31A2DF566005B1917 /* Icon-60.png in Resources */,
-				0E97093F1A6FBAF100B151A8 /* Spring.JPG in Resources */,
 				0EF09EE1197403CB00179E7B /* image_placeholder.jpg in Resources */,
 				0EC0D89C18E8B58000ABC8EE /* InfoPlist.strings in Resources */,
 				0E694ADB1A2DF566005B1917 /* Icon-Small-50.png in Resources */,
@@ -839,7 +837,9 @@
 				0E694ADD1A2DF566005B1917 /* Icon-Small.png in Resources */,
 				0E694AE31A2DF566005B1917 /* iTunesArtwork@2x.png in Resources */,
 				0E92F80C1924FDF1009149C3 /* Tab-Favourites@2x.png in Resources */,
+				0E9709451A7AA6BE00B151A8 /* Winter.JPG in Resources */,
 				0E92F80B1924FDF1009149C3 /* Tab-Featured@2x.png in Resources */,
+				0E9709431A7AA6BE00B151A8 /* Spring.JPG in Resources */,
 				0E694ADE1A2DF566005B1917 /* Icon-Small@2x.png in Resources */,
 				0E694AED1A2DFD44005B1917 /* Images.xcassets in Resources */,
 				0E694AD61A2DF566005B1917 /* Icon-72.png in Resources */,
@@ -849,7 +849,6 @@
 				0E694AE71A2DF95B005B1917 /* Icon-120.png in Resources */,
 				0E694AD71A2DF566005B1917 /* Icon-72@2x.png in Resources */,
 				0E687EFD1914045200C28F4C /* TYPOLA.ttf in Resources */,
-				0EC5812719EEE728004D46C6 /* Summer.JPG in Resources */,
 				0E694AE01A2DF566005B1917 /* Icon.png in Resources */,
 				0E92F80D1924FDF1009149C3 /* Tab-BeInspired@2x.png in Resources */,
 				0E694ADC1A2DF566005B1917 /* Icon-Small-50@2x.png in Resources */,
@@ -863,6 +862,7 @@
 				0E92E1211945C1F000ED74EC /* icon_relationships@2x.png in Resources */,
 				0E92E1201945C1F000ED74EC /* icon_relationships-filled@2x.png in Resources */,
 				0E694AD91A2DF566005B1917 /* Icon-76@2x.png in Resources */,
+				0E9709441A7AA6BE00B151A8 /* Summer.JPG in Resources */,
 				0E92F8101924FEF8009149C3 /* Tab-Browse@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
